@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.function = new System.Windows.Forms.TextBox();
+            this.functionBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.repeat = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,16 +40,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Epsilon = new System.Windows.Forms.TextBox();
+            this.lowerBound = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.upperBound = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // function
+            // functionBox
             // 
-            this.function.BackColor = System.Drawing.SystemColors.Window;
-            this.function.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.function.Location = new System.Drawing.Point(12, 44);
-            this.function.Name = "function";
-            this.function.Size = new System.Drawing.Size(526, 32);
-            this.function.TabIndex = 0;
+            this.functionBox.BackColor = System.Drawing.SystemColors.Window;
+            this.functionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.functionBox.Location = new System.Drawing.Point(12, 44);
+            this.functionBox.Name = "functionBox";
+            this.functionBox.Size = new System.Drawing.Size(526, 32);
+            this.functionBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -89,7 +96,7 @@
             this.Xn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.Xn.Location = new System.Drawing.Point(86, 103);
             this.Xn.Name = "Xn";
-            this.Xn.Size = new System.Drawing.Size(108, 29);
+            this.Xn.Size = new System.Drawing.Size(146, 29);
             this.Xn.TabIndex = 4;
             // 
             // label3
@@ -108,7 +115,7 @@
             this.Xn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.Xn1.Location = new System.Drawing.Point(338, 103);
             this.Xn1.Name = "Xn1";
-            this.Xn1.Size = new System.Drawing.Size(138, 29);
+            this.Xn1.Size = new System.Drawing.Size(163, 29);
             this.Xn1.TabIndex = 6;
             // 
             // Delta
@@ -116,7 +123,7 @@
             this.Delta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.Delta.Location = new System.Drawing.Point(86, 195);
             this.Delta.Name = "Delta";
-            this.Delta.Size = new System.Drawing.Size(108, 29);
+            this.Delta.Size = new System.Drawing.Size(146, 29);
             this.Delta.TabIndex = 8;
             // 
             // label4
@@ -156,14 +163,90 @@
             this.Epsilon.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.Epsilon.Location = new System.Drawing.Point(338, 193);
             this.Epsilon.Name = "Epsilon";
-            this.Epsilon.Size = new System.Drawing.Size(138, 29);
+            this.Epsilon.Size = new System.Drawing.Size(163, 29);
             this.Epsilon.TabIndex = 11;
+            // 
+            // lowerBound
+            // 
+            this.lowerBound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lowerBound.Location = new System.Drawing.Point(86, 349);
+            this.lowerBound.Name = "lowerBound";
+            this.lowerBound.Size = new System.Drawing.Size(146, 29);
+            this.lowerBound.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(12, 354);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 24);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "a =";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(12, 309);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 24);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Bisection: ";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(384, 352);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 24);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "b =";
+            // 
+            // upperBound
+            // 
+            this.upperBound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.upperBound.Location = new System.Drawing.Point(453, 349);
+            this.upperBound.Name = "upperBound";
+            this.upperBound.Size = new System.Drawing.Size(146, 29);
+            this.upperBound.TabIndex = 16;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(657, 309);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(256, 100);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Lặp";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(77, 500);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 18;
             // 
             // FormP1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.upperBound);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lowerBound);
             this.Controls.Add(this.Epsilon);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -175,7 +258,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.repeat);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.function);
+            this.Controls.Add(this.functionBox);
             this.Name = "FormP1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormP1";
@@ -186,7 +269,7 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox function;
+        public System.Windows.Forms.TextBox functionBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button repeat;
         private System.Windows.Forms.Label label2;
@@ -198,5 +281,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Epsilon;
+        private System.Windows.Forms.TextBox lowerBound;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox upperBound;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
