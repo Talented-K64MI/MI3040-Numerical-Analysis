@@ -80,14 +80,3 @@ def bisectionMethod(initialLeftBound, initialRightBound, epsilon, evalString):
 #}
 
 
-
-
-
-
-#===================================================================================
-# Chương trình ví dụ
-input_expr = input('Please enter f(x) in f(x) = 0 equation: ');
-L   = float(input('Please enter the initial left bound a = '));
-R   = float(input('Please enter the initial right bound b = '));
-eps = float(input('Please enter the error value eps = '));
-bisectionMethod(L, R, eps, input_expr);
