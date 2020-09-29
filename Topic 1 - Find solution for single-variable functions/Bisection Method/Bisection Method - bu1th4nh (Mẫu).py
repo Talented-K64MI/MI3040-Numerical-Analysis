@@ -10,7 +10,7 @@
 #   Code (đã cái tiến) cho PP dây cung. 
 #       * Input: f(x) trong pt f(x) = 0; khoảng cách li ban đầu (a, b); sai số epsilon
 #       * Output: Nghiệm PT f(x) = 0;
-#       * Hạn chế: Chưa có gói tìm khoảng cách lý nghiệm
+#       * Hạn chế: Chưa có gói tìm khoảng cách lý nghiệm và phần tính giá trị f(x) chưa tối ưu
 #       * Cải tiến: Giảm khối lượng tính toán - tính f(a) 1 lần
 #       
 #===================================================================================
