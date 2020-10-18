@@ -1,10 +1,9 @@
-from numpy.core.defchararray import array
 from sympy import *
 import matplotlib.pyplot as plt
 import numpy
 
+t = symbols('t')
 x = symbols('x')
-
 #test
 #y''' - 2/3 y'' - 2xy' + 6y =0
 y = x**3 +x -1
@@ -20,6 +19,7 @@ arr[1][1] = -2
 arr[0][0] = 6
 print("input: ")
 print(arr)
+
 
 
 result = [-1,1,0]
