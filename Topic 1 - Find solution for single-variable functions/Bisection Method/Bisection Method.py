@@ -90,9 +90,5 @@ class bisection_oop:
 
 #===================================================================================
 # Chương trình ví dụ
-# input_expr = input('Please enter f(x) in f(x) = 0 equation: ');
-# L   = float(input('Please enter the initial left bound a = '));
-# R   = float(input('Please enter the initial right bound b = '));
-# eps = float(input('Please enter the error value eps = '));
 # uu = bisection_oop(L, R, eps, input_expr);
 # print(uu.Solve());
