@@ -3,85 +3,89 @@
 #   Code (đã cái tiến) cho PP dây cung. 
 #       * Input: f(x) trong pt f(x) = 0; khoảng cách li ban đầu (a, b); sai số epsilon
 #       * Output: Nghiệm PT f(x) = 0;
-#       * Hạn chế: Chưa có gói tìm khoảng cách lý nghiệm và phần tính giá trị f(x) chưa tối ưu
-#       * Cải tiến: Giảm khối lượng tính toán - tính f(a) 1 lần
+#       * Hạn chế: Chưa có gói tìm khoảng cách ly nghiệm
+#       * Cải tiến: Giảm khối lượng tính toán - tính f(a) 1 lần + thêm SymPy
 #       
 #===================================================================================
+from sympy import *
 from math import *
 import sys
 
 
 #===================================================================================
 # Phần thuật toán chính
-def evaluate(x, evalString):
+class bisection_oop:
 #{
-    return eval(evalString);
-#}
-def checkInputValidity(L, R, evalString):
-#{
-    #Check if a < b
-    if(L > R): return 0;
-    if(L == R and evaluate(L, evalString) != 0): return 0;
-
-    #Check if f(a) * f(b) < 0
-    fa = evaluate(L, evalString);
-    fb = evaluate(R, evalString);
-    if(fa * fb >= 0): return 0;
-    
-    return 1;
-#}
-def internal___bisectionMethod(initialLeftBound, initialRightBound, epsilon, evalString):
-#{
-    if(evaluate(initialLeftBound, evalString) == 0): return initialLeftBound;
-    if(evaluate(initialRightBound, evalString) == 0): return initialRightBound;
-
-    # Internal function 
-    # Return root of f(x) = 0 which f(x), eps and range [a, b] are given.
-
-    left  = initialLeftBound;
-    right = initialRightBound;
-    mid   = (left + right) / 2;
-    lft_sign = 1 if evaluate(left, evalString) >= 0 else -1;
-
-
-    while abs(right - left) >= epsilon:
+    def __init__(self, a_0, b_0, eps, expr):
     #{
-        mid = (left + right) / 2;
-        val = evaluate(mid, evalString);
+        self.f = lambdify(symbols("x"), sympify(expr), "math");
+        self.a_0 = a_0;
+        self.b_0 = b_0;
+        self.eps = eps;
+    #}
 
 
-        #print(left, mid, right, sep=',', file=sys.stderr)
+    def __checkInputValidity(self):
+    #{
+        L = self.a_0;
+        R = self.b_0;
 
+        # Corner case: f(L) = 0 or f(R) = 0
+        if(self.f(L) == 0 or self.f(R) == 0): return 1;
+
+        # Check if a < b
+        if(L > R or (L == R and self.f(L) != 0)): return 0;
+
+        # Check if f(a) * f(b) < 0
+        if(self.f(L) * self.f(R) >= 0): return 0;
         
-        if(val == 0): return mid;
-        if(val * lft_sign < 0):
-            right = mid;
-        else:
-            left = mid;
+        return 1;
     #}
-    
-    #print(left, mid, right, sep=',', file=sys.stderr)
-    return mid;
-#}
-
-
-
-
-#===================================================================================
-# Hàm giải phương trình sử dụng các hàm từ thuật toán chính
-def bisectionMethod(initialLeftBound, initialRightBound, epsilon, evalString):
-#{
-    if(checkInputValidity(initialLeftBound, initialRightBound, evalString) == 0):
+    def __bisectionMethod(self):
     #{
-        print("Invalid input. The program will now exit");
-        return;
+        # Internal function 
+        # Return root of f(x) = 0 which f(x), eps and range [a_0, b_0] are given.
+        # Assign [a, b] and eps
+        left    = self.a_0;
+        right   = self.b_0;
+        epsilon = self.eps;
+
+        # Special case: f(a) = 0 or f(b) = 0
+        if(self.f(left) == 0): return left;
+        if(self.f(right) == 0): return right;
+
+        # Evaluation phase
+        mid   = (left + right) / 2;
+        lft_sign = 1 if self.f(left) >= 0 else -1;
+        while abs(right - left) >= epsilon:
+        #{
+            mid = (left + right) / 2;
+            val = self.f(mid);
+
+            # print(left, mid, right, sep=',', file=sys.stderr)
+
+            if(val == 0): return mid;
+            if(val * lft_sign < 0):
+                right = mid;
+            else:
+                left = mid;
+        #}
+        
+        # print(left, mid, right, sep=',', file=sys.stderr)
+        return mid;
     #}
-    print(internal___bisectionMethod(initialLeftBound, initialRightBound, epsilon, evalString));
+
+
+    def Solve(self):
+    #{
+        if(self.__checkInputValidity() == 0):
+        #{
+            print("Invalid input. The program will now exit", file=sys.stderr);
+            return float("NaN");
+        #}
+        return self.__bisectionMethod();
+    #}
 #}
-
-
-
-
 
 
 #===================================================================================
@@ -90,4 +94,5 @@ def bisectionMethod(initialLeftBound, initialRightBound, epsilon, evalString):
 # L   = float(input('Please enter the initial left bound a = '));
 # R   = float(input('Please enter the initial right bound b = '));
 # eps = float(input('Please enter the error value eps = '));
-# bisectionMethod(L, R, eps, input_expr);
+# uu = bisection_oop(L, R, eps, input_expr);
+# print(uu.Solve());
