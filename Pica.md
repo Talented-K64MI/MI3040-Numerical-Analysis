@@ -9,19 +9,23 @@ Pica(string filename)               # input tên file và output hàm có dạng
 Pica(string filename, int length)   # input thêm length là số điểm chia cho hàm lưới x(t), output là danh sách gồm các (t,x(t))
 
 input file ví dụ:
-#t^2+x^2    # hàm f(t,x)
 
-#-10,10     # khoảng xác định theo t
+t^2+x^2    # hàm f(t,x)
 
-#-10,10     # khoảng xác định theo x
+-10,10     # khoảng xác định theo t
 
-#0,0        # t0 và x0 = x(t0)
+-10,10     # khoảng xác định theo x
 
-#10^-10     # sai số epslon
+0,0        # t0 và x0 = x(t0)
+
+10^-10     # sai số epslon
 
 3 hàm vẽ đồ thị cho output
+
 #PlotSymbol((function, interval))
+
 #PlotPairs(listOfPairs)
+
 #PlotBoth((function, interval), listOfPairs )
 
 
