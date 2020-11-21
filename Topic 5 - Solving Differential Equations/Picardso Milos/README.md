@@ -5,7 +5,7 @@
 ## Code trong Picardso_Milos.py, gồm 2 hàm chính:
 
 - Pica(string filename)               # input tên file và output hàm có dạng giải tích x(t) cùng với khoảng xác định t
-- Pica(string filename, int length)   # input thêm length là số điểm chia cho hàm lưới x(t), output là danh sách gồm các (t,x(t))
+- Pica(string filename, int length)   # input thêm length là số điểm chia cho hàm lưới x(t), output là danh sách độ dài length gồm các (t,x(t))
 
 ## Input file ví dụ:
 
