@@ -3,7 +3,9 @@ Xấp xỉ liên tiếp Pica nhóm 26 - Đỗ Mạnh Dũng
 Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này
 
 2 hàm chính:
+
 Pica(string filename)               # input tên file và output hàm có dạng giải tích x(t) cùng với khoảng xác định t
+
 Pica(string filename, int length)   # input thêm length là số điểm chia cho hàm lưới x(t), output là danh sách gồm các (t,x(t))
 
 input file ví dụ:
