@@ -17,7 +17,7 @@ t^2+x^2    # hàm f(t,x)
 
 0,0        # t0 và x0 = x(t0)
 
-10^-10     # sai số epslon
+10^-10     # sai số epsilon
 
 3 hàm vẽ đồ thị cho output
 
