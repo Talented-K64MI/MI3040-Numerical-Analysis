@@ -1,4 +1,5 @@
-#Xấp xỉ liên tiếp Pica nhóm 26 - Đỗ Mạnh Dũng
+# Phương pháp Jacobi tìm gần đúng ma trận nghịch đảo - Nhóm 14 - Bùi Tiến Thành
+Xấp xỉ liên tiếp Pica nhóm 26 - Đỗ Mạnh Dũng
 
 Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này
 
