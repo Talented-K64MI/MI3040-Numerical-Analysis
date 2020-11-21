@@ -10,9 +10,13 @@ Pica(string filename, int length)   # input thêm length là số điểm chia c
 
 input file ví dụ:
 #t^2+x^2    # hàm f(t,x)
+
 #-10,10     # khoảng xác định theo t
+
 #-10,10     # khoảng xác định theo x
+
 #0,0        # t0 và x0 = x(t0)
+
 #10^-10     # sai số epslon
 
 3 hàm vẽ đồ thị cho output
