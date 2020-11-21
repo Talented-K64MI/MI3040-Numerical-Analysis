@@ -1,4 +1,4 @@
-Xấp xỉ liên tiếp Pica nhóm 26 - Đỗ Mạnh Dũng
+#Xấp xỉ liên tiếp Pica nhóm 26 - Đỗ Mạnh Dũng
 
 Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này
 
