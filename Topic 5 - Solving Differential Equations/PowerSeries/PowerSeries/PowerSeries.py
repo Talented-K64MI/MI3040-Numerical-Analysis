@@ -1,29 +1,36 @@
-from sympy import *
+#import
+#region
 import matplotlib.pyplot as plt
-import numpy as np
 import math
+#endregion
 
-#input
+
+#input and output
+#region
 inputPath_1 = 'example1.txt'
-inputPath_2 = 'example1.txt'
+inputPath_2 = 'example2.txt'
 
 outputPath_1 = 'outputPath_1.txt'
 
-##############
+#endregion
 
 
-R,result = Do(inputPath_1)
-Save(R, result, outputPath_1, "w")
-
-print("Radius of convergence = "+ str(R) + ", Result: ");
-print(str(result))
-
-
-###############
-
+# some stuff
+#region
 empty = lambda s: s != ''
 
+def Show():
+    return 0
+
+def validate():
+
+    return 1
+
+#endregion
+
+
 #read input
+#region
 def ReadArray(f):
     line = f.readline()
     result = list(map(float, list(filter(empty,line.split(' ')))))
@@ -50,11 +57,15 @@ def RandN(listCoef):
         if(R > coef[0]): R = coef[0]
         coef.pop(0)
         if(N > len(coef)): N = len(coef)
-    print(listCoef)
+    #print(listCoef)
     #print("bán kính hội tụ: ", end =''); print(R)
     #print("bậc tối đa sẽ tìm của t: ", end = ''); print(N)
     return (R,N)
 
+#endregion
+
+
+#main loop
 def calculate(initial, listCoef, N):
     result = initial
     k=len(listCoef)
@@ -71,10 +82,10 @@ def calculate(initial, listCoef, N):
         c= -c/offset
         result.append(c)
     return result
-    #print("result: ")
-    #print(result)
 
-def Do(inputPath):
+
+#Program
+def Polynomial(inputPath):
     f = open(inputPath,"r")
     initial = ReadArray(f)
     listCoef = ReadMatrix(f)
@@ -83,28 +94,45 @@ def Do(inputPath):
     result = calculate(initial, listCoef, N)
     return (R, result)
 
-def Save(R, result, outputPath, mode):
+
+# file working
+#region
+def Save(result, outputPath, mode):
     f = open(outputPath, mode)
-    f.write("Radius of convergence = " + str(R) + ", Result: \n");
-    f.write(str(result))
+    f.write("Radius of convergence = " + str(result[0]) + ", Result: \n");
+    f.write(str(result[1]))
     f.close()
 
-def Show():
-    return 0
+#endregion
 
-def validate():
-    return 1
+#plot
+#region
+def Plot(result):
+    from sympy.plotting import plot
+    from sympy import symbols, Function
+    x = symbols('x')
+    f = symbols('f', cls=Function)
+    f = 0
+    power = 0
+    for i in result:
+        f += i * (x ** power)
+        power += 1
+    plot((f, (x, start, end)))
+
+#endregion
 
 
+# playground
+#region
+
+result = Polynomial(inputPath_1)        #example1
+print("Radius of convergence = " + str(result[0]) + ", Result: \n")
+resultArray = result[1]
+print(resultArray)
+
+Plot(resultArray)
+#Save(result,outputPath_1,"w")
 
 
+#endregion
 
-
-
-
-
-
-#code anh Chí
-#for line in f:
-#    __temp=line.split(",")
-#    listCoef.append([(i) for i in __temp]) 
