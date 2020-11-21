@@ -11,7 +11,7 @@
 
 t^2+x^2    # hàm f(t,x)
 
--10,10     # khoảng xác định theo t
+-10,10                           # khoảng xác định theo t
 
 -10,10     # khoảng xác định theo x
 
