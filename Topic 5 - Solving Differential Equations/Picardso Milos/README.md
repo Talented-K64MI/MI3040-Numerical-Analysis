@@ -1,15 +1,13 @@
-# Phương pháp Jacobi tìm gần đúng ma trận nghịch đảo - Nhóm 14 - Bùi Tiến Thành
-Xấp xỉ liên tiếp Pica nhóm 26 - Đỗ Mạnh Dũng
+# Xấp xỉ liên tiếp Pica - Nhóm 26 - Đỗ Mạnh Dũng
 
-Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này
+## Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này
 
-2 hàm chính:
+## Code trong Picardso_Milos.py, gồm 2 hàm chính:
 
-Pica(string filename)               # input tên file và output hàm có dạng giải tích x(t) cùng với khoảng xác định t
+- Pica(string filename)               # input tên file và output hàm có dạng giải tích x(t) cùng với khoảng xác định t
+- Pica(string filename, int length)   # input thêm length là số điểm chia cho hàm lưới x(t), output là danh sách gồm các (t,x(t))
 
-Pica(string filename, int length)   # input thêm length là số điểm chia cho hàm lưới x(t), output là danh sách gồm các (t,x(t))
-
-input file ví dụ:
+## Input file ví dụ:
 
 t^2+x^2    # hàm f(t,x)
 
@@ -23,13 +21,12 @@ t^2+x^2    # hàm f(t,x)
 
 3 hàm vẽ đồ thị cho output
 
-#PlotSymbol((function, interval))
+- PlotSymbol((function, interval))
 
-#PlotPairs(listOfPairs)
+- PlotPairs(listOfPairs)
 
-#PlotBoth((function, interval), listOfPairs )
+- PlotBoth((function, interval), listOfPairs )
 
+## Đã có 1 ví dụ sẵn trong phần code
 
-Đã có 1 ví dụ sẵn trong phần code
-
-Happy testing :))
+## Happy testing :))
