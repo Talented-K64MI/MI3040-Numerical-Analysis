@@ -36,54 +36,119 @@ class newton_oop:
             lambdify(x, self.sym_df[2], "math"),
         ];
 
-        print(self.sym_df, file=sys.stderr);
+        # print(self.sym_df, file=sys.stderr);
+    #}
+
+    # Trị tuyệt đối và check dấu
+    def __abs(self, x):
+    #{
+        return x if x >= 0 else -x;
+    #}
+    def __sign(self, x):
+    #{
+        if(x > 0): return 1;
+        if(x < 0): return -1;
+        return 0;
     #}
 
 
-    def __checkSign(self, sym_f, f):
+    # Tìm max/min của f
+    def __findMaxMin(self, sym_f, f):
     #{
         x = symbols("x");
         a = self.a_0;
         b = self.b_0;
 
-        sol_set = solveset(diff(sym_f, x), x, Interval(a, b));
-        if(f(b) > f(a)): val_max = f(b), val_min = f(a);
-        else: val_max = f(a), val_min = f(b);
+        val_max = val_min = f(a);
+        sol_set = FiniteSet(a, b);
+        sol_set = Union(sol_set, solveset(diff(sym_f, x), x, Interval(a, b)));
 
-        if(sol_set != EmptySet and sol_set.is_iterable): 
+        if(sol_set.is_iterable): 
             for args in sol_set:
             #{
                 val_max = max(val_max, f(args));
                 val_min = min(val_min, f(args));
             #}
-
-        if(val_max * val_min >= 0): return val_min;
-        return float("NaN");
+        
+        return (
+            val_min, 
+            val_max, 
+            self.__sign(val_min),
+            self.__sign(val_max)
+        );
     #}
-    def checkInputValidity(self):
-    #{
-        L = self.a_0;
-        R = self.b_0;
 
-        # Corner case: f(L) = 0 or f(R) = 0
-        if(self.f(L) == 0 or self.f(R) == 0): return 1;
+
+    # Chốt 141
+    def __checkInputValidity(self):
+    #{
+        a = self.a_0;
+        b = self.b_0;
+        f = self.df[0];
+
+        # Corner case: f(a) = 0 or f(b) = 0
+        if(f(a) == 0 or f(b) == 0): return 1;
 
         # Check if a < b
-        if(L > R or (L == R and self.f(L) != 0)): return 0;
+        if(a > b or (a == b and f(a) != 0)): 
+        #{
+            print("Khoảng [a, b] không hợp lệ 8==>");
+            return 0;
+        #}
 
         # Check if f(a) * f(b) < 0
-        if(self.f(L) * self.f(R) >= 0): return 0;
+        if(f(a) * sign(f(b)) >= 0): 
+        #{
+            print("Khoảng [a, b] không phải khoảng cách ly 8==>");
+            return 0;
+        #}
 
         # Check if [a, b] is "safe" to converge
-        val1 = self.__checkSign(self.sym_df[1], self.df[1]);
-        val2 = self.__checkSign(self.sym_df[2], self.df[2]);
-        if(val1 == float("NaN") or val2 == float("NaN")): return 0;
+        d1f_maxmin = self.__findMaxMin(self.sym_df[1], self.df[1]);
+        d2f_maxmin = self.__findMaxMin(self.sym_df[2], self.df[2]);
 
+        if(d2f_maxmin[2] * d2f_maxmin[3] < 0 or d1f_maxmin[2] * d1f_maxmin[3] <= 0): 
+        #{
+            print("PP Newton ko hội tụ được");
+            return 0;
+        #}
+
+
+        # print(d1f_maxmin, file=sys.stderr);
+        # print(d2f_maxmin, file=sys.stderr);
+
+        # Assign auxiliary variables
+        self.m1 = -d1f_maxmin[1] if (d1f_maxmin[0] < 0) else d1f_maxmin[0];
+        self.M2 = -d2f_maxmin[0] if (d2f_maxmin[0] < 0) else d2f_maxmin[1];
+        self.sign =  d2f_maxmin[2];
         return 1;
     #}
+
+
+
     def __newtonMethod(self):
     #{
-        print("foo");
+        eps = self.eps;
+        a = self.a_0;
+        b = self.b_0;
+        m1 = self.m1;
+        
+        f = self.df[0];
+        d1f = self.df[1];
+        x0 = a if (f(a) * self.sign > 0) else b;
+
+        if(f(a) == 0): return a;
+        if(f(b) == 0): return b;
+
+        # print(x0, m1, self.sign, file=sys.stderr);
+
+        while(self.__abs(f(x0)) > eps * m1):
+        #{
+            x0 = x0 - f(x0) / d1f(x0);
+            # print(x0, file=sys.stderr);
+        #}
+
+        return x0;
     #}
 
 
@@ -102,12 +167,10 @@ class newton_oop:
 
 #===================================================================================
 # Chương trình ví dụ
-# input_expr = input('Please enter f(x) in f(x) = 0 equation: ');
-# L   = float(input('Please enter the initial left bound a = '));
-# R   = float(input('Please enter the initial right bound b = '));
-# eps = float(input('Please enter the error value eps = '));
-# uu = bisection_oop(L, R, eps, input_expr);
-# print(uu.Solve());
+# expr = "x^3 + x^2 - x + 1";
+# L = -3;
+# R = -1;
+# eps = 1e-12;
 
-uu = newton_oop(-300, 300, 1e-6, "x**3 - 24*x**2 + 5*x + 3000");
-uu.checkInputValidity();
+# uu = newton_oop(L, R, eps, expr);
+# print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
