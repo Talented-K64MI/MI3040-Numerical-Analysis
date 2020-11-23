@@ -1,6 +1,6 @@
 #===================================================================================
 #
-#   Code (đã cái tiến) cho PP Newton-Ralphson. 
+#   Code (đã cái tiến) cho PP tiếp tuyến - Newton-Ralphson. 
 #       * Input: f(x) trong pt f(x) = 0; khoảng cách li ban đầu (a, b); sai số epsilon
 #       * Output: Nghiệm PT f(x) = 0;
 #       * Hạn chế: Chưa có gói tìm khoảng cách ly nghiệm
