@@ -1,0 +1,6 @@
+.vs
+.sln
+.vscode
+.pyproject
+.mypy-cache
+Playground
