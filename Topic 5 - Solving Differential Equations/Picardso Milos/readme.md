@@ -1,6 +1,6 @@
 # Xấp xỉ liên tiếp Pica - Nhóm 26 - Đỗ Mạnh Dũng
 
-## Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này
+_**Lưu ý code có sử dụng thư viện sympy và numpy, cần cài đặt trước khi sử dụng code này**_
 
 ## Code trong Picardso_Milos.py, gồm 2 hàm chính:
 
@@ -23,11 +23,11 @@
 
 3 hàm vẽ đồ thị cho output
 
-- `PlotSymbol((function, interval))`
+* `PlotSymbol((function, interval))`
 
-- `PlotPairs(listOfPairs)`
+* `PlotPairs(listOfPairs)`
 
-- `PlotBoth((function, interval), listOfPairs )`
+* `PlotBoth((function, interval), listOfPairs )`
 
 ## Đã có 1 ví dụ sẵn trong phần code
 
