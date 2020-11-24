@@ -9,23 +9,25 @@
 
 ## Input file ví dụ:
 
-t^2+x^2    # hàm f(t,x)
+```
+    t^2+x^2    # hàm f(t,x)
 
--10,10     # khoảng xác định theo t
+    -10,10     # khoảng xác định theo t
 
--10,10     # khoảng xác định theo x
+    -10,10     # khoảng xác định theo x
 
-0,0        # t0 và x0 = x(t0)
+    0,0        # t0 và x0 = x(t0)
 
-10^-10     # sai số epsilon
+    10^-10     # sai số epsilon
+```
 
 3 hàm vẽ đồ thị cho output
 
-- PlotSymbol((function, interval))
+- `PlotSymbol((function, interval))`
 
-- PlotPairs(listOfPairs)
+- `PlotPairs(listOfPairs)`
 
-- PlotBoth((function, interval), listOfPairs )
+- `PlotBoth((function, interval), listOfPairs )`
 
 ## Đã có 1 ví dụ sẵn trong phần code
 
