@@ -9,7 +9,7 @@
 
 ### Python - `.py`
 **Chương trình**
-    * Python Intepreter: [https://www.python.org/downloads/]](https://www.python.org/downloads/)
+    * Python Intepreter: [https://www.python.org/downloads/](https://www.python.org/downloads/)
     * Jupyter Notebook: [https://jupyter.org/install](https://jupyter.org/install)
 
 **Thư viện** - Chạy các lệnh này sau khi cài 2 mục trên
