@@ -5,6 +5,7 @@
 * Output: Kết luận nghiệm và biểu diễn (nếu có)
 
 ## Hướng dẫn sử dụng
+* Yêu cầu cài thư viện *numpy* trước khi sử dụng
 * Nhập ma trận bổ sung vào file matrix.txt mỗi số hạng cách nhau bằng 1 khoảng trắng
 * Nếu số hạng của 1 phần tử bằng 0 nhập 0 vào vị trí tương ứng
 * Chạy và được kết quả
