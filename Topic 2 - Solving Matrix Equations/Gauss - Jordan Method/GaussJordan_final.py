@@ -5,7 +5,7 @@ np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉ
 matrix = np.loadtxt("VD.txt", delimiter=' ')
 index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
 index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
-result = np.zeros((len(matrix[0])-1, 1))  # Khởi tạo ma trận lưu kết quả (mảng 0)
+result = np.zeros((len(matrix[0])-1, 1))  #Khởi tạo ma trận lưu kết quả (mảng 0)
 
 
 # Kiểm tra lại nghiệm
