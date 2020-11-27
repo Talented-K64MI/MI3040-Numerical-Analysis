@@ -1,2 +1,9 @@
-.pyproject
-.sln
+*.sln
+*.vscode
+*.pyproject
+
+
+/Playground/*
+/.vs/*
+/.mypy-cache/*
+/.idea/*

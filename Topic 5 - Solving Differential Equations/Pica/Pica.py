@@ -269,19 +269,20 @@ def ReadPair(file):
 #endregion
 
 #example:
-filename = inputPath_1
 
-result = Pica(filename)                 #symbolic
-
-length = 31 # length of output array
-result1 = Pica1(filename, length)       #numeric
+#filename = inputPath_1
+#
+#result = Pica(filename)                 #symbolic
+#
+#length = 31 # length of output array
+#result1 = Pica1(filename, length)       #numeric
 
 #plot result:
 
 #PlotSymbol(result)
 #PlotPairs(result1)
-PlotBoth(result, result1)
+#PlotBoth(result, result1)
 
-print("ended")
+#print("ended")
 
 #endregion
