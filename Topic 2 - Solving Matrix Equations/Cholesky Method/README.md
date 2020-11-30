@@ -1,8 +1,8 @@
 # Giải hệ phương trình tuyến tính bằng phương pháp Cholesky: AX=B - Nhóm ?? - Trần Đắc Dương
 
 ## Input, ouput
-* Input: Viết input vào đây
-* Output: Viết output vào đây
+* Input: Viết input vào một file text dưới dạng ma trận A|B
+* Output: Các bước giải và ma trận nghiệm X
 
 ## Hướng dẫn sử dụng
 * Chạy chương trình, nhập ma trận A, B: 
