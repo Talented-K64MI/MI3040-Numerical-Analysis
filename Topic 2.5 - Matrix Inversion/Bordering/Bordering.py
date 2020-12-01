@@ -6,7 +6,7 @@ print("Chương Trình Tìm nghịch đảo của ma trận bằng phương phá
 print("========================================================================")
 
 #Nhập ma trận
-a = np.loadtxt("test1.txt",dtype='float', delimiter=' ')
+a = np.loadtxt('test1.txt')
 
 det = np.linalg.det(a)
 if det == 0:
