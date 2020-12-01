@@ -1,7 +1,4 @@
 from cmath import sqrt
-import pprint
-import scipy
-import scipy.linalg
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
 def cholesky1():
   A1=[[0]*n for i in range(n)]
@@ -38,25 +35,24 @@ def cholesky3():
   return Y
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
 def cholesky4():
-  X=[0]*n     
+  X=[0]*n
   for i in range(1, n+1):
     X[-i]=(Y[-i]-sum(S[-i][-k]*X[-k] for k in range(1, i)))/S[-i][-i]
   return X
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
-print('Nhập bậc của ma trận A: ')
-n=int(input())
+file = open('text')
+matrix = [line.split() for line in file]
+n=len(matrix)
 A=[[0]*n for i in range(n)]
 for i in range(n):
   for j in range(n):
-    A[i][j]=complex(input('Nhập phần tử A[{}][{}]= '.format(i+1,j+1)))
-print('A= '+str(scipy.array(A)))
+    A[i][j]=float(matrix[i][j])
+print('A= '+str(A))
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
-print('')
-print('Nhập ma trận B: ')
 B=[0]*n
 for i in range(n):
-  B[i]=complex(input('Nhập phần tử B[{}]= '.format(i+1)))
-print('B= '+str(scipy.array(B)))
+  B[i]=float(matrix[i][n])
+print('B= '+str(B))
 "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
 print('')
 print('Giải hệ phương trình tuyến tính bằng phương pháp Cholesky: AX=B')
@@ -81,23 +77,23 @@ else:
   B1=cholesky2()
 print('')
 print('Khi đó phương trình trở thành A1*X=B1, với: ')
-print('A1= '+str(scipy.array(A1)))
-print('và B1= '+str(scipy.array(B1)))
+print('A1= '+str(A1))
+print('và B1= '+str(B1))
 S=cholesky()
 if S[n-1][n-1]==0:
   print('Ma trận A1 có định thức bằng 0 nên không thể khai triển Cholesky')
   print('Suy ra phương trình AX=B không có nghiệm duy nhất')
-else: 
+else:
   print('')
   print('Phân tích A1 theo Cholesky: A1=S^t*S')
-  print('S= '+str(scipy.array(S)))
+  print('S= '+str(S))
   print('')
   print('Khi đó phương trình trở thành: S^t*S*X=B1')
   print('Đặt Y=S*X có:  S^t*Y=B1')
   print('Giải phương trình này ta được: ')
   Y=cholesky3()
-  print('Y= '+str(scipy.array(Y)))
+  print('Y= '+str(Y))
   print('')
   print('Giải phương trình SX=Y ta được nghiệm của phương trình:')
   X=cholesky4()
-  print('X= '+str(scipy.array(X)))
+  print('X= '+str(X))

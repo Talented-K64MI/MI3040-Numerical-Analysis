@@ -99,7 +99,7 @@ class newton_oop:
         # Check if f(a) * f(b) < 0
         if(f(a) * sign(f(b)) >= 0): 
         #{
-            print("Khoảng [a, b] không phải khoảng cách ly 8==>");
+            print(f"Khoảng cách ly [{a}, {b}] không hợp lệ 8==>");
             return 0;
         #}
 
@@ -140,7 +140,7 @@ class newton_oop:
         if(f(a) == 0): return a;
         if(f(b) == 0): return b;
 
-        # print(x0, m1, self.sign, file=sys.stderr);
+        print(x0, m1, self.sign, file=sys.stderr);
 
         while(self.__abs(f(x0)) > eps * m1):
         #{
@@ -167,10 +167,10 @@ class newton_oop:
 
 #===================================================================================
 # Chương trình ví dụ
-# expr = "x^3 + x^2 - x + 1";
-# L = -3;
-# R = -1;
-# eps = 1e-12;
+expr = "x^2 - 1";
+L = 0.5;
+R = 2;
+eps = 1e-12;
 
-# uu = newton_oop(L, R, eps, expr);
-# print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
+uu = newton_oop(L, R, eps, expr);
+print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
