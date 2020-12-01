@@ -1,3 +1,5 @@
+import numpy as np
+
 import bisection
 uu = bisection.bisection_oop(1, 5, 0.01, "x**2-2");
 print(uu.Solve());
@@ -12,8 +14,14 @@ print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu
 
 print("---------------------- The End -------------------------")
 
-#import Bordering
-#
+import Bordering
+a = np.loadtxt("test.txt",dtype='float', delimiter=' ')
+if(Bordering.checkdet(a) <0):
+    print("eo lam dc")
+else:
+    n = len(a)
+    b = Bordering.bordering(a,n)
+    print(b)
 # cant import without input file
 
 print("---------------------- The End -------------------------")
