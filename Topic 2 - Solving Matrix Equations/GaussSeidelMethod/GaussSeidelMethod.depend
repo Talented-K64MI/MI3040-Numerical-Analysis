@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1606758063 source:e:\back_to_legend\c++\gts\mi3040-numerical-analysis\topic 2 - solving matrix equations\gaussseidelmethod\main.cpp
+1606845041 source:e:\back_to_legend\c++\gts\mi3040-numerical-analysis\topic 2 - solving matrix equations\gaussseidelmethod\main.cpp
 	"MyMath.h"
 
 1606552485 e:\back_to_legend\c++\gts\mi3040-numerical-analysis\topic 2 - solving matrix equations\gaussseidelmethod\adder.h
 	<stdio.h>
 
-1606758197 e:\back_to_legend\c++\gts\mi3040-numerical-analysis\topic 2 - solving matrix equations\gaussseidelmethod\mymath.h
+1606844876 e:\back_to_legend\c++\gts\mi3040-numerical-analysis\topic 2 - solving matrix equations\gaussseidelmethod\mymath.h
 	<vector>
 	<iostream>
 	<stdio.h>
