@@ -3,7 +3,7 @@ import numpy as np
 np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)
 
 #Nhập ma trận
-matrix = np.loadtxt("test1.txt", dtype="float", delimiter=" ")
+matrix = np.loadtxt("test3.txt", dtype="float", delimiter=" ")
 
 test = matrix
 n = len(matrix)
