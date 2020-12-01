@@ -21,7 +21,7 @@ def cholesky3(): #Hàm giải phương trình BY = E
     return Y
 
 #Nhập ma trận
-A = np.loadtxt("test1.txt",dtype='complex', delimiter=' ') #Input
+A = np.loadtxt("test2.txt",dtype='complex', delimiter=' ') #Input
 
 
 k=0
