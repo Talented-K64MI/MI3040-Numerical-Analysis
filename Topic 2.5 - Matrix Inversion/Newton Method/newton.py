@@ -117,4 +117,4 @@ class newton_mat_inversion:
 
 # B1 = uu.improved_newton();   # Tiến hành thuật toán
 # print(B1);                   # In ra ma trận nghịch đảo
-# print(B1 @ B);               # Kiểm tra
+# print(B1 @ A);               # Kiểm tra
