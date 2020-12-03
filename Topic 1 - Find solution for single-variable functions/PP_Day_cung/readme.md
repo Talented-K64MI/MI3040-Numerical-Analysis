@@ -1,4 +1,4 @@
-# phương pháp tiếp tuyến - Nguyễn Đình Nhật
+# Phương pháp tiếp tuyến - Nguyễn Đình Nhật
 ## Input, ouput của chương trình
 - Input: Khoảng cách ly nghiệm `L`, `R`; sai số `eps` và biểu thức `f(x)` trong PT f(x) = 0
 - Output: Nghiệm bài toán
