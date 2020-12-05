@@ -92,7 +92,7 @@ class newton_oop:
         # Check if a < b
         if(a > b or (a == b and f(a) != 0)): 
         #{
-            print("Khoảng [a, b] không hợp lệ 8==>");
+            print(f"Khoảng cách ly [{a}, {b}] không hợp lệ 8==>");
             return 0;
         #}
 
@@ -109,9 +109,10 @@ class newton_oop:
 
         if(d2f_maxmin[2] * d2f_maxmin[3] < 0 or d1f_maxmin[2] * d1f_maxmin[3] <= 0): 
         #{
-            print("PP Newton ko hội tụ được");
+            print("PP Newton ko hội tụ được do f'(x), f''(x) vi phạm điều kiện xác định dấu không đổi");
             return 0;
         #}
+
 
 
         # print(d1f_maxmin, file=sys.stderr);
@@ -167,10 +168,10 @@ class newton_oop:
 
 #===================================================================================
 # Chương trình ví dụ
-expr = "x^2 - 1";
-L = 0.5;
-R = 2;
-eps = 1e-12;
+# expr = "sqrt(log(x)) - 1";
+# L = 2;
+# R = 3;
+# eps = 1e-12;
 
-uu = newton_oop(L, R, eps, expr);
-print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
+# uu = newton_oop(L, R, eps, expr);
+# print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
