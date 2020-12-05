@@ -8,5 +8,5 @@
 - Bước 2: Chạy file
 
 
-### Cách 2: Chạy và làm theo hướng dẫn trong file `main_newton.py`
+### Cách 2: Chạy và làm theo hướng dẫn trong file `main_bisection.py`
 - **Chú ý:** Comment hết toàn bộ dòng từ 83 đến 94 trong file `bisection.py` trước khi làm cách này
