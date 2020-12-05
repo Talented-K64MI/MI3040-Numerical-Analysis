@@ -41,9 +41,9 @@ outputPath_1 = "output1.txt"
 
 def ReadInput(file):
     f = file.readline()
-    (lowT, upT) = map(float, file.readline().split(","))
-    (lowX, upX) = map(float, file.readline().split(","))
-    (t0, x0) = map(float, file.readline().split(","))
+    (lowT, upT) = map(lambda s: N(s), file.readline().split(","))
+    (lowX, upX) = map(lambda s: N(s), file.readline().split(","))
+    (t0, x0) = map(lambda s: N(s), file.readline().split(","))
     epsilon = N(file.readline())
     return (f, lowT, upT, lowX, upX, t0, x0, epsilon)
 
@@ -67,31 +67,31 @@ def GetL(f, lowT, upT, lowX, upX):
     return 100
 def MaxDerivative(arr):
     n = f.length()
-    if(n>1):
+    if(n > 1):
         L = f[1] - f[0]
     else:
         raise ValueError("array too small !")
     for i in range(n):
-        delta = f[i+1] - f[i]
+        delta = f[i + 1] - f[i]
         if(delta > L):
             L = delta
     return L
 
-def HandT(deltaX, M, L):
+def GetN(M, L , deltaX, epsilon):
     deltaT = min(deltaX / M, 1 / (2 * L))
     h = deltaT * L
-    return (h,deltaT)
-
-def GetN(h,epsilon, deltaX):
-    N = ceil(log(h, epsilon / delta)) + 1
-    return N
+    N = 1
+    error = M * deltaT
+    while error > epsilon:
+        N+=1
+        error = error * h / N
+    return deltaT, N
 
 def GetStuff(f, lowX, upX, lowT, upT, epsilon):
         M = GetM(x, lowT, upT, lowX, upX)
         L = GetL(x, lowT, upT, lowX, upX)
         deltaX = upX - lowX
-        (h, deltaT) = HandT(deltaX, M, L)
-        N = math.ceil(log(h,epsilon / deltaX)) + 1
+        deltaT, N = GetN(M, L, deltaX, epsilon)
 
         try:
             return (M,L,deltaX,h,deltaT,N)
@@ -106,55 +106,36 @@ def MakeArrayFunction(f):
 
 #main loop (integrate)
 #region
-
-def NumericIntegrate(f, xn, x0, segmentLength, N):
+def NumericIntegrate(f, xn, x0, segmentLength, epsilon):
     n = (int) (len(xn)/2)
-    for j in range(N):
-        integral = 0
-        for i in range(n, 0, -1):
-            integral = integral - segmentLength/2 * (f.subs([(t, xn[i][0]), (x, xn[i][1])]) 
-                                                 + f.subs([(t, xn[i-1][0]), (x, xn[i-1][1])]))
-            xn[i-1][1] = x0 + integral
-
-        integral = 0
-        for i in range(n, 2*n):
-            integral = integral + segmentLength/2 * (f.subs([(t, xn[i][0]), (x, xn[i][1])]) 
-                                                + f.subs([(t, xn[i+1][0]), (x, xn[i+1][1])]))
-            xn[i+1][1] = x0 + integral
-
-    return xn
-
-def NumericIntegrate2(f, xn, x0, segmentLength, N):
-    n = (int) (len(xn)/2)
-    xn2 = []
-    for num in xn:
-        xn2.append([num[0],num[1]])
-
-    for j in range(N):
+    segmentLength /=2
+    maxError = -1
+    loop = 0
+    while abs(maxError) > epsilon:
+        loop += 1
+        maxError = -1
 
         integral = 0
         for i in range(n, 0, -1):
-            integral = integral - segmentLength/2 * (f.subs([(t, xn[i][0]), (x, xn[i][1])]) 
-                                                 + f.subs([(t, xn[i-1][0]), (x, xn[i-1][1])]))
-            xn2[i-1][1] = x0 + integral
-            PlotPairs(xn2)
+            integral = integral - segmentLength * (f.subs([(t, xn[i][0]), (x, xn[i][1])]) + f.subs([(t, xn[i - 1][0]), (x, xn[i - 1][1])]))
+            newValue = x0 + integral
+            error = abs(xn[i - 1][1] - newValue)
+            xn[i - 1][1] = newValue
+            if(error > maxError): maxError = error
 
         integral = 0
-        for i in range(n, 2*n):
-            integral = integral + segmentLength/2 * (f.subs([(t, xn[i][0]), (x, xn[i][1])]) 
-                                                + f.subs([(t, xn[i+1][0]), (x, xn[i+1][1])]))
-            xn2[i+1][1] = x0 + integral
-        xn =[]
-        for num in xn2:
-            xn.append([num[0],num[1]])
+        for i in range(n, 2 * n):
+            integral = integral + segmentLength * (f.subs([(t, xn[i][0]), (x, xn[i][1])]) + f.subs([(t, xn[i + 1][0]), (x, xn[i + 1][1])]))
+            newValue = x0 + integral
+            error = abs(xn[i + 1][1] - newValue)
+            xn[i + 1][1] = x0 + integral
+            if(error > maxError): maxError = error
 
     return xn
 
 def Trapezoid(f, firstIndex, lastIndex):
-    f = f[firstIndex:lastIndex+1]
-    return (
-        sum(f) - f[0]/2 - f[f.length() - 1]/2
-        ) / varRange
+    f = f[firstIndex:lastIndex + 1]
+    return (sum(f) - f[0] / 2 - f[f.length() - 1] / 2) / varRange
         
 
 def SymbolicIntegrate(f, t0, x0, N):
@@ -169,7 +150,6 @@ def SymbolicIntegrate(f, t0, x0, N):
 
 #plot
 #region
-
 def PlotPairs(pairList):
     t,x = zip(*pairList)
     plt.scatter(t,x)
@@ -195,10 +175,8 @@ def PlotBoth(symbolOutput, pairList):
     plt.show()
 #endregion
 
-
 #Program
 #region
-
 def Pica(filename):
     file = open(filename, "r")
     (f, lowT, upT, lowX, upX, t0, x0, epsilon) = ReadInput(file)
@@ -211,7 +189,9 @@ def Pica(filename):
     
     xn = SymbolicIntegrate(f, t0, x0, N)
 
-    return (xn, (t0-deltaT, t0 + deltaT))
+    t1 = float(t0-deltaT)
+    t2 = float(t0+deltaT)
+    return (xn, (t1,t2))
 
 def Pica1(filename, length):
     file = open(filename, "r")
@@ -221,19 +201,21 @@ def Pica1(filename, length):
     except:
         raise ValueError("invalid Pica input (symbolic)")
     file.close()
+
     (M,L,deltaX,h,deltaT,N) = GetStuff(f, lowT, upT, lowX, upX, epsilon)
     xn = []
-    segmentLength = 2*deltaT/length
-    n = (int) (length/2)
-    for i in range(-n, n+1):
-        xn.append([t0 + i*segmentLength, x0])
+    segmentLength = 2 * deltaT / length
+    n = (int)(length / 2)
+    for i in range(-n, n + 1):
+        xn.append([t0 + i * segmentLength, x0])
 
-    xn = NumericIntegrate(f, xn, x0, segmentLength, N)
+    xn = NumericIntegrate(f, xn, x0, segmentLength, epsilon)
 
     return xn
 
 # test
 #region
+
 def ReadPair(file):
     f = "99:1, 2: 3.3, 5: 44,  3: 3.6"
     f = list(map(lambda s: s.split(":"), f.split(",")))
@@ -252,36 +234,42 @@ def ReadPair(file):
 
 #guideline:
 #region
-# This code use sympy and numpy (see import), make sure to install them before using this code
+# This code use sympy and numpy (see import), make sure to install them before
+# using this code
 
 # There are 2 function
-# pica for symbolic: Pica(string filename)                  #name of input file
-# pica for numeric: Pica1(string filename, int length)      #length of output array
+# pica for symbolic: Pica(string filename) #name of input file
+# pica for numeric: Pica1(string filename, int length) #length of output array
 # input example:
-#t^2+x^2    #function f
-#-10,10     #range of t
-#-10,10     #range of x
-#0,0        #t0 and x0 = x(t0)
-#10^-10     #epsilon
+#t^2+x^2 #function f
+#-10,10 #range of t
+#-10,10 #range of x
+#0,0 #t0 and x0 = x(t0)
+#10^-10 #epsilon
 
 # symbolic result: (t**7/63 + t**3/3, (-0.005, 0.005))
-# numeric result: [[-0.004838709677419355, -3.78470007730525e-8], [-0.004516129032258065, -3.07811083890629e-8], ...]
+# numeric result: [[-0.004838709677419355, -3.78470007730525e-8],
+# [-0.004516129032258065, -3.07811083890629e-8], ...]
 #endregion
 
 #example:
-
-#filename = inputPath_1
+#inputPath_1 = "input1.txt"
+#inputPath_2 = "input2.txt"
+#inputPath_3 = "input3.txt"
+#inputPath_4 = "input4.txt"      # dont symbol this
 #
+#filename = inputPath_3
 #result = Pica(filename)                 #symbolic
-#
 #length = 31 # length of output array
-#result1 = Pica1(filename, length)       #numeric
-
-#plot result:
-
-#PlotSymbol(result)
-#PlotPairs(result1)
+#result1 = Pica1(filename, length)      #numeric
+#print(result)
+#
+##plot result:
+#
 #PlotBoth(result, result1)
+
+##PlotSymbol()
+##PlotPairs(result1)
 
 #print("ended")
 
