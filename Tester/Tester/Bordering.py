@@ -8,6 +8,7 @@ def checkdet(a):
     det = np.linalg.det(a)
     if det == 0:
         #print("Ma trận không khả nghịch!!!")
+
         return -1
     
     b = np.transpose(a)

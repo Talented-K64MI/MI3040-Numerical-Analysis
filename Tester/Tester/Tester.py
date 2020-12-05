@@ -1,12 +1,14 @@
 import numpy as np
 
 import bisection
+print("Running bisection ... ")
 uu = bisection.bisection_oop(1, 5, 0.01, "x**2-2");
 print(uu.Solve());
 
 print("---------------------- The End -------------------------")
 
 from newton_ralphson import *
+print("Running newton_ralphson ... ")
 expr = "x^3 + x^2 - x + 1";
 L = -3; R = -1; eps = 1e-12;
 uu = newton_oop(L, R, eps, expr);
@@ -15,6 +17,7 @@ print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu
 print("---------------------- The End -------------------------")
 
 import Bordering
+print("Running Bordering ... ")
 a = np.loadtxt("test.txt",dtype='float', delimiter=' ')
 if(Bordering.checkdet(a) <0):
     print("eo lam dc")
@@ -22,7 +25,18 @@ else:
     n = len(a)
     b = Bordering.bordering(a,n)
     print(b)
-# cant import without input file
+
+print("---------------------- The End -------------------------")
+
+import Pica
+print("Running Pica ... ")
+filename = "pica1.txt"
+result = Pica.Pica(filename)
+length = 31
+result1 = Pica.Pica1(filename, length)
+
+print(result)
+Pica.PlotBoth(result, result1)
 
 print("---------------------- The End -------------------------")
 
