@@ -1,0 +1,115 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{vietnam}
+\usepackage[left=3.5cm,right=2.5cm,top=2cm,bottom=2cm]{geometry} 
+\setlength{\parindent}{0pt}
+\usepackage{graphicx} 
+%\usepackage{wallpaper}
+%\usepackage[firstpage]{draftwatermark} 
+\usepackage{xcolor}
+\usepackage{tikz} 
+\usepackage{scrextend}
+\changefontsizes{14pt}
+\usepackage{minitoc}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+%\usepackage{background}
+\usetikzlibrary{calc}
+%\backgroundsetup{scale = 1, angle = 0, opacity = 0.2,
+%contents = {\includegraphics[width = 0.9\paperwidth,
+%height = 0.9\paperheight, keepaspectratio] {hust.png}}}
+
+%\backgroundsetup{scale = 1, angle = 0, opacity = 0.2,
+%contents = {\includegraphics[width = 0.97\paperwidth,
+%height = 0.97\paperheight, keepaspectratio] {bia.png}}}
+\begin{document}
+\begin{titlepage}
+%\SetWatermarkText{\includegraphics[width = 0.97\paperwidth,
+%height = 0.97\paperheight]{bia.png}}
+%\SetWatermarkAngle{0} 
+%\SetWatermarkText{\includegraphics[scale=1]{hust.png}}
+%\SetWatermarkAngle{0} 
+\begin{tikzpicture}[remember picture,overlay,inner sep=0,outer sep=0]
+     \draw[blue!70!black,line width=4pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=1.5cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=1.5cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
+
+     \draw ([yshift=0.5cm,xshift=-0.5cm]A)-- ([yshift=0.5cm,xshift=0.5cm]B)--
+     ([yshift=-0.5cm,xshift=0.5cm]B) --([yshift=-0.5cm,xshift=-0.5cm]B)--([yshift=0.5cm,xshift=-0.5cm]C)--([yshift=0.5cm,xshift=0.5cm]C)--([yshift=-0.5cm,xshift=0.5cm]C)-- ([yshift=-0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=0.5cm]D)--([yshift=-0.5cm,xshift=0.5cm]A)--([yshift=-0.5cm,xshift=-0.5cm]A)--([yshift=0.5cm,xshift=-0.5cm]A);
+
+
+     \draw ([yshift=-0.3cm,xshift=0.3cm]A)-- ([yshift=-0.3cm,xshift=-0.3cm]B)--
+     ([yshift=0.3cm,xshift=-0.3cm]B) --([yshift=0.3cm,xshift=0.3cm]B)--([yshift=-0.3cm,xshift=0.3cm]C)--([yshift=-0.3cm,xshift=-0.3cm]C)--([yshift=0.3cm,xshift=-0.3cm]C)-- ([yshift=0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=-0.3cm]D)--([yshift=0.3cm,xshift=-0.3cm]A)--([yshift=0.3cm,xshift=0.3cm]A)--([yshift=-0.3cm,xshift=0.3cm]A);
+
+   \end{tikzpicture}
+\begin{center}
+    \vspace{7pt}
+    
+    \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA HÀ NỘI}
+    
+    \vspace{7pt}
+    \textbf{VIỆN TOÁN ỨNG DỤNG VÀ TIN HỌC}
+\end{center}
+\vspace{10pt}
+\begin{center}
+    \includegraphics[scale=0.2]{hust.png}
+    
+    \vspace{10pt}
+    \fontsize{18pt}{17pt}\selectfont 
+    
+    \vspace{7pt}
+    \textbf{GIẢI TÍCH SỐ}
+\end{center}
+\begin{flushleft}
+    \fontsize{14pt}{17pt}\selectfont  
+    \textbf{\textsl{ĐỀ TÀI}}
+\end{flushleft}
+\begin{center}
+    \fontsize{18pt}{17pt}\selectfont 
+    \textbf{\textrm{TÌM MIN MAX TRÊN KHOẢNG ĐÓNG}}
+\end{center}
+
+\vspace{15pt}
+\textbf{GV hướng dẫn: Hà Thị Ngọc Yến}
+
+\vspace{10pt}
+\textbf{Nhóm sinh viên thực hiện: Nhóm 7}
+
+\vspace{10pt}
+\textbf{Lớp: CTTN Toán Tin K64}
+
+\begin{tabbing}
+\hspace{8cm}\=\hspace{3cm}\=\hspace{3cm} \kill
+{\it \textbf{Họ và tên}}\>{\it \textbf{MSSV}}\>{\it \textbf{Mã lớp}}\\
+\begin{bfseries}Nguyễn Thị Hường\end{bfseries}\> \begin{bfseries}20195885\end{bfseries}\> \begin{bfseries}108113\end{bfseries}\\
+\begin{bfseries}Lê Trung Kiên\end{bfseries}\> \begin{bfseries}20195893\end{bfseries}\> \begin{bfseries}108113\end{bfseries}\\
+
+\end{tabbing}
+\vspace{10pt}
+\begin{center}
+    \textbf{Hà Nội,12/2020}
+\end{center}
+\end{titlepage}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Báo cáo Môn giải tích số}
+ \lhead{Viện Toán ứng dụng và Tin học}
+\chead{ }
+\lfoot{Biên soạn: Lê Trung Kiên, Nguyễn Thị Hường}
+\rfoot{Trang \thepage}
+\tableofcontents
+\clearpage
+\section{Tổng quan}
+\subsection{Bài toán}
+\subsection{Ý tưởng}
+\section{Phân tích}
+\subsection{Xây dựng công thức}
+\subsection{Sự hội tụ}
+\subsubsection{Điều kiện hội tụ}
+\subsubsection{Chứng minh}
+\subsection{Đánh giá sai số}
+
+
+
+
+
+\end{document}
+
+
