@@ -1,0 +1,45 @@
+
+HUONG DAN SU DUNG HAM TIM MIN MAX CUA F(X) TREN [A;B]
+
+//----------------------------------------------------//
+I.  Cach su dung tung ham trong chuong trinh
+II. Map
+III.Han che
+IV. Huong dan su dung
+//----------------------------------------------------//
+
+I.  Cach su dung tung ham trong chuong trinh
+1. Ham f(x):        de nhap ham
+2. Ham f1(x0):      tra ve gia tri f'(x0)
+3. Ham gda(x0):     ham nay tra ve gia tri x*>x0 thoa man f'(x*)=0
+ -Cac gia tri tra ve tang dan vi x0 tang dan (i:=a->b)
+4. Ham luutru() khong tra ve gia tri:   Luu gia tri cua x* f(x*),a f(a) va b f(b) vao map
+5. Ham xuat1()  khong tra ve gia tri:   Xuat cac diem toi han
+6. Ham xuat2()  khong tra ve gia tri:   Tim va xuat max min f(x)
+
+II. Map
+ - map dung giong mang nhung
+    + chi so cua map ko nhat thiet la so nguyen duong ma co the la bat ki kieu du lieu gi
+    + con gia tri cua map cung giong nhu mang, cung co the la bat ki kieu du lieu gi 
+ - vi du 1 phan tu cua map co the la A["abc"]=123
+			             A[1.123]="abc"		
+                                       (key) -  (value)
+ - vi the neu dung map thi chi can 1 map la co the luu duoc thong tin cua x va f(x)
+ - trong bai minh luu theo kieu A[1.123]=6.78 thi 1.123 la x, 6.78 la f(x)
+
+III. Han che
+ - chi lam duoc voi cac ham f(x) lien tuc tren [a;b]
+ - chi lam chinh xac duoc voi ham f(x) va f'(x) cung lien tuc tren [a;b]
+    + boi vi thuat toan nay von de di tim cac diem x* thoa man f'(x*)=0, nhung cac diem cuc tri thi khong nhat thiet f(x*)=0
+    + no co the khong xac dinh mien la doi dau khi di qua x*, vi the neu f'(x) ko lien tuc thi no co the bo sot hoac ko chay duoc
+ - doi voi cac ham f(x) co khoang cach cac cuc tri cach nhau qua be < step cung khong the chinh xac duoc
+    + boi vi chi co them tim duoc cac gia tri x* xap xi chu khong chinh xac
+    + sau khi tim dc x* tam chap nhan duoc ta se tang i len 1 doan step de no vuot qua x*
+    + step thi co gioi han, neu khoang cach giua cac cuc tri ma < step thi se bi bo sot
+IV. Huong dan su dung
+ - thay doi a,b  (dòng 7,8) va ham f(x)(dòng 15)
+ - thay doi step(dòng 3) va eta( dòng 4) neu chay qua lau
+INPUT:  a,b, f(x), (step va eta neu lau qua co the thay doi)
+OUTPUT: XMAX VA F(XMAX)
+        XMIN VA F(XMIN) 
+        CAC X* VA F(X*)
