@@ -1,4 +1,4 @@
-
+Nhóm 7
 HUONG DAN SU DUNG HAM TIM MIN MAX CUA F(X) TREN [A;B]
 
 //----------------------------------------------------//
