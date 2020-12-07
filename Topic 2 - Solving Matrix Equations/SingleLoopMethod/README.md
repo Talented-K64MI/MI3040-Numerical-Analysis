@@ -14,10 +14,12 @@
   * Nếu không có error :
     * Dòng 1: in ra bốn số là type, normtype, q, loopnumber lần lượt là công thức sai số, loại chuẩn, hệ số co và số bước lặp của phương pháp
     * Dòng 2: in ra bốn số là type, normtype, q, loopnumber lần lượt là công thức sai số, loại chuẩn, hệ số co và số bước lặp của phương pháp
-  * (Chú thích type=1 là ct lặp hậu nghiệm, type=2 là ct lặp tiên nghiệm
-	     normtype=(1,2,3) lần lượt là chuẩn vô cùng, chuẩn 1, chuẩn 2 trong sách giáo khoa)
+  * Chú thích:
+    * type=1 là ct lặp hậu nghiệm, type=2 là ct lặp tiên nghiệm
+    * normtype=(1,2,3) lần lượt là chuẩn vô cùng, chuẩn 1, chuẩn 2 trong sách giáo khoa)
 ## Hướng dẫn sử dụng
 * Recomend sử dụng vscode, hoặc codeblocks để sử dụng
+* Với codeblocks sau khi clone về project mở file SingleLoopMethod.cbp
 * Để thử các trường hợp test khác hãy sửa file Equation.inp
 ## Phân tích ưu nhược điểm thuật toán
 * Ưu điểm: 

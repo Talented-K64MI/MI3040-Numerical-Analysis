@@ -36,10 +36,10 @@ int main()
         }
         Matrix X(n,1);
         Equation myequation;
-        X=myequation.jacobi(A,B,X0,eps);
+        X=myequation.singleloop(A,B,X0,eps);
         for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
         cout<<"\n";
-        X=myequation.jacobi(A,B,X0,eps,2);
+        X=myequation.singleloop(A,B,X0,eps,2);
         for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
         cout<<"\n";
     } catch (MyError e){

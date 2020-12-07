@@ -225,7 +225,7 @@ namespace Hieu
     };
     class Equation{
         public :
-            Matrix jacobi(Matrix& A,Matrix& B,Matrix& X0,double& eps,int type = 1) throw (MyError){
+            Matrix singleloop(Matrix& A,Matrix& B,Matrix& X0,double& eps,int type = 1) throw (MyError){
                 if (A.getCol() != A.getRow()) throw MyError(101,"jacobi");
                 if (B.getCol() != 1) throw MyError(104,"jacobi");
                 if (X0.getCol() != 1) throw MyError(104,"jacobi");
