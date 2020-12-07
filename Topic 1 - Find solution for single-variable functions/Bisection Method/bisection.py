@@ -92,3 +92,5 @@ class bisection_oop:
 # Chương trình ví dụ
 # uu = bisection_oop(L, R, eps, input_expr);
 # print(uu.Solve());
+uu = bisection_oop(-1, 1, 1e-100, "x");
+print(uu.Solve());

@@ -6,4 +6,5 @@
 * Yêu cầu cài sẵn thư viện numpy để chạy được
 * Tạo file input txt (ở đây đã tạo sẵn file test1.txt)
 * Nhập ma trận (**_phải vuông_**) vào file test1.txt từng hàng một, mỗi phần tử cách nhau 1 dấu cách, hết hàng này thì xuống dòng nhập hàng tiếp theo
-* Lưu file test1.txt, quay lại chương trình để chạy. 
+* Lưu file test1.txt, quay lại chương trình để chạy.
+## Lưu ý: Nếu bị báo lỗi "OSError: text3.txt not found": Copy riêng thư mục Gauss_Jordan ra chỗ khác, rồi thao tác như hướng dẫn với thư mục copy
