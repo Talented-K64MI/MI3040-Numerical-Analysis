@@ -1,6 +1,8 @@
 *.sln
 *.vscode
 *.pyproject
+*.exe
+*.o
 
 
 /Playground/*
