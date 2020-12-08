@@ -125,12 +125,12 @@ def Plot(result):
 # playground
 #region
 
-result = Polynomial(inputPath_1)        #example1
-print("Radius of convergence = " + str(result[0]) + ", Result: \n")
-resultArray = result[1]
-print(resultArray)
+#result = Polynomial(inputPath_1)        #example1
+#print("Radius of convergence = " + str(result[0]) + ", Result: \n")
+#resultArray = result[1]
+#print(resultArray)
 
-Plot(resultArray)
+#Plot(resultArray)
 #Save(result,outputPath_1,"w")
 
 

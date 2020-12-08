@@ -18,7 +18,8 @@ class bisection_oop:
 #{
     def __init__(self, a_0, b_0, eps, expr):
     #{
-        self.f = lambdify(symbols("x"), sympify(expr), "math");
+        self.symf = sympify(expr);
+        self.f = lambdify(symbols("x"), self.symf, "math");
         self.a_0 = a_0;
         self.b_0 = b_0;
         self.eps = eps;

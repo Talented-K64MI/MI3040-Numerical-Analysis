@@ -2,8 +2,8 @@
 
 ## Code không cần thư viện ngoài tuy nhiên nếu sử dụng hàm Plot cần sympy
 
-## Hàm chính: Polynomial(string filename)   # input là tên input file, output là (R, mảng kết quả) với R là bán kính hội tụ
-Ví dụ output = (3, [1,2,3]) tức là bán kính hội tụ R = 3 và hàm xấp xỉ là f = 1 + 2x^2 + 3x^3
+## Hàm chính: `Polynomial(string filename)`  # input là tên input file, output là `(R, mảng kết quả)` với R là bán kính hội tụ
+Ví dụ `output = (3, [1,2,3])` tức là bán kính hội tụ R = 3 và hàm xấp xỉ là f = 1 + 2x^2 + 3x^3
 ## Input ví dụ:
 
 ```
