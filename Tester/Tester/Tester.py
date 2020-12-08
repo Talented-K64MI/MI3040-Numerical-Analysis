@@ -6,18 +6,18 @@ uu = bisection.bisection_oop(1, 5, 0.01, "x**2-2");
 print(uu.Solve());
 
 print("---------------------- The End -------------------------")
+print("Running newton_ralphson ... ")
 
 from newton_ralphson import *
-print("Running newton_ralphson ... ")
 expr = "x^3 + x^2 - x + 1";
 L = -3; R = -1; eps = 1e-12;
 uu = newton_oop(L, R, eps, expr);
 print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
 
 print("---------------------- The End -------------------------")
+print("Running Bordering ... ")
 
 import Bordering
-print("Running Bordering ... ")
 a = np.loadtxt("test.txt",dtype='float', delimiter=' ')
 if(Bordering.checkdet(a) <0):
     print("eo lam dc")
@@ -27,18 +27,19 @@ else:
     print(b)
 
 print("---------------------- The End -------------------------")
+print("Running Pica ... ")
 
 import Pica
-print("Running Pica ... ")
 filename = "pica1.txt"
 result = Pica.Pica(filename)
-length = 31
+length = 3
 result1 = Pica.Pica1(filename, length)
 
 print(result)
 Pica.PlotBoth(result, result1)
 
 print("---------------------- The End -------------------------")
+print("Running Cholesky ... ")
 
 #import Cholesky
 # 
@@ -46,11 +47,13 @@ print("---------------------- The End -------------------------")
 # im not gonna input each position on the matrix
 
 print("---------------------- The End -------------------------")
+print("Running GaussJordan_final ... ")
 
 #import GaussJordan_final
 # this code is connected to a hard-defined global var
 # in the end, i only use the function, which should connect to my input, not your global var
 
+print("---------------------- The End -------------------------")
 
 #import Cholevsky
 

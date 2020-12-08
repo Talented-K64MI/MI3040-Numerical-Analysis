@@ -61,10 +61,10 @@ def StringToArrayFunction(string_Array):
 #region
 def GetM(f, lowT, upT, lowX, upX):
     #not implemented
-    return 100
+    return 10
 def GetL(f, lowT, upT, lowX, upX):
     #not implemented
-    return 100
+    return 2
 def MaxDerivative(arr):
     n = f.length()
     if(n > 1):
