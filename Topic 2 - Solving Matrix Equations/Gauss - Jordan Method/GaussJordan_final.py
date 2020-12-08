@@ -64,7 +64,7 @@ def Gauss_Jordan_method():
 
 
 def normalize_pivot_element():
-    """Chuẩn hóa hệ số của phần tử giải (=1)"""
+    """Chuẩn hóa hệ số của phần tử giải (chia để hệ số của phần tử giải =1)"""
     for i in range(len(index_row)):
         matrix[index_row[i]] = matrix[index_row[i]] / matrix[index_row[i]][index_column[i]]
     print(matrix)
