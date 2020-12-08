@@ -1,76 +1,78 @@
-import numpy as np  # Khai báo sử dụng thư viện Numpy(xử lý ma trận)
-np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận lúc in ra trên màn hình
+import numpy as np  # Sử dụng thư viện Numpy (xử lý ma trận) với cách gọi ngắn là np
 
-# Đọc ma trận từ file
-matrix = np.loadtxt("matrix.txt", delimiter=' ')
+np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
+
+# Khai báo các biến toàn cục
+matrix = np.loadtxt("input.txt", delimiter=' ')  # Đọc ma trận input từ file
 index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
 index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
-result = np.zeros((len(matrix[0])-1, 1))  #Khởi tạo ma trận lưu kết quả (mảng 0)
+result = np.zeros((len(matrix[0]) - 1, len(matrix[0])))  # Khởi tạo ma trận lưu kết quả với các giá trị ban đầu bằng 0
 
 
-# Kiểm tra lại nghiệm
-def kiemtranghiem():
-    A = np.loadtxt("matrix.txt", delimiter=' ')[:, :-1]
+def solutions_checker():
+    """Trong trường hợp nghiệm duy nhất, hàm được sử dụng để kiểm tra lại nghiệm
+    bằng cách nhân lại ma trận kết quả với hệ số ban đầu"""
+    A = np.loadtxt("input.txt", delimiter=' ')[:, :-1]  # ma trận hệ số trong phương trình AX=B
     print()
     print("- - - - - Kiểm tra nghiệm - - - - -")
-    print(np.matmul(A, result))  # In ra ma trận A * ma trận X
+    print(np.matmul(A, np.delete(result, np.s_[1:], axis=1)))  # In ra ma trận A * ma trận X
 
 
-# Tìm phần tử giải
-def timphantugiai():
+def find_pivot_element():
+    """Hàm được dùng để tìm phần tử giải"""
     global index_row, index_column
     index_temp = []
-    maxvalue = 0
+    pivot_element = 0
     for row in range(0, len(matrix)):
-        if row in index_row:  # Bỏ qua vì hàng này đã có phần tử giải
-            continue
+        if row in index_row:
+            continue  # Bỏ qua vì hàng này đã có phần tử giải
         max_row = np.amax(abs(matrix[row, 0:(len(matrix[0]) - 1)]))  # Tìm phần tử lớn nhất trong hàng row
         if (1 in matrix[row, 0:(len(matrix[0]) - 1)]) or (
                 -1 in matrix[row, 0:(len(matrix[0]) - 1)]):  # Nếu có 1 hoặc -1 trong hàng row => chọn làm phần tử giải
-            maxvalue = 1
-            hang = row
-            index_temp = np.where(abs(matrix[row, 0:(len(matrix[0]) - 1)]) == maxvalue)
+            pivot_element = 1
+            row_pivot_element = row
+            index_temp = np.where(abs(matrix[row, 0:(len(matrix[0]) - 1)]) == pivot_element)
             index_temp = index_temp[:1]
             index_temp = index_temp[0][0]
             break
-        elif max_row > maxvalue:  # Lưu giá trị phần tử giải, tìm vị trí trên ma trận
-            maxvalue = max_row
-            hang = row
-            index_temp = np.where(abs(matrix[row, 0:(len(matrix[0]) - 1)]) == maxvalue)
+        elif max_row > pivot_element:  # Lưu giá trị phần tử giải, tìm vị trí trên ma trận
+            pivot_element = max_row
+            row_pivot_element = row
+            index_temp = np.where(abs(matrix[row, 0:(len(matrix[0]) - 1)]) == pivot_element)
             index_temp = index_temp[:1]
             index_temp = index_temp[0][0]
-    if maxvalue != 0:  # Lưu vị trí hàng và cột của phần tử giải
-        index_row.append(hang)
+    if pivot_element != 0:  # Lưu vị trí hàng và cột của phần tử giải
+        index_row.append(row_pivot_element)
         index_column.append(int(index_temp))
-        # In ra giá trị và vị trí phần tử giải
+        """ In ra giá trị và vị trí phần tử giải"""
         print("Phan tu giai: ", round(matrix[index_row[-1]][index_column[-1]], 10))
         print("Vi tri: ", index_row[-1] + 1, index_column[-1] + 1)
         print()
 
 
-# Thuật toán GaussJordan
-def GaussJordan():
+def Gauss_Jordan_method():
+    """Phương pháp Gauss - Jordan"""
     global matrix
-    timphantugiai()
+    find_pivot_element()
     zeros_array = np.zeros((len(matrix), len(matrix[0])))  # Tạo 1 ma trận không
     for row in range(0, len(matrix)):
         if row == index_row[-1]:
             continue
-        m = - matrix[row][index_column[-1]] / matrix[index_row[-1]][index_column[-1]] #Tìm m
+        m = - matrix[row][index_column[-1]] / matrix[index_row[-1]][index_column[-1]]  # Tìm m
         zeros_array[row] = matrix[index_row[-1]] * m
     matrix = matrix + zeros_array
 
 
-# Chuẩn hóa hệ số bằng 1
-def chuanhoaheso():
+def normalize_pivot_element():
+    """Chuẩn hóa hệ số của phần tử giải (=1)"""
     for i in range(len(index_row)):
         matrix[index_row[i]] = matrix[index_row[i]] / matrix[index_row[i]][index_column[i]]
     print(matrix)
 
 
-# Kết luận nghiệm
-def ketluan():
-    rank1 = 0  # Hạng của ma trận hệ số x
+def conclusion():
+    """Tìm hạng của ma trận hệ số A và hạng của ma trận mở rộng để kết luận nghiệm"""
+    rank1 = 0  # Hạng của ma trận hệ số A
     rank2 = 0  # Hạng của ma trận mở rộng
     for row in range(0, len(matrix)):
         if np.amax(abs(matrix[row, 0:(len(matrix[0]) - 1)])) > 0:
@@ -78,73 +80,46 @@ def ketluan():
         if np.amax(abs(matrix[row, 0:len(matrix[0])])) > 0:
             rank2 = rank2 + 1
     if rank1 < rank2:
-        print("Hệ PT vô nghiệm!")
+        print("He PT vo nghiem!")
     elif rank1 < (len(matrix[0]) - 1):
-        print("Hệ PT có vô số nghiệm")
-        bieudien()
+        print("He PT co vo so nghiem!")
+        display_solutions()
     else:
-        print("Hệ PT có nghiệm duy nhất")
-        bieudien()
-        kiemtranghiem()
+        print("He PT co nghiem duy nhat!")
+        display_solutions()
+        solutions_checker()
 
 
-# Biểu diễn nghiệm
-def bieudien():
+def display_solutions():
+    """Ghi kết quả vào ma trận result, in ma trận result ra màn hình và xuất ra file output.txt"""
+    # Ghi kết quả vào ma trận result
     global result
-    flag = False
     for column in range(len(matrix[0]) - 1):
-        if (column + 1 >= (len(matrix[0]) - 1) / 2) and (flag == False):  # In các x và dấu ở giữa
-            flag = True
-            print("X = ", end="")
-            if column in index_column:
-                vt = index_column.index(column)
-                print("  |{:>15.10f}| ".format(matrix[index_row[vt]][len(matrix[0]) - 1]), end="")
-                for i in range(len(matrix[0]) - 1):
-                    if i not in index_column:
-                        print("-   |{:>15.10f}|x{} ".format(matrix[index_row[vt]][i], i + 1), end="")
-                print()
-            else:
-                print("  |{:>15.10f}| ".format(0), end="")
-                for i in range(len(matrix[0]) - 1):
-                    if i not in index_column:
-                        if column == i:
-                            print(" -  |{:>15.10f}|x{}".format(-1, i + 1), end="")
-                        else:
-                            print(" -  |{:>15.10f}|x{}".format(0, i + 1), end="")
-                print()
-
+        if column in index_column:
+            vt = index_column.index(column)
+            result[column][0] = matrix[index_row[vt]][len(matrix[0]) - 1]
+            for i in range(len(matrix[0]) - 1):
+                if i not in index_column:
+                    result[column][i + 1] = -matrix[index_row[vt]][i]
         else:
-            if column in index_column:
-                vt = index_column.index(column)
-                print("      |{:>15.10f}| ".format(matrix[index_row[vt]][len(matrix[0]) - 1]), end="")
-                for i in range(len(matrix[0]) - 1):
-                    if i not in index_column:
-                        print("    |{:>15.10f}|  ".format(matrix[index_row[vt]][i]), end="")
-                print()
-            else:
-                print("      |{:>15.10f}| ".format(0), end="")
-                for i in range(len(matrix[0]) - 1):
-                    if i not in index_column:
-                        if column == i:
-                            print("    |{:>15.10f}|  ".format(-1), end="")
-                        else:
-                            print("    |{:>15.10f}|  ".format(0), end="")
-                print()
-        try:
-            result[column] = matrix[index_row[vt]][len(matrix[0]) - 1]  # Cho các nghiệm x vào ma trận result
-        except:
-            pass
+            result[column][column + 1] = 1
+
+    # In ma trận result ra màn hình
+    print(result)
+
+    # Xuất kết quả ra file output.txt
+    np.savetxt('output.txt', result, fmt='%.5f')  # %.5f: lấy 5 chữ số sau dấu phẩy ghi vào file
 
 
-# Chương trình chính
+# Main program
 print(matrix)
 print("- - - - - - - - - - - - - - - - - - - -")
 print()
 for i in range(0, min(len(matrix), len(matrix[0]))):
-    GaussJordan()
+    Gauss_Jordan_method()
     print(matrix)
     print("- - - - - - - - - - - - - - - - - - - -")
 print("- - - - - Chuẩn hóa hệ số - - - - -")
-chuanhoaheso()
+normalize_pivot_element()
 print("- - - - - Kết luận - - - - -")
-ketluan()
+conclusion()
