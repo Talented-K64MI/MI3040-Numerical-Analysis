@@ -5,7 +5,7 @@ class Gauss_Jordan_Algorithms:
     np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
 
     # Khai báo các biến toàn cục
-    matrix = np.loadtxt("input.txt", delimiter=' ')  # Đọc ma trận input từ file
+    matrix = np.loadtxt("GJ_input.txt", delimiter=' ')  # Đọc ma trận input từ file
     index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
     index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
     result = np.zeros(
@@ -82,7 +82,7 @@ class Gauss_Jordan_Algorithms:
                 rank2 = rank2 + 1
         if rank1 < rank2:
             # print("He PT vo nghiem!")
-            f=open("output.txt","w")
+            f=open("GJ_output.txt","w")
             f.write("He PT vo nghiem!")
             f.close()
         elif rank1 < (len(self.matrix[0]) - 1):
@@ -111,28 +111,27 @@ class Gauss_Jordan_Algorithms:
         # print(result)
 
         # Xuất kết quả ra file output.txt
-        np.savetxt('output.txt', self.result, fmt='%.5f')  # %.5f: lấy 5 chữ số sau dấu phẩy ghi vào file
+        np.savetxt('GJ_output.txt', self.result, fmt='%.5f')  # %.5f: lấy 5 chữ số sau dấu phẩy ghi vào file
 
     # Main program
     def main(self):
         # print(matrix)
         # print("- - - - - - - - - - - - - - - - - - - -")
         # print()
-        try:
-            for i in range(0, min(len(self.matrix), len(self.matrix[0]))):
-                self.Gauss_Jordan_method()
-                # print(matrix)
-                # print("- - - - - - - - - - - - - - - - - - - -")
-            # print("- - - - - Chuẩn hóa hệ số - - - - -")
-            self.normalize_pivot_element()
-            # print("- - - - - Kết luận - - - - -")
-            self.rank()
-        except:
-            f = open("output.txt", "w")
-            f.write("He PT vo nghiem!")
-            f.close()
+        for i in range(0, min(len(self.matrix), len(self.matrix[0]))):
+            self.Gauss_Jordan_method()
+            # print(matrix)
+            # print("- - - - - - - - - - - - - - - - - - - -")
+        # print("- - - - - Chuẩn hóa hệ số - - - - -")
+        self.normalize_pivot_element()
+        # print("- - - - - Kết luận - - - - -")
+        self.rank()
 
-
-RUN = Gauss_Jordan_Algorithms()
-RUN.main()
+try:
+    RUN = Gauss_Jordan_Algorithms()
+    RUN.main()
+except:
+    f = open("GJ_output.txt", "w")
+    f.write("Da co loi xay ra!")
+    f.close()
 
