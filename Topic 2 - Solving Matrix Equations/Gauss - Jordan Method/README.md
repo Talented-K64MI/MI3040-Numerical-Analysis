@@ -11,12 +11,16 @@
 * Nhập hệ số ma trận bổ sung vào file input.txt mỗi số hạng cách nhau bằng 1 khoảng trắng " "
 * Nếu số hạng của 1 phần tử bằng 0 nhập 0 vào vị trí tương ứng
 * Chạy và được kết quả. Kết quả được lưu trong ma trận result và file output.txt
+(Ma trận result có cột đầu là hệ số tự do, các cột sau lần lượt là hệ số biểu diễn
+qua các ẩn tương ứng. Chi tiết xem ví dụ ở dưới)
+    - Trong trường hợp hệ PT vô nghiệm, chương trình sẽ thông báo ra file output.txt
+    - Trong hai trường hợp còn lại, ma trận biểu diễn nghiệm sẽ được lưu trong file output.txt 
 
 ## Phân tích ưu nhược điểm thuật toán
 * Ưu điểm: 
   * Giảm thiểu được sai số khi chia cho số gần không
   * Giải được ma trận với kích thước bất kì
-  * Biểu diễn được nghiệm trong TH vô số nghiệm
+  * Biểu diễn được nghiệm trong trường hợp vô số nghiệm
   
 * Nhược điểm: 
   * Code chưa tối ưu
@@ -62,4 +66,5 @@ x = 0.5 - 0.5y
 y = y
 z = 1.5 - 0.5 y
 ==> Ở đây y là tham số, các nghiệm khác biểu diễn qua y
-    
+
+
