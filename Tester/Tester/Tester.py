@@ -36,42 +36,37 @@ length = 3
 result1 = Pica.Pica1(filename, length)
 
 print(result)
-Pica.PlotBoth(result, result1)
+#Pica.PlotBoth(result, result1)
 
 print("---------------------- The End -------------------------")
-print("Running Cholesky ... ")
 
 import PowerSeries
 print("Running PowerSeries ... ")
+
 filename = "PowerSeries.txt"
-result = Polynomial(filename)        #example1
+result = PowerSeries.Polynomial(filename)        #example1
 print("Radius of convergence = " + str(result[0]) + ", Result: \n")
 resultArray = result[1]
 print(resultArray)
-Plot(resultArray)
-
-print("---------------------- The End -------------------------")
-
-#Save(result,outputPath_1,"w")
-
-#import Cholesky
-# 
-# 4 methods for 1 task ?!
-# im not gonna input each position on the matrix
+#PowerSeries.Plot(resultArray, -2, 2)
+PowerSeries.Save(result,"PowerSeries_ouput.txt","w")
 
 print("---------------------- The End -------------------------")
 print("Running GaussJordan_final ... ")
 
-#import GaussJordan_final
-# this code is connected to a hard-defined global var
-# in the end, i only use the function, which should connect to my input, not your global var
+from GaussJordan_source import Gauss_Jordan_Algorithms
+
+try:
+    RUN = Gauss_Jordan_Algorithms("GJ_input.txt")
+    RUN.main()
+except:
+    f = open("GJ_output.txt", "w")
+    f.write("Da co loi xay ra!")
+    f.close()
+
 
 print("---------------------- The End -------------------------")
 
-#import Cholevsky
-
-# it's literally a function
-# so dont put code outside function -_-
 
 
 #import 

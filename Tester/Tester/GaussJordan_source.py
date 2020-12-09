@@ -2,14 +2,15 @@ import numpy as np  # Sử dụng thư viện Numpy (xử lý ma trận) với c
 
 
 class Gauss_Jordan_Algorithms:
-    np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
-
-    # Khai báo các biến toàn cục
-    matrix = np.loadtxt("GJ_input.txt", delimiter=' ')  # Đọc ma trận input từ file
-    index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
-    index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
-    result = np.zeros(
-        (len(matrix[0]) - 1, len(matrix[0])))  # Khởi tạo ma trận lưu kết quả với các giá trị ban đầu bằng 0
+    
+    def __init__(self, filename):
+        np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
+        # Khai báo các biến toàn cục
+        self.matrix = np.loadtxt(filename, delimiter=' ')  # Đọc ma trận input từ file
+        self.index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
+        self.index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
+        result = np.zeros(
+            (len(self.matrix[0]) - 1, len(self.matrix[0])))  # Khởi tạo ma trận lưu kết quả với các giá trị ban đầu bằng 0
 
     def solutions_checker(self):
         """Trong trường hợp nghiệm duy nhất, hàm được sử dụng để kiểm tra lại nghiệm
