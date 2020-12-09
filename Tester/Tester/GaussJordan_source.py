@@ -5,7 +5,7 @@ class Gauss_Jordan_Algorithms:
     np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
 
     # Khai báo các biến toàn cục
-    matrix = np.loadtxt("GS_input.txt", delimiter=' ')  # Đọc ma trận input từ file
+    matrix = np.loadtxt("GJ_input.txt", delimiter=' ')  # Đọc ma trận input từ file
     index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
     index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
     result = np.zeros(
@@ -82,7 +82,7 @@ class Gauss_Jordan_Algorithms:
                 rank2 = rank2 + 1
         if rank1 < rank2:
             # print("He PT vo nghiem!")
-            f=open("GS_output.txt","w")
+            f=open("GJ_output.txt","w")
             f.write("He PT vo nghiem!")
             f.close()
         elif rank1 < (len(self.matrix[0]) - 1):
@@ -111,7 +111,7 @@ class Gauss_Jordan_Algorithms:
         # print(result)
 
         # Xuất kết quả ra file output.txt
-        np.savetxt('GS_output.txt', self.result, fmt='%.5f')  # %.5f: lấy 5 chữ số sau dấu phẩy ghi vào file
+        np.savetxt('GJ_output.txt', self.result, fmt='%.5f')  # %.5f: lấy 5 chữ số sau dấu phẩy ghi vào file
 
     # Main program
     def main(self):

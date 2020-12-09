@@ -4,6 +4,6 @@ try:
     RUN = Gauss_Jordan_Algorithms()
     RUN.main()
 except:
-    f = open("GS_output.txt", "w")
+    f = open("GJ_output.txt", "w")
     f.write("Da co loi xay ra!")
     f.close()
