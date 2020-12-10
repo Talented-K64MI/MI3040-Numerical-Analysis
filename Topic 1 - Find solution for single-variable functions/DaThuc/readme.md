@@ -3,7 +3,7 @@
 - Input: Phương trình đa thức
 - Output: Nghiệm phương trình
 ## Hướng dẫn sử dụng
-- Trước khi chạy: Phương trình đa thức (dòng 21) (VD: x * x +2 * x+1)
+- Trước khi chạy: Nhập phương trình đa thức (dòng 21) (VD: x * x +2 * x+1)
 - Sau khi chạy: Nhập bậc phương trình n, các hệ số a[0], a[1], ..., a[n] 
 ## Lưu ý: 
 - Do sau khi tìm ra KCL, nhóm mình sử dụng pp chia đôi để tìm nghiệm nên đối với một số phương trình có khoảng nghiệm lớn sẽ rất mất thời gian.
