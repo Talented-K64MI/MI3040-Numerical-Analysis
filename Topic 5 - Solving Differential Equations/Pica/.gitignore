@@ -1,7 +1,10 @@
 *.sln
 *.vscode
 *.pyproject
-
+*.exe
+*.o
+*.pyc
+*.ipynb
 
 /Playground/*
 /.vs/*
