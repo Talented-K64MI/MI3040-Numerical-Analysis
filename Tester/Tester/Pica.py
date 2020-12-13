@@ -61,7 +61,7 @@ def StringToArrayFunction(string_Array):
 #region
 def GetM(f, lowT, upT, lowX, upX):
     #not implemented
-    return 10
+    return 2
 def GetL(f, lowT, upT, lowX, upX):
     #not implemented
     return 2
@@ -87,20 +87,16 @@ def GetN(M, L , deltaX, epsilon):
         error = error * h / N
     return deltaT, N
 
-def GetStuff(f, lowX, upX, lowT, upT, epsilon):
+def GetStuff(f, t0, x0, lowT, upT, lowX, upX, epsilon):
         M = GetM(x, lowT, upT, lowX, upX)
         L = GetL(x, lowT, upT, lowX, upX)
-        deltaX = upX - lowX
+        deltaX = min(x0 - lowX, upX - x0)
         deltaT, N = GetN(M, L, deltaX, epsilon)
+        deltaT = min(deltaT, t0 - lowT, upT - t0)
+        if deltaT <= 0 or deltaX <= 0:
+            raise ValueError("invalid Pica input")
+        return (M,L,deltaX,deltaT,N)
 
-        try:
-            return (M,L,deltaX,h,deltaT,N)
-        except:
-            raise NotImplementedError()
-
-def MakeArrayFunction(f):
-
-    return
 #endregion
 
 
@@ -183,10 +179,10 @@ def Pica(filename):
     try:
         f = sympify(f)
     except:
-        raise ValueError("invalid Pica input (symbolic)")
+        raise ValueError("invalid Pica input")
+    (M,L,deltaX,deltaT,N) = GetStuff(f, t0, x0, lowT, upT, lowX, upX, epsilon)
     file.close()
-    (M,L,deltaX,h,deltaT,N) = GetStuff(f, lowT, upT, lowX, upX, epsilon)
-    
+
     xn = SymbolicIntegrate(f, t0, x0, N)
 
     t1 = float(t0-deltaT)
@@ -198,11 +194,11 @@ def Pica1(filename, length):
     (f, lowT, upT, lowX, upX, t0, x0, epsilon) = ReadInput(file)
     try:
         f = sympify(f)
+        (M,L,deltaX,deltaT,N) = GetStuff(f, t0, x0, lowT, upT, lowX, upX, epsilon)
     except:
-        raise ValueError("invalid Pica input (symbolic)")
+        raise ValueError("invalid Pica input")
     file.close()
 
-    (M,L,deltaX,h,deltaT,N) = GetStuff(f, lowT, upT, lowX, upX, epsilon)
     xn = []
     segmentLength = 2 * deltaT / length
     n = (int)(length / 2)

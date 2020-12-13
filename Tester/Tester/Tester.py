@@ -30,13 +30,13 @@ print("---------------------- The End -------------------------")
 print("Running Pica ... ")
 
 import Pica
-filename = "pica1.txt"
+filename = "pica2.txt"
 result = Pica.Pica(filename)
-length = 3
+length = 15
 result1 = Pica.Pica1(filename, length)
 
 print(result)
-#Pica.PlotBoth(result, result1)
+Pica.PlotBoth(result, result1)
 
 print("---------------------- The End -------------------------")
 
