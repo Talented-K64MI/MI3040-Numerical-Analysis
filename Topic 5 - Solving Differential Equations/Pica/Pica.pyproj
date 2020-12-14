@@ -21,10 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FindExtremums.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pica.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="input1.txt" />
+    <Content Include="input2.txt" />
+    <Content Include="input3.txt" />
+    <Content Include="input4.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

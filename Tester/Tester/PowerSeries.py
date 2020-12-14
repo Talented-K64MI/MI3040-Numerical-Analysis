@@ -107,7 +107,7 @@ def Save(result, outputPath, mode):
 
 #plot
 #region
-def Plot(result):
+def Plot(result, a, b):
     from sympy.plotting import plot
     from sympy import symbols, Function
     x = symbols('x')
@@ -117,7 +117,7 @@ def Plot(result):
     for i in result:
         f += i * (x ** power)
         power += 1
-    plot((f, (x, start, end)))
+    plot((f, (x, a, b)))
 
 #endregion
 
@@ -125,12 +125,12 @@ def Plot(result):
 # playground
 #region
 
-result = Polynomial(inputPath_1)        #example1
-print("Radius of convergence = " + str(result[0]) + ", Result: \n")
-resultArray = result[1]
-print(resultArray)
+#result = Polynomial(inputPath_1)        #example1
+#print("Radius of convergence = " + str(result[0]) + ", Result: \n")
+#resultArray = result[1]
+#print(resultArray)
 
-Plot(resultArray)
+#Plot(resultArray)
 #Save(result,outputPath_1,"w")
 
 

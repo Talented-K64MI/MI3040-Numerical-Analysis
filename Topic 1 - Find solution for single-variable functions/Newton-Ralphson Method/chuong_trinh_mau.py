@@ -1,1 +1,0 @@
-from newton_ralphson import *

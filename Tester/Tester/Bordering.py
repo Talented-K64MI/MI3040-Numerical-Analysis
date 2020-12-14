@@ -1,23 +1,22 @@
 import time
 import numpy as np
 np.set_printoptions(suppress=True, linewidth=np.inf, precision=12)
-print("========================================================================")
-print("Chương Trình Tìm nghịch đảo của ma trận bằng phương pháp viền quanh")
-print("========================================================================")
-
 #Nhập ma trận
-a = np.loadtxt("test1.txt",dtype='float', delimiter=' ')
+#a = np.loadtxt("test.txt",dtype='float', delimiter=' ')
+#n = len(a)
+def checkdet(a):
+    det = np.linalg.det(a)
+    if det == 0:
+        #print("Ma trận không khả nghịch!!!")
 
-det = np.linalg.det(a)
-if det == 0:
-    print("Ma trận không khả nghịch!!!")
-    quit()
-n = len(a)
-b = np.transpose(a)
-t = b.dot(a)
-print("Ma trận vừa nhập là:")
-print(a)
-print("========================================================================")
+        return -1
+    
+    b = np.transpose(a)
+    t = b.dot(a)
+    return 1
+#print("Ma trận vừa nhập là:")
+#print(a)
+#print("========================================================================")
 def bordering(a, n):# Nhap ma tran a va kich thuoc cua ma tran
 
     if n == 2: #Trường hợp chặn đệ quy
@@ -50,12 +49,12 @@ def bordering(a, n):# Nhap ma tran a va kich thuoc cua ma tran
                 a[i, n - 1] = -X[i, 0] / theta
         a[n - 1, n - 1] = 1 / theta
     return a
-st = time.time()
-s = bordering(t, n)
-et = time.time()
-print("========================================================================")
-print("Ma trận nghịch đảo là:")
-print(s.dot(b))
-print("========================================================================")
-print((et-st)*1000,'ms')
-print("========================================================================")
+#st = time.time()
+#s = bordering(t, n)
+#et = time.time()
+#print("========================================================================")
+#print("Ma trận nghịch đảo là:")
+#print(s.dot(b))
+#print("========================================================================")
+#print((et-st)*1000,'ms')
+#print("========================================================================")
