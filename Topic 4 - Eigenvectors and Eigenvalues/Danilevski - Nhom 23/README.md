@@ -11,5 +11,5 @@ Chi tiết trong `example.ipynb`
 ## Phân tích ưu nhược điểm thuật toán
 ### Đang cập nhật
 
-* [] Ưu điểm: < ??? >
-* [] Nhược điểm: < ??? >
+* [ ] Ưu điểm: < ??? >
+* [ ] Nhược điểm: < ??? >
