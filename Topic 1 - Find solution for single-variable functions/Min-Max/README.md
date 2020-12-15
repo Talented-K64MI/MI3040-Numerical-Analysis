@@ -46,4 +46,4 @@ Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin c�
     + Sau khi tìm được x* tạm chấp nhận được, ta sẽ tăng i lên 1 đoạn `step` để nó vượt qua x*, do đó sẽ bị bỏ sót các điểm tới hạn trong khoảng (x*, x* + step)
 
 
- 
+ CÓ THỂ SẼ CHẠY HƠI LÂU NÊN MỌI NGƯỜI CỨ BÌNH TĨNH CHỜ NHÉ!!
