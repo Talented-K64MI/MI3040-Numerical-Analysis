@@ -4,7 +4,8 @@
 #define  step 1.0e-3
 #define  pi   3.14159265
 using namespace std;
-double  a=-100, b=100;
+double  a=-2,
+        b=6;
 int     sign;
 map    <double, double> save;
 map    <double, double>::iterator k, kmax, kmin;
