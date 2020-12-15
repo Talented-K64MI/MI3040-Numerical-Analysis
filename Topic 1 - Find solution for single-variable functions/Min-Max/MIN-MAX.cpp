@@ -3,19 +3,19 @@
 
 #include <bits/stdc++.h>
 #define  eps  1.0e-6
-#define  eta  1.0e-5
+#define  eta  1.0e-3
 #define  step 1.0e-3
 #define  pi   3.14159265
 using namespace std;
-double  a=0,
-		b=10;
+double  a=-2,
+		b=6;
 int     sign;
 map    <double, double> save;
 map    <double, double>::iterator k, kmax, kmin;
 //----------------------------------//
 double f(double x)  //Nhap ham f(x)
 {
-    return (x-1)*(x-1)*(x-1);
+    return pow(x,4)-4*pow(x,3)+1;
 }
 //------------------------------------------//
 double f1(double x0)  //Ham tra ve f'(x0)
@@ -30,7 +30,7 @@ double gda(double x0)  //Gradient Desent Asent
 {                     //Ham nay tra ve gia tri x*>x0 thoa man f'(x*)=0
                      //Cac gia tri tra ve tang dan vi x0 tang dan (i:=a->b)
     double x=x0;
-    if (f1(x0)==0)    return x0;
+    if (f1(x0)==0)  return x0;  
 	if (f1(x0)<0)     sign=-1;
 	else              sign= 1;
 	while (abs(f1(x0))>eps)
@@ -44,7 +44,7 @@ double gda(double x0)  //Gradient Desent Asent
 //----------------------------------------------------------------------------------//
 void luutru()   //Luu cac x* f(x*), a f(a), b f(b) vao map
 {
-	double i=a;
+	double i=a;444
 	save[a]=f(a),
 	save[b]=f(b);
     while (i<b)

@@ -3,6 +3,7 @@
 *.pyproject
 *.exe
 *.o
+*.pyc
 
 
 /Playground/*

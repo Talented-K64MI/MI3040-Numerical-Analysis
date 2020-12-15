@@ -1,7 +1,7 @@
 from sympy import *
 from math import *
 import sys
-from bisection import *
+from lib_bisection import *
 
 expr = input("Nhập hàm f(x) trong phương trình f(x) = 0: ");
 a    = float(input("Nhập a trong khoảng cách ly nghiệm [a, b]: "));

@@ -1,4 +1,3 @@
-
 #source
 #region
 
@@ -46,16 +45,6 @@ def ReadInput(file):
     (t0, x0) = map(lambda s: N(s), file.readline().split(","))
     epsilon = N(file.readline())
     return (f, lowT, upT, lowX, upX, t0, x0, epsilon)
-
-def StringToArrayFunction(string_Array):
-    f = list(map(lambda s: s.split(":"), string_Array.split(",")))
-    f = list(map(lambda arr:
-             (float(arr[0].strip()), float(arr[1].strip()))
-             , f))
-    f = sorted(f, key = lambda x: x[0])
-    return f
-#endregion
-
 
 #geting M,L,H,T,N, ...
 #region
@@ -209,19 +198,6 @@ def Pica1(filename, length):
 
     return xn
 
-# test
-#region
-
-def ReadPair(file):
-    f = "99:1, 2: 3.3, 5: 44,  3: 3.6"
-    f = list(map(lambda s: s.split(":"), f.split(",")))
-    f = list(map(lambda arr:
-                 (float(arr[0].strip()), float(arr[1].strip()))
-                 , f))
-    f = sorted(f, key = lambda x: x[0])
-    print(f)
-
-#endregion
 
 #endregion
 

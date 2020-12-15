@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FindExtremums.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pica.py" />
   </ItemGroup>
   <ItemGroup>
