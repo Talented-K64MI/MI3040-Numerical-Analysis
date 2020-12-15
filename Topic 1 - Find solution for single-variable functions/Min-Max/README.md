@@ -31,7 +31,7 @@ _(Các giá trị trả về tăng dần do x0 tăng dần (i:=a->b))_
 - chỉ số của map ko nhất thiết là số nguyên dương mà có thể là bất kì kiểu dữ liệu gì.
 - Giá trị của `map` tương tự mảng, có thể là bất kì kiểu dữ liệu gì. 
 
-**Ví dụ:** 1 phần tử của map có thể là A["abc"]=123 theo dạng `(key) -  (value)` - (Khóa - Giá trị)
+**Ví dụ:** 1 phần tử của map có thể là `A["abc"] = 123` theo dạng `(key) - (value)` hay cặp `(Khóa - Giá trị)`
 
 Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin của x và f(x). Trong bài mình lưu theo kiểu `A[1.123] = 6.78` thì 1.123 là x, 6.78 là f(x)
 
