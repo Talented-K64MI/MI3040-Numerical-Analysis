@@ -22,9 +22,9 @@ Dịch và chạy file `MIN-MAX.cpp`, với các thay đổi sau:
 - Hàm `f1(x0)`: Trả về giá trị f'(x0)
 - Hàm `gda(x0)`: Trả về giá trị x*>x0 thoa man f'(x*)=0
 _(Các giá trị trả về tăng dần do x0 tăng dần (i:=a->b))_
-- Hàm luutru() không trả về giá trị: Lưu các giá trị x*, f(x*),a, f(a) và b f(b) vào map
-- Hàm xuat1()  không trả về giá trị: Xuất các điểm tới hạn
-- Hàm xuat2()  không trả về giá trị: Tìm và xuất max min f(x)
+- Hàm `luutru()` không trả về giá trị: Lưu các giá trị x*, f(x*),a, f(a) và b f(b) vào map
+- Hàm `xuat1()` không trả về giá trị: Xuất các điểm tới hạn
+- Hàm `xuat2()` không trả về giá trị: Tìm và xuất max và min của f(x)
 
 ## Cấu trúc dữ liệu `map` - Ánh xạ
 `map` giống với mảng nhưng
