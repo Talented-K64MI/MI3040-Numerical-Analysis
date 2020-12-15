@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: tkinter-math
+Version: 0.2.4
+Summary: render math on tkinter canvas
+Home-page: https://github.com/K1DV5/tkinter-math
+Author: Kidus Adugna
+Author-email: kidusadugna@gmail.com
+License: MIT license
+Keywords: docal,tkinter,math
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+
+tkinter-math
+=====
+
+Render math on Tkinter canvas
+
+- Free software: MIT license
+
+tkinter-math is a library to render math on a Tkinter canvas. It is made for docal but making it work with at least with MathML is straightforward and is planned to be implemented.
+
+

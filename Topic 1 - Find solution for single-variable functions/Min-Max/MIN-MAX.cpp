@@ -7,15 +7,15 @@
 #define  step 1.0e-3
 #define  pi   3.14159265
 using namespace std;
-double  a=2,
-		b=3;
+double  a=0,
+		b=10;
 int     sign;
 map    <double, double> save;
 map    <double, double>::iterator k, kmax, kmin;
 //----------------------------------//
 double f(double x)  //Nhap ham f(x)
 {
-    return sqrt(log(x)) - 1;
+    return (x-1)*(x-1)*(x-1);
 }
 //------------------------------------------//
 double f1(double x0)  //Ham tra ve f'(x0)
@@ -23,6 +23,7 @@ double f1(double x0)  //Ham tra ve f'(x0)
 	double dy=f(x0+eps)-f(x0-eps),
 		   dx=2*eps;
 	return dy/dx;
+	//githello
 }
 //-----------------------------------------------------------------------------------------//
 double gda(double x0)  //Gradient Desent Asent

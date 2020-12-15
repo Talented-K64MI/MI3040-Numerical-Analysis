@@ -23,7 +23,7 @@ class bisection_oop:
         self.a_0 = a_0;
         self.b_0 = b_0;
         self.eps = eps;
-    #}
+    
 
 
     def __checkInputValidity(self):
@@ -91,5 +91,5 @@ class bisection_oop:
 
 #===================================================================================
 # Chương trình ví dụ
-# uu = bisection_oop(L, R, eps, input_expr);
-# print(uu.Solve());
+ uu = bisection_oop(L, R, eps, input_expr);
+ print(uu.Solve());

@@ -105,16 +105,16 @@ class newton_mat_inversion:
 
 #===================================================================================
 # Chương trình ví dụ
-# n = # Kích cỡ ma trận
-# A = # Ma trận đầu vào
-# eps = # Sai số epsilon
+n = 2 # Kích cỡ ma trận
+A = [1,5,6,-3]# Ma trận đầu vào
+eps =0.0001 # Sai số epsilon
 
-# In ra A
-# print(A);
+#In ra A
+print(A);
 
-# A = np.reshape(np.array(A), (n, n));
-# uu = newton_mat_inversion(A, n, eps);
+A = np.reshape(np.array(A), (n, n));
+uu = newton_mat_inversion(A, n, eps);
 
-# B1 = uu.improved_newton();   # Tiến hành thuật toán
-# print(B1);                   # In ra ma trận nghịch đảo
-# print(B1 @ A);               # Kiểm tra
+B1 = uu.improved_newton();   # Tiến hành thuật toán
+print(B1);                   # In ra ma trận nghịch đảo
+print(B1 @ A);               # Kiểm tra

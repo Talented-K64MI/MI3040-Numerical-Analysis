@@ -1,0 +1,60 @@
+BRACKETS = [ '()', '[]', '{}', '⌊⌋']
+
+GREEK_LETTERS = {
+    'alpha':      'α',
+    'nu':         'ν',
+    'beta':       'β',
+    'xi':         'ξ',
+    'Xi':         'Ξ',
+    'gamma':      'γ',
+    'Gamma':      'Γ',
+    'delta':      'δ',
+    'Delta':      '∆',
+    'pi':         'π',
+    'Pi':         'Π',
+    'epsilon':    'ϵ',
+    'varepsilon': 'ε',
+    'rho':        'ρ',
+    'varrho':     'ϱ',
+    'zeta':       'ζ',
+    'sigma':      'σ',
+    'Sigma':      'Σ',
+    'eta':        'η',
+    'tau':        'τ',
+    'theta':      'θ',
+    'vartheta':   'ϑ',
+    'Theta':      'Θ',
+    'upsilon':    'υ',
+    'Upsilon':    'Υ',
+    'iota':       'ι',
+    'phi':        'φ',
+    'varphi':     'ϕ',
+    'Phi':        'Φ',
+    'kappa':      'κ',
+    'chi':        'χ',
+    'lambda':     'λ',
+    'Lambda':     'Λ',
+    'psi':        'ψ',
+    'Psi':        'Ψ',
+    'mu':         'µ',
+    'omega':      'ω',
+    'Omega':      'Ω',
+    }
+
+MATH_ACCENTS = {
+    'hat': '\u0302',
+    'check': '\u030C',
+    'breve': '\u02D8',
+    'acute': '\u0301',
+    'grave': '\u0300',
+    'tilde': '\u0303',
+    'bar': '\u0304',
+    'vec': '\u20D7',
+    'dot': '\u0307',
+    'ddot': '\u0308',
+    'dddot': '\u20DB',
+    }
+
+PRIMES = {'prime': "'", '2prime': "''", '3prime': "'''"}
+
+

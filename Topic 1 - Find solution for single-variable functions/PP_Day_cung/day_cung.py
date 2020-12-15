@@ -50,7 +50,7 @@ class daycung_oop:
                 print(i)
             return 1
         else: 
-            return 0
+            return 0m
     #}
 
 
