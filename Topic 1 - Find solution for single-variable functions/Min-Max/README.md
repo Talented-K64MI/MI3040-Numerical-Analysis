@@ -2,9 +2,9 @@
 
 
 ## Input, output
-- INPUT:  `a`, `b`, `f(x)`, (`step` và `eta` nếu lâu quá có thể thay đổi)
+- **Input:**  `a`, `b`, `f(x)`, (`step` và `eta` nếu lâu quá có thể thay đổi)
 
-- OUTPUT: Bộ gia trị sau:
+- **Output:** Bộ giá trị sau:
     * `XMAX` và `F(XMAX)`
     * `XMIN` và `F(XMIN)` 
     * Các `X*` và `F(X*)`
