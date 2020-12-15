@@ -13,7 +13,7 @@
 ## Hướng dẫn sử dụng: 
 Dịch và chạy file `MIN-MAX.cpp`, với các thay đổi sau:
 - Thay đổi [a ,b] (dòng 7, 8) và hàm `f(x)` (dòng 15)
-- Thay đổi `step` (dòng 3) và `eta`( dòng 4) nếu chạy quá lâu
+
 
 
 ## Cách sử dụng từng hàm trong chương trình
