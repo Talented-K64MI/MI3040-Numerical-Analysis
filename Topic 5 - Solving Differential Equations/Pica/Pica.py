@@ -1,4 +1,3 @@
-
 #source
 #region
 
@@ -47,24 +46,14 @@ def ReadInput(file):
     epsilon = N(file.readline())
     return (f, lowT, upT, lowX, upX, t0, x0, epsilon)
 
-def StringToArrayFunction(string_Array):
-    f = list(map(lambda s: s.split(":"), string_Array.split(",")))
-    f = list(map(lambda arr:
-             (float(arr[0].strip()), float(arr[1].strip()))
-             , f))
-    f = sorted(f, key = lambda x: x[0])
-    return f
-#endregion
-
-
 #geting M,L,H,T,N, ...
 #region
 def GetM(f, lowT, upT, lowX, upX):
     #not implemented
-    return 100
+    return 5
 def GetL(f, lowT, upT, lowX, upX):
     #not implemented
-    return 100
+    return 5
 def MaxDerivative(arr):
     n = f.length()
     if(n > 1):
@@ -77,30 +66,15 @@ def MaxDerivative(arr):
             L = delta
     return L
 
-def GetN(M, L , deltaX, epsilon):
-    deltaT = min(deltaX / M, 1 / (2 * L))
+def GetN(M, L, deltaT, deltaX, epsilon):
     h = deltaT * L
     N = 1
     error = M * deltaT
     while error > epsilon:
         N+=1
         error = error * h / N
-    return deltaT, N
+    return N
 
-def GetStuff(f, lowX, upX, lowT, upT, epsilon):
-        M = GetM(x, lowT, upT, lowX, upX)
-        L = GetL(x, lowT, upT, lowX, upX)
-        deltaX = upX - lowX
-        deltaT, N = GetN(M, L, deltaX, epsilon)
-
-        try:
-            return (M,L,deltaX,h,deltaT,N)
-        except:
-            raise NotImplementedError()
-
-def MakeArrayFunction(f):
-
-    return
 #endregion
 
 
@@ -172,37 +146,34 @@ def PlotBoth(symbolOutput, pairList):
     x_vals = lam_x(t_vals)
     plt.plot(t_vals, x_vals)
 
-    plt.show()
+def Plot(f, interval):
+    t_vals = linspace(interval[0], interval[1], 1000)
+    lam_x = lambdify(t, f, modules = ['numpy'])
+    x_vals = lam_x(t_vals)
+    plt.plot(t_vals, x_vals)
+    #plt.show()
 #endregion
 
 #Program
 #region
-def Pica(filename):
-    file = open(filename, "r")
-    (f, lowT, upT, lowX, upX, t0, x0, epsilon) = ReadInput(file)
-    try:
-        f = sympify(f)
-    except:
-        raise ValueError("invalid Pica input (symbolic)")
-    file.close()
-    (M,L,deltaX,h,deltaT,N) = GetStuff(f, lowT, upT, lowX, upX, epsilon)
+def Pica1(f, lowT, upT, lowX, upX, t0, x0, M, L, epsilon, deltaT = None):
     
+    deltaX = min(x0 - lowX, upX - x0)
+    if deltaT is None:
+        deltaT = min(deltaX / M, 1 / (2 * L), t0 - lowT, upT - t0)
+
+    N = GetN(M, L, deltaT, deltaX, epsilon)
     xn = SymbolicIntegrate(f, t0, x0, N)
 
     t1 = float(t0-deltaT)
     t2 = float(t0+deltaT)
     return (xn, (t1,t2))
 
-def Pica1(filename, length):
-    file = open(filename, "r")
-    (f, lowT, upT, lowX, upX, t0, x0, epsilon) = ReadInput(file)
-    try:
-        f = sympify(f)
-    except:
-        raise ValueError("invalid Pica input (symbolic)")
-    file.close()
-
-    (M,L,deltaX,h,deltaT,N) = GetStuff(f, lowT, upT, lowX, upX, epsilon)
+def Pica2(f, lowT, upT, lowX, upX, t0, x0, M, L, epsilon, deltaT = None, length = 69):
+    
+    deltaX = min(x0 - lowX, upX - x0)
+    if deltaT is None:
+        deltaT = min(deltaX / M, 1 / (2 * L), t0 - lowT, upT - t0)
     xn = []
     segmentLength = 2 * deltaT / length
     n = (int)(length / 2)
@@ -213,23 +184,32 @@ def Pica1(filename, length):
 
     return xn
 
-# test
-#region
+def Pica(filename, length = None, M = None, L = None, deltaT = None):
+    try:
+        file = open(filename, "r")
+        (f, lowT, upT, lowX, upX, t0, x0, epsilon) = ReadInput(file)
+        f = sympify(f)
+    except:
+        raise ValueError("invalid Pica input")
+    file.close()
+    
+    if M is None:
+        M = GetM(x, lowT, upT, lowX, upX)
+    else:
+        if M < 0:
+            raise ValueError("invalid Pica input")
+        
+        
+    if L is None:
+        L = GetL(x, lowT, upT, lowX, upX)
+    else:
+        if L < 0:
+            raise ValueError("invalid Pica input")
+    
+    if length is None:
+        return Pica1(f, lowT, upT, lowX, upX, t0, x0, M, L, epsilon, deltaT)
+    return Pica2(f, lowT, upT, lowX, upX, t0, x0, M, L, epsilon, deltaT, length)
 
-def ReadPair(file):
-    f = "99:1, 2: 3.3, 5: 44,  3: 3.6"
-    f = list(map(lambda s: s.split(":"), f.split(",")))
-    f = list(map(lambda arr:
-                 (float(arr[0].strip()), float(arr[1].strip()))
-                 , f))
-    f = sorted(f, key = lambda x: x[0])
-    print(f)
-
-#endregion
-
-#endregion
-
-#main
 #region
 
 #guideline:
@@ -237,18 +217,18 @@ def ReadPair(file):
 # This code use sympy and numpy (see import), make sure to install them before
 # using this code
 
-# There are 2 function
-# pica for symbolic: Pica(string filename) #name of input file
-# pica for numeric: Pica1(string filename, int length) #length of output array
-# input example:
-#t^2+x^2 #function f
-#-10,10 #range of t
-#-10,10 #range of x
-#0,0 #t0 and x0 = x(t0)
-#10^-10 #epsilon
+# Main function
+# Pica(filename) with optional input: length for numeric approximation; M and L.
+#
+# input file example:
+#t*(3-2*x)  #function f
+#-0.5,0.5   #range of t
+#-1,2       #range of x
+#0,1        #t0 and x0 = x(t0)
+#10**-8     #epsilon
 
-# symbolic result: (t**7/63 + t**3/3, (-0.005, 0.005))
-# numeric result: [[-0.004838709677419355, -3.78470007730525e-8],
+# symbolic result example: (t**7/63 + t**3/3, (-0.005, 0.005))
+# numeric result example: [[-0.004838709677419355, -3.78470007730525e-8],
 # [-0.004516129032258065, -3.07811083890629e-8], ...]
 #endregion
 
@@ -256,21 +236,14 @@ def ReadPair(file):
 #inputPath_1 = "input1.txt"
 #inputPath_2 = "input2.txt"
 #inputPath_3 = "input3.txt"
-#inputPath_4 = "input4.txt"      # dont symbol this
+#inputPath_4 = "input4.txt"      # cant use symbolic approximation
+
+# usage example:
+#filename = "input2.txt"
 #
-#filename = inputPath_3
-#result = Pica(filename)                 #symbolic
-#length = 31 # length of output array
-#result1 = Pica1(filename, length)      #numeric
+#result = Pica(filename, M = 2.5, L = 1)
+#result1 = Pica(filename, M = 2.5, L = 1, length = 31)
+#
 #print(result)
-#
-##plot result:
-#
 #PlotBoth(result, result1)
-
-##PlotSymbol()
-##PlotPairs(result1)
-
-#print("ended")
-
-#endregion
+#plt.show()
