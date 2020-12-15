@@ -1,6 +1,3 @@
-// Yêu cầu bạn đưa thư mục này vào đúng topic và đổi đuôi file readme.txt thành readme.md! - Thành
-
-
 #include <bits/stdc++.h>
 #define  eps  1.0e-6
 #define  eta  1.0e-3
@@ -8,7 +5,11 @@
 #define  pi   3.14159265
 using namespace std;
 double  a=-2,
+<<<<<<< HEAD
 		b=6;
+=======
+        b=6;
+>>>>>>> 39de43a0760d59704aef2f62296767a34b3cc9fc
 int     sign;
 map    <double, double> save;
 map    <double, double>::iterator k, kmax, kmin;
@@ -24,18 +25,34 @@ double f1(double x0)  //Ham tra ve f'(x0)
 		   dx=2*eps;
 	return dy/dx;
 	//githello
+<<<<<<< HEAD
+=======
+}
+//--------------------------------------------------------//
+double fixeta(double x0)  //Ham tra ve eta hop li
+{
+    double etaa=eta;
+    while (((f1(x0)*f1(x0+sign*etaa*f1(x0)))>=0) && (etaa<1)) etaa*=2;
+    while ((f1(x0)*f1(x0+sign*etaa*f1(x0)))<=0) etaa/=2;
+    return etaa;
+>>>>>>> 39de43a0760d59704aef2f62296767a34b3cc9fc
 }
 //-----------------------------------------------------------------------------------------//
 double gda(double x0)  //Gradient Desent Asent
 {                     //Ham nay tra ve gia tri x*>x0 thoa man f'(x*)=0
                      //Cac gia tri tra ve tang dan vi x0 tang dan (i:=a->b)
+<<<<<<< HEAD
     double x=x0;
     if (f1(x0)==0)  return x0;  
+=======
+    if (f1(x0)==0)  return x0;
+>>>>>>> 39de43a0760d59704aef2f62296767a34b3cc9fc
 	if (f1(x0)<0)     sign=-1;
 	else              sign= 1;
+	double x=x0+sign*fixeta(x0)*f1(x0);
 	while (abs(f1(x0))>eps)
 	{
-		x=x0+sign*eta*f1(x0);
+	    x=x0+sign*eta*f1(x0);
 		x0=x;
 		if (x0>b)   return b;
 	}
@@ -54,8 +71,9 @@ void luutru()   //Luu cac x* f(x*), a f(a), b f(b) vao map
         do
         {
             i+=step;
-            if (i>b) break;
-        } while (f1(i)*sign>0);
+            if (i>=b) break;
+        }
+        while ((f1(i)*sign>0) && (abs(f1(i) > f1(i+step))));
     }
 }
 //--------------------------------------------------//

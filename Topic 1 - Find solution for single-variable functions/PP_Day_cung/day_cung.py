@@ -35,7 +35,6 @@ class daycung_oop:
         # print(self.sym_df, file=sys.stderr);
     #}
 
-
     # Tìm max/min của f
     def __Kiem_tra_don_dieu(self):
     #{
@@ -44,15 +43,11 @@ class daycung_oop:
         b = self.b_0;
         sol_set = solveset(diff(self.func, x ), x, Interval(a, b))
         sol_set = Union(sol_set, solveset(diff(self.func, x, 2), x, Interval(a, b)));
-        sol_set = Union(sol_set, solveset(diff(self.func, x , 3), x, Interval(a, b)));
         if(sol_set.is_empty): 
-            for i in sol_set:
-                print(i)
             return 1
         else: 
             return 0m
     #}
-
 
     # Chốt 141
     def __checkInputValidity(self):
@@ -77,7 +72,6 @@ class daycung_oop:
     #}
 
 
-
     def __Daycung(self):
     #{
 
@@ -97,11 +91,10 @@ class daycung_oop:
             x=b
         x_pre=-1000
 
-        while (x-x_pre > eps):
+        while (abs(x-x_pre)> eps):
             x_pre=x
             x=x_pre - (d-x_pre)/(f(d)-f(x_pre))*f(x_pre)
         return x
-
 
     def Solve(self):
         if(self.__checkInputValidity() == 0):
@@ -109,13 +102,12 @@ class daycung_oop:
             exit(0)
         return self.__Daycung();
 
-
 #===================================================================================
 # Chương trình chính
 
-expr = "sin(x)+cos(x)-0.5"
+expr = "x^2-3*x+2"
 L = -1
-R = 1
+R = 1.4
 eps = 1e-6
 
 uu = daycung_oop(L, R, eps, expr);

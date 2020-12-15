@@ -1,11 +1,49 @@
-Như hôm trước nhóm mình đã trình bày thuật toán, code cũng như chạy chương trình trên
- lớp rồi không biết các bạn có để ý không @@. 
-Hôm đấy chúng mình có đưa ra thuật toán để tối ưu hệ số eta; kết quả nó chạy nhanh hơn
- thuật toán cũ nhưng nó cũng đi kèm với cái hại là có một số trường hợp nó bỏ sót @@. 
-Để hạn chế tối đa những trường hợp bỏ sót nghiệm nhóm mình vẫn dùng thuật toán cũ, còn
- cái phần cải tiến kia chúng mình sẽ đưa vào báo cáo để nhóm nào muốn cải tiến thì có
- thể xem qua. Nhưng tất nhiên như mình đã nói code này sẽ chạy chậm hơn và có bài các
- bạn có thể đợi khoảng 30s thậm chí là 1'( ĐẶC BIỆT LÀ NHỮNG TRƯỜNG HỢP CÓ ĐIỂM UỐN).
-Vì thế mong các bạn kiên nhẫn chút @@. Chi tiết thì mn xem ở file HDSD nhé. Đừng quên
-góp ý để code của bọn mình hoàn thiện hơn nhé.
+# Tìm Min-Max của hàm f(x) trên đoạn `[a; b]` - Nhóm 7 - Nguyễn Thị Hường
+
+
+## Input, output
+- **Input:**  `a`, `b`, `f(x)`, (`step` và `eta` nếu lâu quá có thể thay đổi)
+
+- **Output:** Bộ giá trị sau:
+    * `XMAX` và `F(XMAX)`
+    * `XMIN` và `F(XMIN)` 
+    * Các `X*` và `F(X*)`
+
+
+## Hướng dẫn sử dụng: 
+Dịch và chạy file `MIN-MAX.cpp`, với các thay đổi sau:
+- Thay đổi [a ,b] (dòng 7, 8) và hàm `f(x)` (dòng 15)
+
+
+
+## Cách sử dụng từng hàm trong chương trình
+
+- Hàm `f(x)`: Nhập hàm
+- Hàm `f1(x0)`: Trả về giá trị f'(x0)
+- Hàm `gda(x0)`: Trả về giá trị x*>x0 thoa man f'(x*)=0
+_(Các giá trị trả về tăng dần do x0 tăng dần (i:=a->b))_
+- Hàm `luutru()` không trả về giá trị: Lưu các giá trị x*, f(x*),a, f(a) và b f(b) vào map
+- Hàm `xuat1()` không trả về giá trị: Xuất các điểm tới hạn
+- Hàm `xuat2()` không trả về giá trị: Tìm và xuất max và min của f(x)
+
+## Cấu trúc dữ liệu `map` - Ánh xạ
+`map` giống với mảng nhưng
+- chỉ số của map ko nhất thiết là số nguyên dương mà có thể là bất kì kiểu dữ liệu gì.
+- Giá trị của `map` tương tự mảng, có thể là bất kì kiểu dữ liệu gì. 
+
+**Ví dụ:** 1 phần tử của map có thể là `A["abc"] = 123` theo dạng `(key) - (value)` hay cặp `(Khóa - Giá trị)`
+
+Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin của x và f(x). Trong bài mình lưu theo kiểu `A[1.123] = 6.78` thì 1.123 là x, 6.78 là f(x)
+
+## Hạn chế
+- Chỉ làm được với các hàm f(x) liên tục trên [a;b]
+- Chỉ làm chính xác với các hàm có f(x) và f'(x) cùng liên tục trên [a;b]
+    + Do thuật toán này đi tìm các điểm x* thỏa mãn f'(x*)=0, nhưng các điểm cực trị thì không nhất thiết f(x*)=0
+    + f`(x) có thể kxđ miễn là đổi dấu khi đi qua x*, vì thế nếu f'(x) ko liên tục thì nó có thể bỏ sót hoặc ko chạy được
+
+- Đối với các hàm f(x) có khoảng cách các cực trị quá bé, nhỏ hơn `step` cũng không thể chính xác. Bởi:
+    + Các giá trị x* chỉ tìm được xấp xỉ chứ không chính xác
+    + Sau khi tìm được x* tạm chấp nhận được, ta sẽ tăng i lên 1 đoạn `step` để nó vượt qua x*, do đó sẽ bị bỏ sót các điểm tới hạn trong khoảng (x*, x* + step)
+
+
  
