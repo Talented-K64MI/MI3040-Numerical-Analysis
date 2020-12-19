@@ -43,5 +43,5 @@ Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin c�
 - Đối với các hàm f(x) có khoảng cách các cực trị quá bé, nhỏ hơn `step` cũng không thể chính xác. Bởi:
     + Các giá trị x* chỉ tìm được xấp xỉ chứ không chính xác
     + Sau khi tìm được x* tạm chấp nhận được, ta sẽ tăng i lên 1 đoạn `step` để nó vượt qua x*, do đó sẽ bị bỏ sót các điểm tới hạn trong khoảng (x*, x* + step)
-- Đối với khoảng [a,b] lớn dễ gây ra trường hợp in thiếu điểm tới hạn=> Cách khắc phục:QUAY LẠI XEM DÒNG 3 MỤC HDSD; và
+- Đối với khoảng [a,b] lớn dễ gây ra trường hợp in thiếu điểm tới hạn=> Cách khắc phục:QUAY LẠI XEM DÒNG 3 MỤC HDSD và
  CÓ THỂ SẼ CHẠY HƠI LÂU NÊN MỌI NGƯỜI CỨ BÌNH TĨNH CHỜ NHÉ!!
