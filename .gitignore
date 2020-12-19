@@ -6,14 +6,15 @@
 *.pyc
 
 
-Playground/**
-.vs/**
-.mypy-cache/**
-.idea/**
-.env
-.venv
-env/**
-venv/**
-ENV/**
-env.bak/**
-venv.bak/**
+**/.dist/**
+**/Playground/**
+**/.vs/**
+**/.mypy-cache/**
+**/.idea/**
+**/.env/**
+**/.venv/**
+**/env/**
+**/venv/**
+**/ENV/**
+**/env.bak/**
+**/venv.bak/**
