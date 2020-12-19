@@ -39,7 +39,7 @@ Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin c�
 - Chỉ làm chính xác với các hàm có f(x) và f'(x) cùng liên tục trên [a;b]
     + Do thuật toán này đi tìm các điểm x* thỏa mãn f'(x*)=0, nhưng các điểm cực trị thì không nhất thiết f(x*)=0
     + f`(x) có thể kxđ miễn là đổi dấu khi đi qua x*, vì thế nếu f'(x) ko liên tục thì nó có thể bỏ sót hoặc ko chạy được
-
+- Có thể in ra nhiều nghiệp xấp xỉ nhau
 - Đối với các hàm f(x) có khoảng cách các cực trị quá bé, nhỏ hơn `step` cũng không thể chính xác. Bởi:
     + Các giá trị x* chỉ tìm được xấp xỉ chứ không chính xác
     + Sau khi tìm được x* tạm chấp nhận được, ta sẽ tăng i lên 1 đoạn `step` để nó vượt qua x*, do đó sẽ bị bỏ sót các điểm tới hạn trong khoảng (x*, x* + step)
