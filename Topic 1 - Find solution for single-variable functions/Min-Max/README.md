@@ -14,6 +14,8 @@
 Dịch và chạy file `MIN-MAX.cpp`, với các thay đổi sau:
 - Thay đổi [a,b] (dòng 7, 8) và hàm `f(x)` (dòng 15)
 -Có thể thay đổi eta nhỏ hơn ở dòng 3 và thay đổi khoảng [a,b] nhỏ hơn  trong trường hợp khoảng lớn dễ in thiếu điểm tới hạn.
+-Khi màn hình hiện ra: "Khoang ban dau la khoang phan ly nghiem" mà mới in kèm theo 2 giá trị tại a và b tức là khoảng này chưa phù hợp với thuật toán. Vì thế mn cần co khoảng này nhỏ lại ( co nhỏ như nào thì đã có phần kiểm tra khoảng phân ly rồi nên sẽ dễ điều chỉnh nếu co cho phù hợp). Ngược lại nó màn hình hiện ra "Khoang ban dau khong la khoang phan ly nghiem" thì hiển nhiên là đúng và lúc này chẳng cần thay đổi gì nữa.
+
 
 ## Cách sử dụng từng hàm trong chương trình
 
