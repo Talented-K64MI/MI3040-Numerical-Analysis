@@ -16,5 +16,5 @@
 - **Ưu điểm:** Tốc độ hội tụ nhanh hơn các phương pháp khác
 - **Nhược điểm:**
     - Nhiều ràng buộc về điều kiện hội tụ
-    - **Chưa giải được** một số lớp phương trình ví dụ như `sqrt(log(x)) - 1 = 0` do hạn chế của gói tìm Min/Max
+    - **Chưa giải được** một số lớp phương trình ví dụ như `sqrt(log(x)) - 1 = 0` do hạn chế của gói tìm Min/Max. _**Đề xuất dùng các phương pháp khác như chia đôi, dây cung, lặp đơn để giải**_
 
