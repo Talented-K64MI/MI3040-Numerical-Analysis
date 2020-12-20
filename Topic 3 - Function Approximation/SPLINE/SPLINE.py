@@ -4,7 +4,7 @@ def data():
     global x,y,n
     x = []
     y = []
-    with open('text','r+') as f:
+    with open('input.txt','r+') as f:
             for line in f.readlines():
                 xt = float(line.split(' ')[0])
                 yt = float(line.split(' ')[1])
