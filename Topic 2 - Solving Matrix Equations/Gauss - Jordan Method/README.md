@@ -6,7 +6,7 @@
 (Chi tiết xem ví dụ ở dưới)
 
 ## Hướng dẫn sử dụng
-* Yêu cầu cài thư viện *numpy* trước khi sử dụng
+* Yêu cầu cài thư viện `numpy` trước khi sử dụng
 * Tạo file input.txt để cùng thư mục với file code
 * Nhập hệ số ma trận bổ sung vào file GJ_input.txt mỗi số hạng cách nhau bằng 1 khoảng trắng " "
 * Nếu số hạng của 1 phần tử bằng 0 nhập 0 vào vị trí tương ứng
@@ -33,16 +33,20 @@ x - 2y     -  t = -6
 2x - 3y +2z     = 6
 
 ==> Nhập vào file GJ_input.txt:
+```
 1 1 -2 2 6
 1 -2 0 -1 -6
 0 1 1 3 16
 2 -3 2 0 6
+```
 
 ==> Output:
+```
 8.00000 0.00000 0.00000 0.00000 0.00000
 6.00000 0.00000 0.00000 0.00000 0.00000
 4.00000 0.00000 0.00000 0.00000 0.00000
 2.00000 0.00000 0.00000 0.00000 0.00000
+```
 
 - Giải thích: Cột 1 là cột hệ số tự do, cột 2, 3, 4, 5 tương ứng biểu diễn qua các biến x, y, z, t
 Trong trường hợp chỉ có một nghiệm duy nhất, trừ cột đầu tiên, các cột còn lại sẽ có giá trị bằng 0
@@ -52,13 +56,17 @@ x + 3y + 5z = 7
 2x + 4y + 6z =8
 
 ==> Nhập vào file GJ_input.txt:
+```
 1 3 5 7
 2 4 6 8
+```
 
 ==> Output:
+```
 0.50000 0.00000 -0.50000 0.00000
 0.00000 0.00000 1.00000 0.00000
 1.50000 0.00000 -0.50000 0.00000
+```
 
 - Giải thích: Cột 1 là cột hệ số tự do, cột 2, 3, 4, 5 tương ứng biểu diễn qua các biến x, y, z, t
 - Kết quả có ý nghĩa:

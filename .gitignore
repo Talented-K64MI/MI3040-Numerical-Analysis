@@ -6,7 +6,16 @@
 *.pyc
 
 
-/Playground/*
-/.vs/*
-/.mypy-cache/*
-/.idea/*
+**/.dist/**
+**/Playground/**
+**/.vs/**
+**/.mypy-cache/**
+**/.idea/**
+**/.env/**
+**/.venv/**
+**/env/**
+**/venv/**
+**/ENV/**
+**/env.bak/**
+**/venv.bak/**
+**/__pycache__/**

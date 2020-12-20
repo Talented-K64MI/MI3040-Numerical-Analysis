@@ -12,7 +12,7 @@ map    <double, double>::iterator k, kmax, kmin;
 //----------------------------------//
 double f(double x)  //Nhap ham f(x)
 {
-    return pow(x,4)-4*pow(x,3)+1;
+    return pow(x,4)+3*pow(x,3)-11*x*x-3*x+10;
 }
 //------------------------------------------//
 double f1(double x0)  //Ham tra ve f'(x0)
