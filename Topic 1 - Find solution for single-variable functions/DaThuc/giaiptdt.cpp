@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
-#define  eps 1.0e-6
-#define  eta 1.0e-4
-#define  max 1.0e6
-#define  pi  3.14159265222222
+#define  eps  1.0e-6
+#define  eta  1.0e-3
+#define  step 1.0e-4
+#define  pi   3.14159265
 
 #include<stdio.h>
 #include<math.h>
@@ -12,13 +12,15 @@ int 	n;
 double 	a[100];
 double  a1,
 		b1,
-		step=0.01,
 		diem[100];
 double N1, N2;
 int     sign,m;
+map    <double, double> save;
+map    <double, double>::iterator k, kmax, kmin;
+
 double ff(double x)  //Nhap ham f(x)
 {
-	return x*x*x+3*x*x+3*x+1;
+	return pow(x,4)+3*pow(x,3)-11*pow(x,2)-3*x+10;
 }
 //------------------------------------------//
 double f1(double x0)  //Ham tra ve f'(x0)
@@ -31,25 +33,26 @@ double f1(double x0)  //Ham tra ve f'(x0)
 double fixeta(double x0)  //Ham tra ve eta hop li
 {
     double etaa=eta;
-    while ((f1(x0)*f1(x0+sign*etaa*f1(x0)))>=0) etaa*=2;
+    while (((f1(x0)*f1(x0+sign*etaa*f1(x0)))>=0) && (etaa<1)) etaa*=2;
     while ((f1(x0)*f1(x0+sign*etaa*f1(x0)))<=0) etaa/=2;
     return etaa;
-    
+
 }
 //-----------------------------------------------------------//
 double gda(double x0)  //Gradient Desent Asent
 {                     //Ham nay tra ve gia tri x*>x0 thoa man f'(x*)=0
-	double x=x0;     //Cac gia tri tra ve tang dan vi x0 tang dan (i:=a->b)
-	if (f1(x)==0)    return x;
-	if (f1(x)<0)     sign=-1;
-	else             sign= 1;
+                     //Cac gia tri tra ve tang dan vi x0 tang dan (i:=a->b)
+    if (f1(x0)==0)  return x0;
+	if (f1(x0)<0)     sign=-1;
+	else              sign= 1;
+	double x=x0+sign*fixeta(x0)*f1(x0);
 	while (abs(f1(x0))>eps)
 	{
-		x=x0+sign*eta*f1(x0);
+	    x=x0+sign*eta*f1(x0);
 		x0=x;
 		if (x0>b1)   return b1;
 	}
-	diem[m]=x;m++;
+	diem[m]=x; m++;
 	return x;
 }
 //Bubblesort
@@ -96,12 +99,12 @@ double timmiennghiem() {
 		}
 	for(i=1;i<=n;i++) if(a[i]<0) count1++;
 	for(i=1;i<=n;i++) {
-		if(a[i]<0) B1=a[i]; 
+		if(a[i]<0) B1=a[i];
 		for(i=1;i<=n;i++)
 		if(a[i]<0) if(-a[i]>-B1) B1=a[i];
 	}
 	N1=1+canbac((double)((-B1)/a[0]),k1);
-	
+
 	//Tim can duoi cua nghiem thuc (N2)
 	for(i=0;i<=n;i++) if((i%2)==1) a[i]=-a[i];
 	for(i=1;i<=n;i++) if(a[i]<0) {
@@ -115,14 +118,14 @@ double timmiennghiem() {
 		if(a[i]<0) if(-a[i]>-B2) B2=a[i];
 	}
 	N2=1+canbac((double)((-B2)/a[0]),k2);
-	if(count1==0) N1=0;		
+	if(count1==0) N1=0;
 	if(count2==0) N2=0;
 	printf("\nKhoang chua nghiem cua phuong trinh la (%f,%f)\n",-N2,N1);
 	for(i=0;i<=n;i++) if((i%2)==1) a[i]=-a[i];
 	a1=-N2;
-	b1=N1; 
+	b1=N1;
 	return -N2,N1;
-	
+
 }
 //Thuat toan chia doi
 double bisection(double a, double b) {
@@ -135,6 +138,7 @@ double bisection(double a, double b) {
 	}
 	return c;
 }
+
 //Nhap da thuc pn(x)
 int main() {
 	int j;
@@ -142,34 +146,33 @@ int main() {
 	printf("Nhap cac he so: ");
 	for(j=0;j<=n;j++) scanf("%lf",&a[j]);
 	timmiennghiem();
-//Tim diem cuc tri 
-	//--------------------------------------------------//
-	map <double, double> save;
-	map <double, double>::iterator k, kmin, kmax;
-	double i=a1;
-	//--------------------------//
-	save[ff(a1)]=a1,
-	save[ff(b1)]=b1;
-    //--------------------------//
+
+//Tim diem cuc tri
+double i=a1;
+	save[a1]=ff(a1),
+	save[b1]=ff(b1);
     while (i<b1)
     {
         i=gda(i);
-        save[ff(i)]=i;
-        i+=step;
+        save[i]=ff(i);
+        do
+        {
+            i+=step;
+            if (i>=b1) break;
+        }
+        while ((f1(i)*sign>0) && (abs(f1(i) > f1(i+step))));
     }
-    
+
     diem[m]=-N2;
     diem[m+1]=N1;
 	sort(diem, diem+m+1);   //[Thành] - Tối ưu code bằng sắp xếp nhanh
     // bubblesort(diem,m+1);
     for(int p=0;p<=m;p++) {
 		if(f(diem[p])==0||fabs(f(diem[p]))<eps) {printf("\n%lf",diem[p]); p++;}
-		if(f(diem[p])*f(diem[p+1])<0) 
+		if(f(diem[p])*f(diem[p+1])<0)
 			{
 			bisection(diem[p],diem[p+1]);
-			p++;
 			}
 	}
 	return 0;
 }
-
