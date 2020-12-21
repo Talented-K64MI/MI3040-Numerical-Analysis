@@ -1,26 +1,48 @@
+#import
 #region
 import matplotlib.pyplot as plt
 import math
-
-from sympy import *
-import matplotlib.pyplot as plt
-from numpy import linspace
-import numpy as np
-t = symbols('t')
-f = symbols('f', cls=Function)
 #endregion
+
+
+#input and output
+#region
+inputPath_1 = 'example1.txt'
+inputPath_2 = 'example2.txt'
+
+outputPath_1 = 'outputPath_1.txt'
+
+#endregion
+
+
+# some stuff
+#region
+empty = lambda s: s != ''
+
+def Show():
+    return 0
+
+def validate():
+
+    return 1
+
+#endregion
+
+
 #read input
 #region
 def ReadArray(f):
     line = f.readline()
-    result = list(map(lambda x: float(N(x)), line.split()))
+    result = list(map(float, list(filter(empty,line.split(' ')))))
+    #print('result')
+    #print(result)
     return result
 
 def ReadMatrix(f):
     listCoef = []
     line = f.readline()
     while(line.strip() != ''):
-        coef = list(map(lambda x: float(N(x)), line.split()))
+        coef = list(map(float,list(filter(empty,line.split(' ')))))
         listCoef.append(coef)
         line = f.readline()
     #print('listCoef: ')
@@ -35,28 +57,32 @@ def RandN(listCoef):
         if(R > coef[0]): R = coef[0]
         coef.pop(0)
         if(N > len(coef)): N = len(coef)
-    if R <= 0:
-        raise ValueError("invalid input: bán kính <= 0")
-
+    #print(listCoef)
+    #print("bán kính hội tụ: ", end =''); print(R)
+    #print("bậc tối đa sẽ tìm của t: ", end = ''); print(N)
     return (R,N)
 
 #endregion
+
+
+#main loop
 def calculate(initial, listCoef, N):
-    result = initial              # mảng kết quả c_i
-    k=len(listCoef)-1             # mảng mảng hệ số a_i và f
+    result = initial
+    k=len(listCoef)
     for n in range(0,N-k):
         c=0
-        offset = 1;
-        for i in range(n+1,n+k+1): offset *= i
         #start calculating c_{n+k}
         for m in range(0,n+1):
             mult = 1
             for i in range(0,k):
-                c += listCoef[i][n-m] * result[m+i] * mult
+                c+=listCoef[i][n-m] * result[m+i] * mult
                 mult *= m+i+1
-        c= (listCoef[k][n]-c)/offset           # -1*n! / (n+k)!
+        offset = 1;
+        for i in range(n+1,n+k+1): offset *= i
+        c= -c/offset
         result.append(c)
     return result
+
 
 #Program
 def Polynomial(inputPath):
@@ -67,9 +93,9 @@ def Polynomial(inputPath):
     R,N = RandN(listCoef)
     result = calculate(initial, listCoef, N)
     return (R, result)
-def Restore(array):
-    3
-    
+
+
+# file working
 #region
 def Save(result, outputPath, mode):
     f = open(outputPath, mode)
@@ -77,20 +103,36 @@ def Save(result, outputPath, mode):
     f.write(str(result[1]))
     f.close()
 
-def Plotf(f, interval):
-    t_vals = linspace(interval[0], interval[1], 1000)
-    lam_x = lambdify(t, f, modules = ['numpy'])
-    x_vals = lam_x(t_vals)
-    plt.plot(t_vals, x_vals)
-    
-def Plot(result, start, end, g = None):
+#endregion
+
+#plot
+#region
+def Plot(result):
+    from sympy.plotting import plot
+    from sympy import symbols, Function
+    x = symbols('x')
+    f = symbols('f', cls=Function)
     f = 0
     power = 0
     for i in result:
-        f += i * (t ** power)
+        f += i * (x ** power)
         power += 1
-    Plotf(f, (start, end))
-    if g is not None:
-        Plotf(g, (start, end))
-    return f
+    plot((f, (x, start, end)))
+
 #endregion
+
+
+# playground
+#region
+
+#result = Polynomial(inputPath_1)        #example1
+#print("Radius of convergence = " + str(result[0]) + ", Result: \n")
+#resultArray = result[1]
+#print(resultArray)
+
+#Plot(resultArray)
+#Save(result,outputPath_1,"w")
+
+
+#endregion
+
