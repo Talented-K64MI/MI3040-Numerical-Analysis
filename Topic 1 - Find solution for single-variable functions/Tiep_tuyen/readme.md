@@ -9,7 +9,7 @@
 
 
 ### Cách 2: Chạy và làm theo hướng dẫn trong file `main_newton.py`
-- **Chú ý:** Comment hết toàn bộ dòng từ 170 đến 176 trong file `newton_ralphson.py` trước khi làm cách này
+- **Chú ý:** ~~Comment hết toàn bộ dòng từ 170 đến 176 trong file `newton_ralphson.py` trước khi làm cách này~~ -- **Không cần làm nữa, chỉ cần chạy file**
 
 
 ## Ưu, nhược điểm của phương pháp
