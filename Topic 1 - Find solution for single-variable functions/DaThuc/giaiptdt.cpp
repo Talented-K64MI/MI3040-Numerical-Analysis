@@ -18,7 +18,7 @@ double N1, N2;
 int     sign,m;
 double ff(double x)  //Nhap ham f(x)
 {
-	return pow(x,5)+2*pow(x,4)-5*pow(x,3)+8*pow(x,2)-7*x-3;
+	return x*x*x+3*x*x+3*x+1;
 }
 //------------------------------------------//
 double f1(double x0)  //Ham tra ve f'(x0)
@@ -160,7 +160,8 @@ int main() {
     
     diem[m]=-N2;
     diem[m+1]=N1;
-    bubblesort(diem,m+1);
+	sort(diem, diem+m+1);   //[Thành] - Tối ưu code bằng sắp xếp nhanh
+    // bubblesort(diem,m+1);
     for(int p=0;p<=m;p++) {
 		if(f(diem[p])==0||fabs(f(diem[p]))<eps) {printf("\n%lf",diem[p]); p++;}
 		if(f(diem[p])*f(diem[p+1])<0) 

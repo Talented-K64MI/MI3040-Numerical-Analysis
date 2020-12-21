@@ -1,6 +1,6 @@
 #===================================================================================
 #
-#   Code (đã cái tiến, đã đóng gói) cho PP dây cung. 
+#   Code (đã cái tiến, đã đóng gói) cho PP chia đôi. 
 #       * Input: f(x) trong pt f(x) = 0; khoảng cách li ban đầu (a, b); sai số epsilon
 #       * Output: Nghiệm PT f(x) = 0;
 #       * Hạn chế: Chưa có gói tìm khoảng cách ly nghiệm

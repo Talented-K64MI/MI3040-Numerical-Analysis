@@ -1,6 +1,6 @@
 #===================================================================================
 #
-#   Code (đã cái tiến) cho PP dây cung. 
+#   Code (đã cái tiến) cho PP chia đôi. 
 #       * Input: f(x) trong pt f(x) = 0; khoảng cách li ban đầu (a, b); sai số epsilon
 #       * Output: Nghiệm PT f(x) = 0;
 #       * Hạn chế: Chưa có gói tìm khoảng cách ly nghiệm
@@ -18,21 +18,12 @@ class bisection_oop:
 #{
     def __init__(self, a_0, b_0, eps, expr):
     #{
-<<<<<<< HEAD
         self.symf = sympify(expr);
         self.f = lambdify(symbols("x"), self.symf, "math");
         self.a_0 = a_0;
         self.b_0 = b_0;
         self.eps = eps;
     
-=======
-        self.symf = sympify(expr)
-        self.f = lambdify(symbols("x"), self.symf, "math")
-        self.a_0 = a_0
-        self.b_0 = b_0
-        self.eps = eps
-    #}
->>>>>>> 5240b15b28feb7e08fbff06aa64e4aabde94e3ad
 
 
     def __checkInputValidity(self):
@@ -100,12 +91,7 @@ class bisection_oop:
 
 #===================================================================================
 # Chương trình ví dụ
-<<<<<<< HEAD
- uu = bisection_oop(L, R, eps, input_expr);
- print(uu.Solve());
-=======
 # uu = bisection_oop(L, R, eps, input_expr)
 # print(uu.Solve())
 uu = bisection_oop(-1, 1, 1e-10, "x")
 print(uu.Solve())
->>>>>>> 5240b15b28feb7e08fbff06aa64e4aabde94e3ad
