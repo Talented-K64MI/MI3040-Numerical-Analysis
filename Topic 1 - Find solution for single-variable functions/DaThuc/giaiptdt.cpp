@@ -167,7 +167,7 @@ double i=a1;
     diem[m+1]=N1;
 	sort(diem, diem+m+1);   //[Thành] - Tối ưu code bằng sắp xếp nhanh
     // bubblesort(diem,m+1);
-    for(int p=0;p<=m;p++) {
+    for(int p=0;p<=m+1;p++) {
 		if(f(diem[p])==0||fabs(f(diem[p]))<eps) {printf("\n%lf",diem[p]); p++;}
 		if(f(diem[p])*f(diem[p+1])<0)
 			{
