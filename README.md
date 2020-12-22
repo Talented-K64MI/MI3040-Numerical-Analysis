@@ -22,8 +22,14 @@ _**Note**_: Khi muốn xem file Markdown trên VS Code với extension Markdown 
 * Jupyter Notebook: [https://jupyter.org/install](https://jupyter.org/install)
 
 **Thư viện** - Chạy các lệnh này sau khi cài 2 mục trên
-* NumPy - Thư viện tính toán ma trận: `pip install numpy`
-* SymPy - Thư viện tính toán hình thức: `pip install sympy`
+* NumPy - Thư viện tính toán ma trận: 
+```        
+        pip install numpy
+```
+* SymPy - Thư viện tính toán hình thức: 
+```        
+        pip install sympy
+```
 
 ### C/C++ - `.c`, `.cpp`
 **Chương trình**
