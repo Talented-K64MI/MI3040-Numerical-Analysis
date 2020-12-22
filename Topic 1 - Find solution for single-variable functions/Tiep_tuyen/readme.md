@@ -15,10 +15,10 @@ Với cách này không cần sửa code, chỉ cần chạy
 
 
 ## Ưu, nhược điểm của phương pháp
-- **Ưu điểm:*newton_oop* Tốc độ hội tụ nhanh hơn các phương pháp khác
+- **Ưu điểm:** Tốc độ hội tụ nhanh hơn các phương pháp khác
 - **Nhược điểm:**
     - Nhiều ràng buộc về điều kiện hội tụ
-    - **Chưa giải được** một số lớp phương trình ví dụ như `sqrt(log(x)) - 1 = 0` do hạn chế của gói tìm Min/Max và trong gói Min/Max còn bỏ qua các điểm làm đạo hàm không xác định. _**Đề xuất dùng các phương pháp khác như chia đôi, dây cung, lặp đơn để giải**_
+    - **Chưa giải được** một số lớp phương trình ví dụ như `sqrt(log(x)) - 1 = 0` do hạn chế của gói tìm Min/Max và trong gói Min/Max còn bỏ qua các điểm làm đạo hàm không xác định _**Đề xuất dùng các phương pháp khác như chia đôi, dây cung, lặp đơn để giải**_
 
 
 ## Phụ lục: Giải thích các hàm trong thuật toán
