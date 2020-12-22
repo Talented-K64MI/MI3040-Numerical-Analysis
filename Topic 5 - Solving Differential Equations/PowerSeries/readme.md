@@ -14,7 +14,7 @@ Ví dụ `output = (3, [1,2,3])` tức là bán kính hội tụ R = 3 và hàm 
 8       3    -3**3     0         3**5/3!       0          -3**7/5!    0              3**9/7!   0          -3**11/9!     # khai triển hệ số f
 
 ```
-
+## Output
+(R, arr) với R là bán kính hội tụ và arr là mảng hệ số của khai triển, bắt đàu từ x^0
 ## Đã có 1 ví dụ (như trên)
-
 ## Happy testing :))
