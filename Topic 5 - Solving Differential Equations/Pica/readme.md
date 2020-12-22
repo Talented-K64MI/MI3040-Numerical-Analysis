@@ -15,6 +15,7 @@ t*(3-2*x)           # Hàm f(t,x)
 
 ## Output:
 Dạng mảng: [ (t_i,x_i) ] ví dụ như [ (-1,2), (0,1), (1,-2) ]
+
 Dạng giải tích: (f, interval) ví dụ như ( sin(t), (-1,1) )
 ## Đã có 5 ví dụ (1 vd như trên)
 ## ! Warning: chưa có modun tìm M = supf và L = supf' nên phải nhập tay ( ví dụ Pica(filename, M = 2, L =3) )
