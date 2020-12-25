@@ -22,22 +22,14 @@ double f1(double x0)  //Ham tra ve f'(x0)
 	return dy/dx;
 	//githello
 }
-//--------------------------------------------------------//
-double fixeta(double x0)  //Ham tra ve eta hop li
-{
-    double etaa=eta;
-    while (((f1(x0)*f1(x0+sign*etaa*f1(x0)))>=0) && (etaa<1)) etaa*=2;
-    while ((f1(x0)*f1(x0+sign*etaa*f1(x0)))<=0) etaa/=2;
-    return etaa;
-}
 //-----------------------------------------------------------------------------------------//
 double gda(double x0)  //Gradient Desent Asent
 {                     //Ham nay tra ve gia tri x*>x0 thoa man f'(x*)=0
                      //Cac gia tri tra ve tang dan vi x0 tang dan (i:=a->b)
+    double x=x0;
     if (f1(x0)==0)  return x0;
 	if (f1(x0)<0)     sign=-1;
 	else              sign= 1;
-	double x=x0+sign*fixeta(x0)*f1(x0);
 	while (abs(f1(x0))>eps)
 	{
 	    x=x0+sign*eta*f1(x0);
