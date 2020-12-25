@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #define  eps  1.0e-6
-#define  eta  1.0e-3
+#define  eta  1.0e-4
 #define  step 1.0e-3
 #define  pi   3.14159265
 using namespace std;
