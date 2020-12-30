@@ -30,6 +30,14 @@ _**Note**_: Khi muốn xem file Markdown trên VS Code với extension Markdown 
 ```        
         pip install sympy
 ```
+* SciPy - Thư viện tính toán khoa học: 
+```        
+        pip install scipy
+```
+* Matplotlib - Thư viện đồ thị
+```        
+        pip install matplotlib
+```
 
 ### C/C++ - `.c`, `.cpp`
 **Chương trình**
