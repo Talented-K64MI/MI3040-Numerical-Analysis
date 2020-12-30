@@ -141,7 +141,7 @@ class newton_oop:
         if(f(a) == 0): return a;
         if(f(b) == 0): return b;
 
-        print(x0, m1, self.sign, file=sys.stderr);
+        # print(x0, m1, self.sign, file=sys.stderr);
 
         while(self.__abs(f(x0)) > eps * m1):
         #{
@@ -167,18 +167,10 @@ class newton_oop:
 
 
 #===================================================================================
-# Chương trình ví dụ
-#<<<<<<< HEAD:Topic 1 - Find solution for single-variable functions/Newton-Ralphson Method/newton_ralphson.py
 expr = "x^10 - 2";
 L = 0.5;
 R = 2;
 eps = 1e-12;
-#=======
-#expr = "sqrt(log(x)) - 1";
-#L = 2;
-#R = 3;
-#eps = 1e-12;
-#>>>>>>> 9c75bea9bffb6c6228c1d99be9dd7f4ddc9b94e5:Topic 1 - Find solution for single-variable functions/Newton-Ralphson/newton_ralphson.py
 
 uu = newton_oop(L, R, eps, expr);
 print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");

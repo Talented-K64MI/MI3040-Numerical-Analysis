@@ -8,7 +8,7 @@
 Với cách này không cần sửa code, chỉ cần chạy
 
 
-### Cách 2: Chỉnh sửa trực tiếp vào file `bisection.py` 
+### Cách 2: Chỉnh sửa trực tiếp vào file `bisection.py` - Không khuyến khích :)
 - Bước 1: Uncomment 2 dòng 93, 94 và thay các giá trị khoảng cách ly `L`, `R`, sai số `eps` và biểu thức `input_expr` ở dòng 93 bằng biểu thức tương ứng. **CHÚ Ý BIỂU THỨC PHẢI ĐẶT TRONG DẤU NHÁY KÉP ""** 
 - Bước 2: Chạy file
 

@@ -158,7 +158,7 @@ class newton_oop:
     #{
         if(self.__checkInputValidity() == 0):
         #{
-            print("Invalid input. The program will now exit", file=sys.stderr);
+            print("Đầu vào không hợp lệ!", file=sys.stderr);
             return float("NaN");
         #}
         return self.__newtonMethod();

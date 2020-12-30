@@ -94,4 +94,4 @@ class bisection_oop:
 # uu = bisection_oop(L, R, eps, input_expr)
 # print(uu.Solve())
 uu = bisection_oop(-1, 1, 1e-10, "x")
-print(uu.Solve())
+print(f" Nghiệm của PT f(x) = 0 theo PP chia đôi là: x = {uu.Solve()}")
