@@ -1,28 +1,16 @@
 import numpy as np  # Sử dụng thư viện Numpy (xử lý ma trận) với cách gọi ngắn là np
 
-
 class Gauss_Jordan_Algorithms:
-    
-    def __init__(self, filename):
-        np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
-        # Khai báo các biến toàn cục
-        self.matrix = np.loadtxt(filename, delimiter=' ')  # Đọc ma trận input từ file
+    def __init__(self, input_matrix):
+        """Khai báo"""
+        self.matrix = input_matrix
         self.index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
         self.index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
-        result = np.zeros(
+        self.result = np.zeros(
             (len(self.matrix[0]) - 1, len(self.matrix[0])))  # Khởi tạo ma trận lưu kết quả với các giá trị ban đầu bằng 0
-
-    def solutions_checker(self):
-        """Trong trường hợp nghiệm duy nhất, hàm được sử dụng để kiểm tra lại nghiệm
-        bằng cách nhân lại ma trận kết quả với hệ số ban đầu"""
-        A = np.loadtxt("input.txt", delimiter=' ')[:, :-1]  # ma trận hệ số trong phương trình AX=B
-        print()
-        print("- - - - - Kiểm tra nghiệm - - - - -")
-        print(np.matmul(A, np.delete(self.result, np.s_[1:], axis=1)))  # In ra ma trận A * ma trận X
 
     def find_pivot_element(self):
         """Hàm được dùng để tìm phần tử giải"""
-        # global index_row, index_column
         index_temp = []
         pivot_element = 0
         for row in range(0, len(self.matrix)):
@@ -47,14 +35,13 @@ class Gauss_Jordan_Algorithms:
         if pivot_element != 0:  # Lưu vị trí hàng và cột của phần tử giải
             self.index_row.append(row_pivot_element)
             self.index_column.append(int(index_temp))
-            """ In ra giá trị và vị trí phần tử giải"""
+            # In ra giá trị và vị trí phần tử giải
             # print("Phan tu giai: ", round(matrix[index_row[-1]][index_column[-1]], 10))
             # print("Vi tri: ", index_row[-1] + 1, index_column[-1] + 1)
             # print()
 
     def Gauss_Jordan_method(self):
         """Phương pháp Gauss - Jordan"""
-        # global matrix
         self.find_pivot_element()
         zeros_array = np.zeros((len(self.matrix), len(self.matrix[0])))  # Tạo 1 ma trận không
         for row in range(0, len(self.matrix)):
@@ -70,7 +57,6 @@ class Gauss_Jordan_Algorithms:
         for i in range(len(self.index_row)):
             self.matrix[self.index_row[i]] = self.matrix[self.index_row[i]] / self.matrix[self.index_row[i]][
                 self.index_column[i]]
-        # print(self.matrix)
 
     def rank(self):
         """Tìm hạng của ma trận hệ số A và hạng của ma trận mở rộng"""
@@ -82,10 +68,7 @@ class Gauss_Jordan_Algorithms:
             if np.amax(abs(self.matrix[row, 0:len(self.matrix[0])])) > 0:
                 rank2 = rank2 + 1
         if rank1 < rank2:
-            # print("He PT vo nghiem!")
-            f=open("GJ_output.txt","w")
-            f.write("He PT vo nghiem!")
-            f.close()
+            raise ValueError("He PT vo nghiem")
         elif rank1 < (len(self.matrix[0]) - 1):
             # print("He PT co vo so nghiem!")
             self.display_solutions()
@@ -97,7 +80,6 @@ class Gauss_Jordan_Algorithms:
     def display_solutions(self):
         """Ghi kết quả vào ma trận result, in ma trận result ra màn hình và xuất ra file output.txt"""
         # Ghi kết quả vào ma trận result
-        # global result
         for column in range(len(self.matrix[0]) - 1):
             if column in self.index_column:
                 vt = self.index_column.index(column)
@@ -110,9 +92,6 @@ class Gauss_Jordan_Algorithms:
 
         # In ma trận result ra màn hình
         # print(result)
-
-        # Xuất kết quả ra file output.txt
-        np.savetxt('GJ_output.txt', self.result, fmt='%.5f')  # %.5f: lấy 5 chữ số sau dấu phẩy ghi vào file
 
     # Main program
     def main(self):
