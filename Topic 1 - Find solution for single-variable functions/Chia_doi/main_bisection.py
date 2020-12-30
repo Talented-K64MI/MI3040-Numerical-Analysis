@@ -12,3 +12,4 @@ uu = bisection_oop(a, b, eps, expr);
 sol = uu.Solve();
 
 print(f"Nghiệm của phương trình {expr} = 0 trên khoảng [{a}, {b}] với sai số {eps} là x = {sol}");
+print("Have a good day  -xyp9x");
