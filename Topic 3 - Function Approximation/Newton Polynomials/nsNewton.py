@@ -103,6 +103,7 @@ def main():
     plt.plot(xx, fx)
     plt.xlabel('Points')
     plt.ylabel('Values')
+    plt.savefig("mygraph.png")
 
 if __name__=='__main__':
     main()

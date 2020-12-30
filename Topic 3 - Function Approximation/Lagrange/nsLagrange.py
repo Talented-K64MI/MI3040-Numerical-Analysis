@@ -83,8 +83,9 @@ def main():
     
     xt = np.linspace(x[0]-0.5,x[n - 1] + 0.5,1000)
     plt.plot(xt,PolyCoefficients(xt,px))
-    
-    plt.show()
+    plt.savefig("mygraph.png")
+
+    #plt.show()
 
 if __name__=='__main__':
     main()

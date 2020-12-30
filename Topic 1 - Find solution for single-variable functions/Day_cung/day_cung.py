@@ -46,7 +46,7 @@ class daycung_oop:
         if(sol_set.is_empty): 
             return 1
         else: 
-            return 0m
+            return 0
     #}
 
     # Chốt 141

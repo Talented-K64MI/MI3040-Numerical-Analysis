@@ -4,7 +4,7 @@ using namespace std;
 //--------------------------//
 double f( double x)
 {
-    return  pow(x,4)+3*pow(x,3)-11*x*x-3*x+10;
+    return  pow(x,7)+7*pow(x,6)+21*pow(x,5)+63*pow(x,4)+147*pow(x,3)+189*x*x+119*x-451;
 }
 //-----------------------------------------------//
 double x( double a, double b, string s)
