@@ -117,7 +117,6 @@ def SymbolicIntegrate(f, t0, x0, N):
      xn = x0
      for i in range(0,N):
         xn = x0 + integrate(f.replace(x,xn), (t,t0,t))
-        print(type(xn))
      return xn
 
 
@@ -246,6 +245,6 @@ filename = "input2.txt"
 result = Pica(filename, M = 2.5, L = 1)
 #result1 = Pica(filename, M = 2.5, L = 1, length = 31)
 #
-#print(result)
+print(result)
 #PlotBoth(result, result1)
 #plt.show()
