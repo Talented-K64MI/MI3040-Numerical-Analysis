@@ -25,33 +25,33 @@ def spline3(k,x0):
     x, y, n = data()
     h = np.diff(x)
     # Duoi day la ham tính m
-    def tinhM(x, y, n):
-        m = np.empty(n + 1)
-        d = np.empty(n + 1)
-        anpha = np.empty(n + 1)
-        beta = np.empty(n + 1)
-        muy = np.empty(n + 1)
-        lamda = np.empty(n + 1)
-        h = np.diff(x)
-        d[0] = (y[1]-y[0])/h[0]
-        d[n] = (y[n]-y[n-1])/h[n-1]
-        anpha[1] = 0
-        beta[1] = d[0]
-        for i in range(1, n):
-            d[i] = 6 * ((y[i + 1] - y[i]) / h[i] - (y[i] - y[i - 1]) / h[i - 1]) / (h[i] + h[i - 1])
-        for i in range(1, n):
-            muy[i] = h[i - 1] / (h[i - 1] + h[i])
-            lamda[i] = h[i] / (h[i - 1] + h[i])
-        for i in range(1, n):
-            anpha[i + 1] = lamda[i] / (-2 - anpha[i] * muy[i])
-            beta[i + 1] = (muy[i] * beta[i] - d[i]) / (-2 - anpha[i] * muy[i])
-        m[0] = d[0]
-        m[n] = d[n]
-        for i in range(n - 1, 0, -1):
-            m[i] = anpha[i + 1] * m[i + 1] + beta[i + 1]
+    def tinhM(x,y,n):
+        m=np.empty(n+1)
+        d=np.empty(n+1)
+        anpha=np.empty(n+1)
+        beta=np.empty(n+1)
+        muy=np.empty(n+1)
+        lamda=np.empty(n+1)
+        h=np.diff(x)
+        dh0=(y[1]-y[0])/(x[1]-x[0])
+        dhn=(y[n]-y[n-1])/(x[n]-x[n-1])
+        d[0]=6/h[0]*((y[1]-y[0])/h[0]-dh0)
+        d[n]=6/h[n-1]*(dhn-(y[n]-y[n-1])/h[n-1])
+        anpha[1]=1/(-2)
+        beta[1]=d[0]/2
+        for i in range(1,n):
+            d[i]=6*((y[i+1]-y[i])/h[i]-(y[i]-y[i-1])/h[i-1])/(h[i]+h[i-1])
+        for i in range(1,n):
+            muy[i]=h[i-1]/(h[i-1]+h[i])
+            lamda[i]=h[i]/(h[i-1]+h[i])
+        for i in range(1,n):
+            anpha[i+1]=lamda[i]/(-2-anpha[i]*muy[i])
+            beta[i+1]=(muy[i]*beta[i]-d[i])/(-2-anpha[i]*muy[i])
+        m[n]=(1*beta[n]-d[n])/(-2-1*anpha[n])
+        for i in range(n-1,-1,-1):
+            m[i]=anpha[i+1]*m[i+1]+beta[i+1]
         return m
-
-    m = tinhM(x, y, n)
+    m=tinhM(x,y,n)
     if k==1:
         for j in range(1,n+1):
             print('S3' +'['+ str(x[j-1])+','+str(x[j])+']'+'= ' + str(round(m[j - 1] / (6 * h[j - 1]),3)) + '(' + str(x[j]) + '- x)^3' +
