@@ -140,19 +140,19 @@ class jacobi_mat_inversion:
 
 #===================================================================================
 # Chương trình ví dụ
-# n = # Kích cỡ ma trận
-# A = # Ma trận đầu vào
-# eps = # Sai số epsilon
+n =3 # Kích cỡ ma trận
+A =[50,107,36,25,54,20,31,66,21] # Ma trận đầu vào
+eps =0.0001 # Sai số epsilon
 
 # In ra A
-# print(A);
+print(A);
 
-# A = np.reshape(np.array(A), (n, n));
-# uu = jacobi_mat_inversion(A, n, eps);
+A = np.reshape(np.array(A), (n, n));
+uu = jacobi_mat_inversion(A, n, eps);
 
-# A1 = uu.jacobi_iteration(1);  # Tiên nghiệm
-# print(A1);                    # In ra ma trận nghịch đảo
-# print(A1 @ A);                # Kiểm tra
+A1 = uu.jacobi_iteration(1);  # Tiên nghiệm
+print(A1);                    # In ra ma trận nghịch đảo
+print(A1 @ A);                # Kiểm tra
 
 # A2 = uu.jacobi_iteration(2);  # Hậu nghiệm
 # print(A2);                    # In ra ma trận nghịch đảo

@@ -106,4 +106,6 @@ plt.plot(x0,y3)
 plt.plot(x0,y1)
 plt.plot(x0,y2)
 plt.scatter(x,y)
+#plt.savefig("mygraph.png")
+
 plt.show()
