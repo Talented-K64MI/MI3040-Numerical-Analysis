@@ -1,6 +1,6 @@
 # Tìm Min-Max của hàm f(x) trên đoạn `[a; b]` - Nhóm 7 - Nguyễn Thị Hường-Lê Trung Kiên
 
-
+  ## ĐỐI VỚI  MIN-MAX.CPP
 ## Input, output
 - **Input:**  `a`, `b`, `f(x)`, (`step` và `eta` nếu lâu quá có thể thay đổi)
 
@@ -45,3 +45,17 @@ Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin c�
     + Sau khi tìm được x* tạm chấp nhận được, ta sẽ tăng i lên 1 đoạn `step` để nó vượt qua x*, do đó sẽ bị bỏ sót các điểm tới hạn trong khoảng (x*, x* + step)
 - Đối với khoảng [a,b] lớn dễ gây ra trường hợp in thiếu điểm tới hạn=> Cách khắc phục:QUAY LẠI XEM DÒNG 3 MỤC HDSD và
  CÓ THỂ SẼ CHẠY HƠI LÂU NÊN MỌI NGƯỜI CỨ BÌNH TĨNH CHỜ NHÉ!!
+  ## ĐỐI VỚI MIN-MAX-2.CPP
+## Input, Output
+ - **Input:**  `a`, `b`, `f(x)`
+- **Output:** Bộ giá trị sau:
+    * `XMAX` và `F(XMAX)`
+    * `XMIN` và `F(XMIN)` 
+ 
+## Hướng dẫn sử dụng: 
+Dịch và chạy file `MIN-MAX-2.cpp`, với các thay đổi sau:
+- Thay đổi [a,b] (dòng 56) và hàm `f(x)` (dòng 7)
+## Ưu điểm:
+ Các trường hợp chạy chính xác hơn file `MIN-MAX.cpp`, do không bị ràng buộc bởi hệ số eta và độ lớn của đạo hàm.
+ ## Nhược điểm: 
+ Chạy lâu hơn.
