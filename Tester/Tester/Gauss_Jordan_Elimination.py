@@ -12,6 +12,6 @@ input_matrix = np.array([[1, 1, -3, 2, 6], [1, -2, 0, -1, -6], [0, 1, 1, 3, 16],
 try:
     RUN = Gauss_Jordan_Algorithms(input_matrix)
     RUN.main()
-    print(RUN.result)
+    # print(RUN.result)
 except:
     raise ValueError("Da co loi xay ra!")
