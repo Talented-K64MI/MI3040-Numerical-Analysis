@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1d9f9a06-ac93-49cb-85bb-387ebc3017b0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tester.py</StartupFile>
+    <StartupFile>Gauss_Jordan_Elimination.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Gauss_Jordan_Elimination.py" />
     <Compile Include="Tester.py" />
   </ItemGroup>
   <ItemGroup>

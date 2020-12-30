@@ -8,11 +8,11 @@ np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)
 #test = matrix
 #n = len(matrix)
 #print(matrix)
-#index_row = []  # Mảng lưu các hàng của phần tử giải (theo thứ tự)
-#index_column = []  # Mảng lưu các cột của phần tử giải (theo thứ tự)
-#e = np.zeros([n,n])
-#for i in range(n):
-#    e[i,i] = 1.0
+index_row = []  # Mảng lưu các hàng của phần tử giải (theo thứ tự)
+index_column = []  # Mảng lưu các cột của phần tử giải (theo thứ tự)
+e = np.zeros([n,n])
+for i in range(n):
+    e[i,i] = 1.0
 
 # Tìm trụ tối đại
 def timtrutoidai():
@@ -73,10 +73,6 @@ def sosanh(a, b, n):
         elif a[i] < b[i]: return -1
     return  check
 
-# Chương trình chính
-print("- - - - - - - - - - - - - - - - - - - -")
-print()
-print("Gauss-Jordan method to find the inversed matrix")
 for i in range(0, n):
     GaussJordan()
 chuanhoaheso()
@@ -87,6 +83,5 @@ for i in range(n):
             for k in range(n):
                 matrix[j,k], matrix[j+1, k] = matrix[j+1, k], matrix[j, k]
                 e[j, k], e[j + 1, k] = e[j + 1, k], e[j, k]
-print("Ma trận nghịch đảo là:")
+
 print(e)
-print("=======================================================")

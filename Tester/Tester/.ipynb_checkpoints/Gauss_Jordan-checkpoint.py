@@ -8,14 +8,12 @@ np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)
 #test = matrix
 #n = len(matrix)
 #print(matrix)
-#index_row = []  # Mảng lưu các hàng của phần tử giải (theo thứ tự)
-#index_column = []  # Mảng lưu các cột của phần tử giải (theo thứ tự)
-#e = np.zeros([n,n])
-#for i in range(n):
-#    e[i,i] = 1.0
+index_row = []  # Mảng lưu các hàng của phần tử giải (theo thứ tự)
+index_column = []  # Mảng lưu các cột của phần tử giải (theo thứ tự)
+
 
 # Tìm trụ tối đại
-def timtrutoidai():
+def timtrutoidai(matrix):
     global index_row, index_column
     index_temp = []
     maxvalue = 0
@@ -46,9 +44,9 @@ def timtrutoidai():
 
 
 # Thuật toán GaussJordan
-def GaussJordan():
-    global matrix,e
-    timtrutoidai()
+def GaussJordan(matrix,e):
+    #global matrix,e
+    timtrutoidai(matrix)
     zeros_array = np.zeros([n,n])  # Tạo 1 ma trận không
     z = np.zeros([n,n])  # Tạo 1 ma trận không
     for row in range(0, len(matrix)):
@@ -62,7 +60,7 @@ def GaussJordan():
 
 
 # Chuẩn hóa hệ số bằng 1
-def chuanhoaheso():
+def chuanhoaheso(e, matrix):
     for i in range(len(index_row)):
         e[index_row[i]] = e[index_row[i]] / matrix[index_row[i]][index_column[i]]
         matrix[index_row[i]] = matrix[index_row[i]] / matrix[index_row[i]][index_column[i]]
@@ -72,21 +70,20 @@ def sosanh(a, b, n):
         if a[i] > b[i]: return 1
         elif a[i] < b[i]: return -1
     return  check
+def Gauss_Jordan(matrix):
+    n = len(matrix)
+    e = np.zeros([n,n])
+    for i in range(n):
+        e[i,i] = 1.0
+    for i in range(0, n):
+        GaussJordan(matrix,e)
+    chuanhoaheso(e, matrix)
+    print()
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if sosanh(matrix[j],matrix[j+1],n) == -1:
+                for k in range(n):
+                    matrix[j,k], matrix[j+1, k] = matrix[j+1, k], matrix[j, k]
+                    e[j, k], e[j + 1, k] = e[j + 1, k], e[j, k]
 
-# Chương trình chính
-print("- - - - - - - - - - - - - - - - - - - -")
-print()
-print("Gauss-Jordan method to find the inversed matrix")
-for i in range(0, n):
-    GaussJordan()
-chuanhoaheso()
-print()
-for i in range(n):
-    for j in range(0, n-i-1):
-        if sosanh(matrix[j],matrix[j+1],n) == -1:
-            for k in range(n):
-                matrix[j,k], matrix[j+1, k] = matrix[j+1, k], matrix[j, k]
-                e[j, k], e[j + 1, k] = e[j + 1, k], e[j, k]
-print("Ma trận nghịch đảo là:")
-print(e)
-print("=======================================================")
+    return e

@@ -241,10 +241,20 @@ def Pica(filename, length = None, M = None, L = None, deltaT = None):
 
 # usage example:
 filename = "input2.txt"
-#
-result = Pica(filename, M = 2.5, L = 1)
-#result1 = Pica(filename, M = 2.5, L = 1, length = 31)
-#
+# 1 số hàm phức tạp ko thể dùng Pica loại 1 (dạng giải tích). Dạng 2 là dạng mảng.
+result = Pica(filename, M = 2.5, L = 1)                     # loại 1
+result1 = Pica(filename, M = 2.5, L = 1, length = 31)       # loại 2
+
+#in kết quả
 print(result)
+print(result1)
+
+#vẽ cả 2 đồ thị
 #PlotBoth(result, result1)
+#vẽ đồ thị loại 2:
+#PlotPairs(result1)
+#vẽ đồ thị loại 1:
+#PlotSymbol(result)
+
+# vẽ xong thì phải show ra :v
 #plt.show()
