@@ -136,24 +136,3 @@ class jacobi_mat_inversion:
         return self.__successor_iteration(A, B, T, q, var_lambda, p);
     #}
 #}
-
-
-#===================================================================================
-# Chương trình ví dụ
-# n = # Kích cỡ ma trận
-# A = # Ma trận đầu vào
-# eps = # Sai số epsilon
-
-# In ra A
-# print(A);
-
-# A = np.reshape(np.array(A), (n, n));
-# uu = jacobi_mat_inversion(A, n, eps);
-
-# A1 = uu.jacobi_iteration(1);  # Tiên nghiệm
-# print(A1);                    # In ra ma trận nghịch đảo
-# print(A1 @ A);                # Kiểm tra
-
-# A2 = uu.jacobi_iteration(2);  # Hậu nghiệm
-# print(A2);                    # In ra ma trận nghịch đảo
-# print(A2 @ A);                # Kiểm tra
