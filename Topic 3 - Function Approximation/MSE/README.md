@@ -7,6 +7,7 @@
 ## Hướng dẫn sử dụng
 * Chọn hệ sinh u = [ui]
 * Chạy như file python bình thường.
+* Khuyến khích các bạn chuyển về file .ipynb để chạy từng đoạn code
 
 ## Phân tích ưu nhược điểm thuật toán
 * Ưu điểm: 
@@ -16,3 +17,4 @@
 	- Nhạy cảm với nhiễu 
 	- Với bộ dữ liệu có phương sai lớn thì độ lớn hàm mất mát tăng
 	- Việc tăng số hàm sử dụng với bộ dữ liệu nhỏ dần đến over fitting không hiệu quả so với nội suy 
+
