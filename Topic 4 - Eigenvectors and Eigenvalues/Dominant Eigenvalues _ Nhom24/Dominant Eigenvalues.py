@@ -14,7 +14,7 @@ for i in (b):
 X = np.array(X)
 Y = X.reshape(n, 1)
 #print('Vector Y là: ',X)
-#Y = np.random.rand(n, 1)
+# Y = np.random.rand(n, 1)
 c = f.read()
 c = c.split()
 A = []

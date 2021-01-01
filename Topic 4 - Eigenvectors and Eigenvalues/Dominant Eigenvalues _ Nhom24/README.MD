@@ -25,5 +25,6 @@
     
 * **Bước 2:** Chạy chương trình
 
-**Chú ý:** Mọi người cho chạy ra kết quả rồi thì muốn kiểm tra lại thì vào lại trang này: https://matrixcalc.org/vi/vectors.html
+**Chú ý:**
+ -Mọi người cho chạy ra kết quả rồi thì muốn kiểm tra lại thì vào lại trang này: https://matrixcalc.org/vi/vectors.html
 Chúc mọi người test code vui vẻ ^^
