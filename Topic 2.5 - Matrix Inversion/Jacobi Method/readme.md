@@ -7,14 +7,11 @@
 * Các file `jacobi_fromfile.py` và `jacobi_terminal.py` phải để cùng với file `lib_jacobi.py` trong cùng 1 thư mục, bởi file này là file thư viện, chứa các lệnh cần thiết để tiến hành thuật toán
 * Yêu cầu cài đặt thư viện NumPy
 
-### Cách 1: Nhập từ file
+### Cách sử dụng
+_Note:_ Để tránh xung đột code, nhóm đã xóa cách nhập trực tiếp từ code
 - **Bước 1:** Tạo file `input.txt` và nhập ma trận
 **Chú ý:** Không cần nhập kích thước ma trận vì chương trình tự dò kích cỡ ma trận nhập vào và bắt nhập lại nếu ma trận bị sai kích cỡ
 - **Bước 2:** Chạy file `jacobi_fromfile.py` và làm theo hướng dẫn
-
-### Cách 2: Nhập trực tiếp
-- **Bước 1:** Chỉnh sửa dòng 11, 12, 13 theo comment trong file `jacobi_terminal.py`
-- **Bước 2:** Chạy file `jacobi_terminal.py` và làm theo hướng dẫn
 
 
 ## Ưu, nhược điểm của thuật toán
