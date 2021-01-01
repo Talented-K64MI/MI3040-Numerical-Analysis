@@ -6,15 +6,15 @@ f = open("input.txt", "r")
 a = f.readline()
 n =  int(a)
 print('Ma trận cỡ: {} x {}'.format(n, n))
-'''b = f.readline()
+b = f.readline()
 b = b.split()
 X = []
 for i in (b):
     X.append(float(i))
 X = np.array(X)
-Y = X.reshape(n, 1)'''
+Y = X.reshape(n, 1)
 #print('Vector Y là: ',X)
-Y = np.random.rand(n, 1)
+#Y = np.random.rand(n, 1)
 c = f.read()
 c = c.split()
 A = []

@@ -12,6 +12,8 @@
 
 * **Bước 1:** Tạo một file `input.txt`. Trong file `input.txt` ta làm những thao thác như sau:
   - Dòng đầu tiên nhập cỡ ma trận. Ví dụ ma trận cỡ 3X3 thì nhập 3
+    
+  - Dòng tiếp theo nhập vector Y: VD cỡ 3x3 thì nhập: 1 1 1
   - Các dòng còn lại thì nhập dữ liệu ma trận. Ví dụ:
     ```    
     1 0 0 
