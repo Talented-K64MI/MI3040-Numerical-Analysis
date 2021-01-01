@@ -4,7 +4,7 @@
 - Output: Ma trận nghịch đảo theo PP Jacobi với cả 2 đánh giá tiên nghiệm và hậu nghiệm
 ## Hướng dẫn sử dụng
 ### Chú ý trước khi sử dụng
-* Các file `jacobi_fromfile.py` và `jacobi_terminal.py` phải để cùng với file `lib_jacobi.py` trong cùng 1 thư mục, bởi file này là file thư viện, chứa các lệnh cần thiết để tiến hành thuật toán
+* File `jacobi_fromfile.py` phải để cùng với file `lib_jacobi.py` trong cùng 1 thư mục, bởi file này là file thư viện, chứa các lệnh cần thiết để tiến hành thuật toán
 * Yêu cầu cài đặt thư viện NumPy
 
 ### Cách sử dụng

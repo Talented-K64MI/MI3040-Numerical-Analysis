@@ -4,7 +4,7 @@
 - Output: Ma trận nghịch đảo theo PP Newton
 ## Hướng dẫn sử dụng
 ### Chú ý trước khi sử dụng
-* Các file `newton_fromfile.py` và `newton_terminal.py` phải để cùng với file `lib_newton.py` trong cùng 1 thư mục, bởi file này là file thư viện, chứa các lệnh cần thiết để tiến hành thuật toán
+* File `newton_fromfile.py` phải để cùng với file `lib_newton.py` trong cùng 1 thư mục, bởi file này là file thư viện, chứa các lệnh cần thiết để tiến hành thuật toán
 * Yêu cầu cài đặt thư viện NumPy
 
 ### Cách sử dụng
