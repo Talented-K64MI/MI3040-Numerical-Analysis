@@ -18,4 +18,4 @@ _Note:_ Để tránh xung đột code, nhóm đã xóa cách nhập trực tiế
     - Sai số tính toán được sửa lại sau mỗi bước lặp.
     - Dễ cài đặt, thuật toán đơn giản, dẽ nhớ.
 - **Nhược điểm:**
-    - Rất khó tìm xấp xỉ đầu cho phương pháp này do yêu cầu của hệ số co q.
+    - ~~Rất khó tìm xấp xỉ đầu cho phương pháp này do yêu cầu của hệ số co q~~. Tuy nhiên nhóm đã phát triển thuật toán cải tiến và có thể chạy trên bất kỳ ma trận nào khả nghịch.
