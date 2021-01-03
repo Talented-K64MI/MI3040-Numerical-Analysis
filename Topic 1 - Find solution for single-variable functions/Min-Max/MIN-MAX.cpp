@@ -3,10 +3,11 @@
 #define  eta  1.0e-4
 #define  step 1.0e-3
 #define  pi   3.14159265
+#define e   2.718281828459
 using namespace std;
 double  a=-5,
          b=5;
-int     sign;
+int     sign, dem=0;
 map    <double, double> save;
 map    <double, double>::iterator k, kmax, kmin;
 //----------------------------------//
@@ -20,6 +21,7 @@ double f1(double x0)  //Ham tra ve f'(x0)
 	double dy=f(x0+eps)-f(x0-eps),
 		   dx=2*eps;
 	return dy/dx;
+
 	//githello
 }
 //-----------------------------------------------------------------------------------------//
@@ -35,6 +37,7 @@ double gda(double x0)  //Gradient Desent Asent
 	    x=x0+sign*eta*f1(x0);
 		x0=x;
 		if (x0>b)   return b;
+		dem++;
 	}
 	return x;
 }
@@ -76,6 +79,7 @@ void xuat2() //Tim va xuat max min
 	}
 	printf("Min cua f(x) trong khoang [%5.2f,%5.2f] tai: m (%5.5f,%5.5f)\n",a,b,kmin->first,kmin->second);
 	printf("Max cua f(x) trong khoang [%5.2f,%5.2f] tai: M (%5.5f,%5.5f)\n",a,b,kmax->first,kmax->second);
+	printf("So buoc lap cua GDA la %d:",dem);
 }
 //----------------------------//
 int main()
