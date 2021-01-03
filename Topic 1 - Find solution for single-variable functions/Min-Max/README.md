@@ -12,7 +12,7 @@
 
 ## Hướng dẫn sử dụng: 
 Dịch và chạy file `MIN-MAX.cpp`, với các thay đổi sau:
-- Thay đổi [a,b] (dòng 7, 8) và hàm `f(x)` (dòng 15)
+- Thay đổi [a,b] (dòng 8,9) và hàm `f(x)` (dòng 16)
 - Có thể thay đổi eta nhỏ hơn ở dòng 3 và thay đổi khoảng [a,b] nhỏ hơn  trong trường hợp khoảng lớn dễ in thiếu điểm tới hạn.
 
 ## Cách sử dụng từng hàm trong chương trình
@@ -54,7 +54,7 @@ Nếu dùng map thì chỉ cần 1 map là có thể lưu được thông tin c�
  
 ## Hướng dẫn sử dụng: 
 Dịch và chạy file `MIN-MAX-2.cpp`, với các thay đổi sau:
-- Thay đổi [a,b] (dòng 56) và hàm `f(x)` (dòng 7)
+- Thay đổi [a,b] (dòng 60) và hàm `f(x)` (dòng 10)
 ## Ưu điểm:
  Các trường hợp chạy chính xác hơn file `MIN-MAX.cpp`, do không bị ràng buộc bởi hệ số eta và độ lớn của đạo hàm.
  ## Nhược điểm: 
