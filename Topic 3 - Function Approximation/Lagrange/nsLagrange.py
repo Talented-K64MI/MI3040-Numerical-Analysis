@@ -81,7 +81,7 @@ def main():
     
     plt.scatter(x,y)
     
-    xt = np.linspace(x[0]-0.5,x[n - 1] + 0.5,1000)
+    xt = np.linspace(min(x)-0.5,max(x) + 0.5,1000)
     plt.plot(xt,PolyCoefficients(xt,px))
     plt.savefig("mygraph.png")
 
