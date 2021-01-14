@@ -1,29 +1,29 @@
 import time
 import numpy as np
 np.set_printoptions(suppress=True, linewidth=np.inf, precision=12)
-
-def checkdet(a):
-    det = np.linalg.det(a)
-    if det == 0:
-        #print("Ma trận không khả nghịch!!!")
-
-        return -1
-    
-    #b = np.transpose(a)
-    #t = b.dot(a)
-    return 1
-#print("Ma trận vừa nhập là:")
-#print(a)
-#print("========================================================================")
+print("========================================================================")
+print("Chương Trình Tìm nghịch đảo của ma trận bằng phương pháp viền quanh")
+print("========================================================================")
+a = np.loadtxt("test1.txt",dtype='float', delimiter=' ')
+n = len(a)
+b = np.transpose(a)
+t = b.dot(a)
+print("Ma trận vừa nhập là:")
+print(a)
+print("========================================================================")
 def bordering(a, n):# Nhap ma tran a va kich thuoc cua ma tran
 
     if n == 2: #Trường hợp chặn đệ quy
         inv = np.zeros([2,2]) #Khởi tạo ma trận nghịch đảo alpha^-1
-        inv[0,0] = a[1,1]/(a[0,0] * a[1,1] - a[1,0]*a[0, 1])
-        inv[0,1] = -a[0 ,1]/(a[0,0] * a[1,1] - a[1,0]*a[0, 1])
-        inv[1,0] = -a[1,0]/(a[0,0] * a[1,1] - a[1,0]*a[0, 1])
-        inv[1,1] = a[0,0]/(a[0,0] * a[1,1] - a[1,0]*a[0, 1])
-        return inv
+        if (a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1]) == 0:
+            print("Ma tran ko kha nghich")
+            quit()
+        else:
+            inv[0, 0] = a[1, 1] / (a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1])
+            inv[0, 1] = -a[0, 1] / (a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1])
+            inv[1, 0] = -a[1, 0] / (a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1])
+            inv[1, 1] = a[0, 0] / (a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1])
+            return inv
     a_11 = np.zeros([n - 1, n - 1])  # Khởi tạo các ma trận con
     a_12 = np.zeros([n - 1, 1])
     a_21 = np.zeros([1, n - 1])
@@ -39,6 +39,9 @@ def bordering(a, n):# Nhap ma tran a va kich thuoc cua ma tran
         X = a_111.dot(a_12)
         Y = a_21.dot(a_111)
         theta = a_22 - Y.dot(a_12)
+        if theta == 0:
+            print('Ma Tran Khong Kha Nghich')
+            quit()
         x = X.dot(Y)
         for i in range(0, n - 1):
             for j in range(0, n - 1):
@@ -47,3 +50,14 @@ def bordering(a, n):# Nhap ma tran a va kich thuoc cua ma tran
                 a[i, n - 1] = -X[i, 0] / theta
         a[n - 1, n - 1] = 1 / theta
     return a
+st = time.time()
+s = bordering(t, n)
+et = time.time()
+
+print("========================================================================")
+print("Ma trận nghịch đảo là:")
+print(s.dot(b))
+np.savetxt("output.txt",s.dot(b),fmt= '%-.8f' ,delimiter=' ' )
+print("========================================================================")
+print((et-st)*1000,'ms')
+print("========================================================================")
