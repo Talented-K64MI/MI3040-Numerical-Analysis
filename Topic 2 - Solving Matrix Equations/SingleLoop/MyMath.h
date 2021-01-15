@@ -31,6 +31,9 @@ namespace Hieu
                 case 106:
                     this->name = name + ": Error matrix have norm greater than one";
                     break;
+                case 107:
+                    this->name = name + ": Error matrix don't have dig";
+                    break;
                 default:
                     this->name = name + ": Error";
                     break;
@@ -178,6 +181,23 @@ namespace Hieu
                     return 0;
                 } else throw MyError(101,"calDig");
             }
+            Matrix mul(Matrix &a, Matrix &b, Matrix &c){
+                 if (a.getCol() == b.getRow() && b.getCol() == c.getCol() && a.getRow()== c.getRow()){
+                    Matrix matrix(a.getRow(),b.getCol());
+                    for (int i=1;i<=a.getRow();++i){
+                        for (int j=1;j<=b.getCol();++j){
+                            double tam=0.0;
+                            for (int k=1;k<=a.getCol();++k){ 
+                            if (k<i) tam = tam + (a.getVal(i,k) * matrix.getVal(k,j));
+                            else tam = tam + (a.getVal(i,k) * b.getVal(k,j));
+                            }
+                            tam=tam+c.getVal(i,j);
+                            matrix.setVal(i,j,tam);
+                        }
+                    }
+                    return matrix;
+                } else throw MyError(101,"Mul");
+            }
             Matrix operator+(Matrix& b) throw(MyError) {
                 if (this->getCol() == b.getCol() && this->getRow() == b.getRow()){
                     Matrix matrix(this->row,this->col);
@@ -224,35 +244,32 @@ namespace Hieu
             }
     };
     class Equation{
-        public :
-            Matrix singleloop(Matrix& A,Matrix& B,Matrix& X0,double& eps,int type = 1) throw (MyError){
-                if (A.getCol() != A.getRow()) throw MyError(101,"jacobi");
-                if (B.getCol() != 1) throw MyError(104,"jacobi");
-                if (X0.getCol() != 1) throw MyError(104,"jacobi");
-                if (A.getRow() != B.getRow() || A.getRow() != X0.getRow()) throw MyError(102,"jacobi");
-                if (eps < 0.0 ) throw MyError(105,"jacobi");
-                int normType = 0;
-                for (int i=3;i>=1;--i){
-                    if (A.getNorm(i)<1.0) normType = i;
-                }
-                if (normType == 0) throw MyError(106,"jacobi");
-                double q=A.getNorm(normType);
+        private :
+            void Check(Matrix& A,Matrix& B,Matrix& X0,double& eps,string name) throw(MyError){
+                if (A.getCol() != A.getRow()) throw MyError(101,name);
+                if (B.getCol() != 1) throw MyError(104,name);
+                if (X0.getCol() != 1) throw MyError(104,name);
+                if (A.getRow() != B.getRow() || A.getRow() != X0.getRow()) throw MyError(102,name);
+                if (eps < 0.0 ) throw MyError(105,name);
+            }
+            Matrix loop(string name,Matrix& A,Matrix& B,Matrix& X0,double& eps,int& type,double& q,int& normType,int type1,double w=1.0){
                 double eps1=floor(log10(eps));
                 eps1=pow(10,eps1)*0.5;
-                double eps2=eps-eps1;
+                eps1=eps-eps1;
                 switch (type){
                 case 1:
                     {Matrix X(A.getCol(),1);
                     Matrix X1(A.getCol(),1);
-                    double w=q/(1-q);
+                    double w1=q/(1-q);
                     X=X0;
                     int loopNumber=0;
                     do {
                         ++loopNumber;
                         X1=X;
-                        X=(A*X1)+B;
-                    }while (w*(X-X1).getNorm(normType)>eps2);
-                    std::cerr<<type<<" "<<normType<<" "<<q<<" "<<loopNumber<<"\n";
+                        if (type1==1) X=(A*X1)+B;
+                        else X=X.mul(A,X1,B);
+                    }while (w*w1*(X-X1).getNorm(normType)>eps1);
+                    cerr<<name<<" "<<type<<" "<<normType<<" "<<q<<" "<<loopNumber<<" "<<w<<"\n";
                     X.toRound(eps);
                     return X;
                     break;}
@@ -261,17 +278,99 @@ namespace Hieu
                     Matrix X(A.getCol(),1);
                     Matrix X1(A.getCol(),1);
                     X=X0;
-                    X1=(A*X)+B;
-                    int loopNumber=ceil((log((eps2*(1-q))/((X-X1).getNorm(normType))))/(log(q)));
+                    if (type1==1) X1=(A*X)+B;
+                    else X1=X1.mul(A,X,B);
+                    int loopNumber=ceil((log((eps1*(1-q))/((X-X1).getNorm(normType)*w)))/(log(q)));
                     for (int i=1;i<=loopNumber;++i){
-                        X=(A*X)+B;
+                       if (type1==1) X=(A*X)+B;
+                       else X=X.mul(A,X,B);
                     }
-                    std::cerr<<type<<" "<<normType<<" "<<q<<" "<<loopNumber<<"\n";
+                    cerr<<name<<" "<<type<<" "<<normType<<" "<<q<<" "<<loopNumber<<" "<<w<<"\n";
                     X.toRound(eps);
                     return X;
                     break;
                     }
                 }
+            }
+        public :
+            Matrix singleloop(Matrix& A,Matrix& B,Matrix& X0,double& eps,int type = 1) throw (MyError){
+                string name="singleloop";
+                this->Check(A,B,X0,eps,name);
+                int normType = 0;
+                for (int i=3;i>=1;--i){
+                    if (A.getNorm(i)<1.0) normType = i;
+                }
+                if (normType == 0) throw MyError(106,name);
+                double q=A.getNorm(normType);
+                return loop(name,A,B,X0,eps,type,q,normType,1);
+            }
+            Matrix jacobiloop(Matrix& A,Matrix& B,Matrix& X0,double& eps,int type = 1) throw (MyError){
+                string name="jacobiloop";
+                this->Check(A,B,X0,eps,name);
+                int normType=A.calDig();
+                if (normType==0) throw(MyError(107,name));
+                Matrix C(A.getRow(),A.getCol()),D(B.getRow(),B.getCol());
+                for (int i=1;i<=A.getCol();++i)
+                for (int j=1;j<=A.getRow();++j){
+                    C.setVal(j,i,-(A.getVal(j,i))/(A.getVal(j,j)));
+                    if (i==j) C.setVal(i,i,0);
+                }
+                for (int i=1;i<=B.getCol();++i)
+                for (int j=1;j<=B.getRow();++j){
+                    D.setVal(j,i,(B.getVal(j,i))/(A.getVal(j,j)));
+                }
+                double q=C.getNorm(normType);
+                double w=1.0;
+                double t1=fabs(A.getVal(1,1));
+                double t2=fabs(A.getVal(1,1));
+                if (normType==2){
+                    for (int i=1;i<=A.getCol();i++){
+                        t1=max(t1,fabs(A.getVal(i,i)));
+                        t2=min(t2,fabs(A.getVal(i,i)));    
+                    }
+                    w=t2/t1;
+                }
+                return loop(name,C,D,X0,eps,type,q,normType,1,w);
+            }
+             Matrix gaussseidelloop(Matrix& A,Matrix& B,Matrix& X0,double& eps,int type = 1) throw (MyError){
+                string name="gaussseidelloop";
+                this->Check(A,B,X0,eps,name);
+                int normType=A.calDig();
+                if (normType==0) throw(MyError(107,name));
+                Matrix C(A.getRow(),A.getCol()),D(B.getRow(),B.getCol());
+                for (int i=1;i<=A.getCol();++i)
+                for (int j=1;j<=A.getRow();++j){
+                    C.setVal(j,i,-(A.getVal(j,i))/(A.getVal(j,j)));
+                    if (i==j) C.setVal(i,i,0);
+                }
+                for (int i=1;i<=B.getCol();++i)
+                for (int j=1;j<=B.getRow();++j){
+                    D.setVal(j,i,(B.getVal(j,i))/(A.getVal(j,j)));
+                }
+                double q=0.0;
+                for (int i=1;i<=C.getRow();++i){
+                double t1=0.0;
+                double t2=0.0;
+                for (int j=1;j<=C.getCol();++j){
+                    if (j<i) t1=t1+fabs(C.getVal(i,j));
+                    else t2=t2+fabs(C.getVal(i,j));
+                }
+                q=max(q,t2/(1-t1));
+                }
+                double w=1.0;
+                if (normType==2){
+                    double t1=0;
+                    double t2=0;
+                    for (int j=1;j<=A.getRow();++j){
+                        t2=0;
+                        for (int i=j+1;i<=A.getCol();++i){
+                           t2=t2+fabs(A.getVal(i,j));
+                        }
+                        t1=max(t1,t2);
+                    }
+                    w=1/(1-t1);
+                }
+                return loop(name,C,D,X0,eps,type,q,normType,2,w);
             }
     };
 

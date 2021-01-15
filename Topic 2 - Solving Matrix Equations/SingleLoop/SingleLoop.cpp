@@ -6,9 +6,6 @@ void IoFile(bool ok){
         freopen("Equation.out","w",stdout);
     }
 }
-void Jacobi(){
-
-}
 int main()
 {
     IoFile(true);
@@ -36,12 +33,24 @@ int main()
         }
         Matrix X(n,1);
         Equation myequation;
-        X=myequation.singleloop(A,B,X0,eps);
+        /* X=myequation.singleloop(A,B,X0,eps);
         for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
-        cout<<"\n";
-        X=myequation.singleloop(A,B,X0,eps,2);
+        cout<<"\n"; */
+       /*  X=myequation.singleloop(A,B,X0,eps,2);
         for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
-        cout<<"\n";
+        cout<<"\n"; */
+       /*  X=myequation.jacobiloop(A,B,X0,eps);
+        for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
+        cout<<"\n"; */
+        /* X=myequation.jacobiloop(A,B,X0,eps,2);
+        for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
+        cout<<"\n"; */
+        /*  X=myequation.gaussseidelloop(A,B,X0,eps);
+        for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
+        cout<<"\n"; */
+       /*  X=myequation.gaussseidelloop(A,B,X0,eps,2);
+        for (int i=1;i<=X.getRow();++i) cout<<X.getVal(i,1)<<" ";
+        cout<<"\n"; */
     } catch (MyError e){
      cout<<e.getName();
     }
