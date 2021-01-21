@@ -7,7 +7,7 @@
 
 ## Hướng dẫn sử dụng
 * Yêu cầu cài thư viện `numpy` trước khi sử dụng
-* Tạo file input.txt để cùng thư mục với file code
+* Tạo file GJ_input.txt để cùng thư mục với file code
 * Nhập hệ số ma trận bổ sung vào file GJ_input.txt mỗi số hạng cách nhau bằng 1 khoảng trắng " "
 * Nếu số hạng của 1 phần tử bằng 0 nhập 0 vào vị trí tương ứng
 * Chạy và được kết quả. Kết quả được lưu trong ma trận result và file GJ_output.txt

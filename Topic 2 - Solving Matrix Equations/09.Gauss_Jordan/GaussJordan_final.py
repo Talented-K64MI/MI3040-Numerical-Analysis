@@ -1,10 +1,9 @@
 import numpy as np  # Sử dụng thư viện Numpy (xử lý ma trận) với cách gọi ngắn là np
 
-
 class Gauss_Jordan_Algorithms:
     np.set_printoptions(suppress=True, linewidth=np.inf, precision=10)  # Căn chỉnh ma trận in ra trên màn hình
 
-    # Khai báo các biến toàn cục
+
     matrix = np.loadtxt("GJ_input.txt", delimiter=' ')  # Đọc ma trận input từ file
     index_row = []  # Khởi tạo mảng lưu các hàng của phần tử giải (theo thứ tự)
     index_column = []  # Khởi tạo mảng lưu các cột của phần tử giải (theo thứ tự)
