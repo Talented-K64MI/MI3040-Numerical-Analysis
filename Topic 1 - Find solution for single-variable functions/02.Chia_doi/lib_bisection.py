@@ -47,6 +47,7 @@ class bisection_oop:
         # Internal function 
         # Return root of f(x) = 0 which f(x), eps and range [a_0, b_0] are given.
         # Assign [a, b] and eps
+        nIterations = 0
         left    = self.a_0
         right   = self.b_0
         epsilon = self.eps
@@ -70,9 +71,12 @@ class bisection_oop:
                 right = mid
             else:
                 left = mid
+
+            nIterations = nIterations + 1
         #}
         
         # print(left, mid, right, sep=',', file=sys.stderr)
+        print(f"Phương pháp chia đôi kết thúc sau {nIterations} lần lặp")
         return mid
     #}
 
