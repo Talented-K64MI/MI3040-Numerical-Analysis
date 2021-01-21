@@ -1,0 +1,16 @@
+Hướng dẫn sử dụng code: (Ngôn ngữ C)
+- Trước khi chạy chương trình: Nhập phương trình cần giải vào dòng code 23 (hàm ff)
+VD: với phương trình x^4 + 3x^3 - 11x^2 - 3x + 10 = 0
+Ta nhập hàm ff:
+	double ff(double x)
+	{
+		return pow(x,4)+3*pow(x,3)-11*pow(x,2)-3*x+10;
+	}
+- Sau khi chạy chương trình, ta nhập theo thứ tự: bậc của đa thức cần giải, các hệ số với bậc giảm dần
+VD: với phương trình trên ta nhập:
+4
+1
+3
+-11
+-3
+10
