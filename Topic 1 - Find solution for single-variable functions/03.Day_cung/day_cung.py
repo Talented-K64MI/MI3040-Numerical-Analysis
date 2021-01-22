@@ -90,8 +90,11 @@ class daycung_oop:
             d=a
             x=b
         x_pre=-1000
+        Min=min(abs(f1(a)),abs(f1(b)))
+        Max=max(abs(f1(a)),abs(f1(b)))
+        xi=(Max-Min)/Min
 
-        while (abs(x-x_pre)> eps):
+        while (abs(x-x_pre)*xi> eps):
             x_pre=x
             x=x_pre - (d-x_pre)/(f(d)-f(x_pre))*f(x_pre)
         return x
@@ -108,7 +111,7 @@ class daycung_oop:
 expr = "x^2-3*x+2"
 L = -1
 R = 1.4
-eps = 1e-6
+eps = 1e-2
 
 uu = daycung_oop(L, R, eps, expr);
 print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
