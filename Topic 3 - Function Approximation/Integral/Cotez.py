@@ -9,7 +9,7 @@ cotezCoefs = [[1/2,     1/2],
              [19/288,   75/288,     50/288,     50/288,     75/288,19/288]]
 
 #h^n - error term
-convergeSpeeds = [3, 5, 5, 7, 7]
+convergeSpeeds = [2, 4, 4, 6, 6]
 
 multiplier = [12, 90, 80/3, 945/8]
 
@@ -26,8 +26,8 @@ def Integral(f, M, rangeX, epsilon, n = 2):
     a,b = rangeX
     length = b-a
 
-    #M/multiplier * h^k < eps
-    h = math.pow(epsilon*mult/M, 1/speed)
+    #M/multiplier * length * h^k < eps
+    h = math.pow(epsilon*mult/M/length, 1/speed)
 
     steps = (int) (length/h) + 1
     dx = length/steps/n
@@ -43,12 +43,17 @@ def Integral(f, M, rangeX, epsilon, n = 2):
     
     return integral*dx*n
 
+
+# test 
+#
+
 def test1():
     x = symbols('x')
     f = sympify("x**3 -3*x + 7*x**2 - 5 + 10*sin(100*x) + 2**x")
     print(f)
     integral = Integral(f, 1000, (-3,3), 0.001, 2)
     return integral.evalf()
+
 
 
 print(test1())
