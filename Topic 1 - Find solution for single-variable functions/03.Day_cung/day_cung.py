@@ -57,16 +57,22 @@ class daycung_oop:
         f = self.df[0];
         
         # Check if f(a) * f(b) < 0
-        if(f(a) * f(b) >= 0): 
+        if (f(a)==0):
+            print(f"Phương trình có nghiệm đúng x={a}")
+            return 0;
+        if (f(b)==0):
+            print(f"Phương trình có nghiệm đúng x={b}")
+            return 0;  
+        if(f(a) * f(b) > 0): 
         #{
             print(f(a)," ",f(b))
-            print(f"Khoảng cách ly [{a}, {b}] không hợp lệ");
+            print("Khoảng cách ly không hợp lệ, không tồn tại nghiệm duy nhất");
             return 0;
         #}
 
         if(self.__Kiem_tra_don_dieu()==0): 
         #{
-            print("Khoảng đã cho không hợp lệ");
+            print("Khoảng cách ly không hợp lệ, không thỏa mãn điều kiện hội tụ");
             return 0;
         #}
     #}
