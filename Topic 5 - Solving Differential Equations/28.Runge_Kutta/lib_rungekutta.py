@@ -30,8 +30,8 @@ class rungekutta_oop:
 
     def __computeNext(self, prev):
     #{
+        s     = 3 if(self.s == "heun" or self.s == "Heun") else self.s; 
         f     = self.f;
-        s     = self.s; 
         h     = self.h;
         r     = self.r;
         alpha = self.alpha;
@@ -86,6 +86,16 @@ class rungekutta_oop:
                 [0],
                 [0, 1/2],
                 [0, -1, 2]
+            ];
+        #}
+        elif(self.s == "heun" or self.s == "Heun"):
+        #{
+            self.r     = [0, 1/4, 0, 3/4];
+            self.alpha = [0, 0, 1/3, 2/3];
+            self.beta  = [
+                [0],
+                [0, 1/3],
+                [0, 0, 2/3]
             ];
         #}
         elif(s == 4):
