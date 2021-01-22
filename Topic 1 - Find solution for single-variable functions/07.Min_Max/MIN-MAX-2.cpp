@@ -7,7 +7,7 @@ using namespace std;
 int dem=0;
 double f( double x)
 {
-    return pow(x,7)+7*pow(x,6)+21*pow(x,5)+63*pow(x,4)+147*pow(x,3)+189*x*x+119*x-451;
+    return sin(x) + x - x*x;
 }
 //-----------------------------------------------//
 double x( double a, double b, string s)

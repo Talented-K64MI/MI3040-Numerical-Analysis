@@ -13,7 +13,7 @@ map    <double, double>::iterator k, kmax, kmin;
 //----------------------------------//
 double f(double x)  //Nhap ham f(x)
 {
-    return pow(x,7)+7*pow(x,6)+21*pow(x,5)+63*pow(x,4)+147*pow(x,3)+189*x*x+119*x-451;
+    return sin(x) + x - x*x;
 }
 //------------------------------------------//
 double f1(double x0)  //Ham tra ve f'(x0)
@@ -79,7 +79,7 @@ void xuat2() //Tim va xuat max min
 	}
 	printf("Min cua f(x) trong khoang [%5.2f,%5.2f] tai: m (%5.5f,%5.5f)\n",a,b,kmin->first,kmin->second);
 	printf("Max cua f(x) trong khoang [%5.2f,%5.2f] tai: M (%5.5f,%5.5f)\n",a,b,kmax->first,kmax->second);
-	printf("So buoc lap cua GDA la %d:",dem);
+	printf("So buoc lap cua GDA la: %d",dem);
 }
 //----------------------------//
 int main()
