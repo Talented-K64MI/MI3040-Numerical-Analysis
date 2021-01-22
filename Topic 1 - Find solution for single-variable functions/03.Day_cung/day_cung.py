@@ -114,10 +114,10 @@ class daycung_oop:
 #===================================================================================
 # Chương trình chính
 
-expr = "x^2-3*x+2"
-L = -1
-R = 1.4
-eps = 1e-2
+expr = "sqrt(log(x)) - 1"
+L = 2
+R = 3
+eps = 1e-12
 
 uu = daycung_oop(L, R, eps, expr);
 print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");

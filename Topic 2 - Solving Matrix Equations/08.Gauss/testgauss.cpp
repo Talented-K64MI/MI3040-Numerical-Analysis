@@ -5,7 +5,7 @@ int main()
  int i,j,k,n,l,m,p=1;
  float A[20][20],c,x[20],sum=0.0;
 //Nhap du lieu tu file  
-FILE *f = fopen("D:\\Matran.txt", "rt");
+FILE *f = fopen("Matran.txt", "rt");
    n=1,m=1;
 	j=0;
 	char c1;
