@@ -141,7 +141,7 @@ class newton_oop:
         if(f(a) == 0): return a;
         if(f(b) == 0): return b;
 
-        print(x0, m1, self.sign, file=sys.stderr);
+        # print(x0, m1, self.sign, file=sys.stderr);
 
         while(self.__abs(f(x0)) > eps * m1):
         #{
