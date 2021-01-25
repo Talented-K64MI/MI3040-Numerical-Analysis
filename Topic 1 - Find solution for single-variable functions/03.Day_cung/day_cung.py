@@ -115,9 +115,9 @@ class daycung_oop:
 # Chương trình chính
 
 expr = "sqrt(log(x)) - 1"
-L = 2
+L = 2.7
 R = 3
-eps = 1e-12
+eps = 1e-1
 
-uu = daycung_oop(L, R, eps, expr);
-print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
+uu = daycung_oop(L, R, eps, expr)
+print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}")

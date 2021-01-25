@@ -7,10 +7,6 @@ from math import *
 import numpy
 import time
 
-# y = x + sin(x^(3/2))
-arr_x = [1.000, 1.250, 1.500, 1.750, 2.000, 2.250, 2.500, 2.750, 3.000]
-arr_y = [1.841, 2.235, 2.465, 2.486, 2.308, 2.019, 1.775, 1.762, 2.115] # n + 1 mốc nội suy
-
 # Phân hoạch đơn điệu
 def Monotonous_Partition(arr): # Phân hoạch đơn điệu
     extre_idx = [0] # Chỉ số của các điểm cực trị
@@ -75,10 +71,10 @@ def Mat_phi(arr):
 
 # Trích ra mảng con gồm các mốc nội suy thích hợp
 def Extract_subarr(arr, y):
+    # sgn = 1 nếu dãy tăng, sgn = -1 nếu dãy giảm
     sgn = 1
-    # Nếu mảng đang sắp xếp theo chiều giảm thì đảo ngược thứ tự lại
     if arr[0] > arr[1]: sgn *= -1
-    arr = arr[::sgn]
+    arr = arr[::sgn] # Nếu dãy giảm thì dùng [::sgn] để đảo ngược dãy lại thành dãy tăng
     # Tìm chỉ số của 2 giá trị kề với y (Phương pháp chặt nhị phân)
     l_idx = 0
     r_idx = len(arr) - 1
@@ -88,13 +84,13 @@ def Extract_subarr(arr, y):
         else: r_idx = idx
 
         if r_idx - l_idx == 1: break
-
-    if len(arr) - l_idx < r_idx + 1:
-        a = min(r_idx + 1, 6)
-        subarr = [arr[i] for i in range(a)]
+    # In mảng con trích xuất (Tối đa 7 phần tử)
+    if l_idx + r_idx >= len(arr):
+        a = min(r_idx, 7)
+        subarr = [arr[i] for i in range(r_idx - a, r_idx + 1)][::-1]
     else:
-        a = min(len(arr) - l_idx + 1, 6)
-        subarr = [arr[i] for i in range(l_idx, l_idx + a - 1)]
+        a = min(len(arr) - l_idx - 1, 7)
+        subarr = [arr[i] for i in range(l_idx, l_idx + a)]
     subarr = subarr[::sgn]
     print("Mảng con trích xuất: ", subarr)
     return subarr
@@ -125,6 +121,7 @@ def Inverse_interpolation(arr_x, arr_y, y, eps):
             Phi = Mat_phi(subarr)
             delta = subarr[1] - subarr[0]
             t = (y - subarr[0]) / delta # Xấp xỉ đầu t0 = (y - y0)/(y1 - y0)
+            print(t)
 
             def Loop_func(t): # Hàm lặp trong công thức nội suy ngược
                 T = [[t**i] for i in range(1, len(subarr))]
@@ -143,10 +140,15 @@ def Inverse_interpolation(arr_x, arr_y, y, eps):
 
     return root
 
-start_time = time.time()
+start_time = time.time() # Ghi lại thời gian bắt đầu chạy code
 
-print("Tập nghiệm của phương trình f(x) = y là:\n", Inverse_interpolation(arr_x, arr_y, 2, 1e-5))
+# 2 mảng dưới là bảng số liệu của đề thi cuối kỳ Giải tích số - 20181 CTTN
+arr_x = [3,    6,    9,    12,    15,    18,    21,    24,    27,    30]
+arr_y = [1224, 3264, 6426, 10630, 15832, 19402, 22564, 24094, 24910, 25000] # n + 1 mốc nội suy
+y = 18529
+eps = 0.1 # Sai số
 
-end_time = time.time()
+print("Tập nghiệm của phương trình f(x) =", y ,"là:\n", Inverse_interpolation(arr_x, arr_y, y, eps))
 
-print("Total runtime", (end_time - start_time)*1000, "ms")
+end_time = time.time() # Ghi lại thời gian kết thúc code
+print("Total runtime", (end_time - start_time)*1000, "ms") # In thời gian chạy code
