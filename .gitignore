@@ -10,6 +10,7 @@
 **/Playground/**
 **/.vs/**
 **/.mypy-cache/**
+**/.ipynb_checkpoints/**
 **/.idea/**
 **/.env/**
 **/.venv/**
