@@ -174,7 +174,10 @@ class rungekutta_multivariate_oop:
 
     def __computeNext(self, prev):
     #{
-        # Tính x[n+1] thông qua x[n]
+        # Tính x[n+1] thông qua x[n] bằng RK4
+        # (đm nghĩ mãi đéo đc RK tổng quát
+        # nên quay lại RK4 cho lành)
+
         f    = self.f;
         h    = self.h;
         x    = prev[0]; 
