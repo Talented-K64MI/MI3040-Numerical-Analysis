@@ -1,7 +1,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-
+import math
 
 def feval(funcName, *args):
     return eval(funcName)(*args)
@@ -47,36 +47,36 @@ def RK4thOrder(func, yinit, x_range, h):
 
     return [xsol, ysol]
 
+def myFunc(t, vectorY):
+    df = np.zeros((len(vectorY)))
+
+    y = vectorY[0]
+    z = vectorY[1]
+
 #########################       INPUT GOES HERE
 
-def myFunc(x, y):
-    dy = np.zeros((len(y)))
+    # y' = z
+    df[0] = z
+    # z' = ty^2(1+sin(t)y) + yt^3
+    df[1] = t*y**2*(1+math.sin(t)*y) + t**3*y
+    return df
 
-    n = y[0]
-    p = y[1]
-    K = 100
-    r = 0.6
-    a = 0.04
-    muy = 1.2
+h = 0.01    # độ dài 1 bước
+t0 = 0      # điểm bắt đầu
+tn = 1      # điểm kết thúc
 
-    dy[0] = r * n * (1 - n / K) - a * n * p
-    dy[1] = -muy * p + a * n * p
-    return dy
+y0 = 1      # giá trị đầu y(t0)
+z0 = 1      # giá trị đầu z(t0)
 
-
-h = 0.01
-t0 = 0.0
-tn = 100
-
-y01 = 70.0
-y02 = 20.0
-
+# this work with more than 2 equation ...
 
 ##########################       \INPUT GOES HERE
 
+y0 = float(y0)
+z0 = float(z0)
 
 x = np.array([t0, tn])
-yinit = np.array([y01, y02])
+yinit = np.array([y0, z0])
 
 [ts, ys] = RK4thOrder('myFunc', yinit, x, h)
 
@@ -93,10 +93,10 @@ for i in range(len(ts)):
 ##########################       \PRINT RESULT
 
 
-##########################       Plot y1, y2 with respect to t
+##########################       Plot y, z with respect to t  ( but currently only y, uncomment plt.plot... below to plot z )
 
 plt.plot(ts, ys1, 'r')
-plt.plot(ts, ys2, 'b')
+#plt.plot(ts, ys2, 'b')
 plt.xlim(x[0], x[1])
 plt.legend(["y(1)", "y(2)"], loc=2)
 plt.xlabel('x', fontsize=17)
@@ -104,9 +104,9 @@ plt.ylabel('y', fontsize=17)
 plt.tight_layout()
 plt.show()
 
-##########################       \Plot y1, y2 with respect to t
+##########################       \Plot y, z with respect to t
 
-##########################       plot y1 - y2 as x - y
+##########################       plot y - z as x - y(x)
 
 plt.plot(ys1, ys2, 'r')
 plt.xlabel('con mồi', fontsize=17)
