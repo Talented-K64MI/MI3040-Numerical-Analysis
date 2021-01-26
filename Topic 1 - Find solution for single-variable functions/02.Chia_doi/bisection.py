@@ -97,5 +97,5 @@ class bisection_oop:
 # Chương trình ví dụ
 # uu = bisection_oop(L, R, eps, input_expr)
 # print(uu.Solve())
-uu = bisection_oop(-2, 2, 1e-10, "x^2+5")
+#uu = bisection_oop(0.008, 0.08, 1e-10, "1/sqrt(x)+2*log(0.0000015/(3.7*0.005)+ 2.51/(13.743*sqrt(x)))/log(10)")
 print(f" Nghiệm của PT f(x) = 0 theo PP chia đôi là: x = {uu.Solve()}")
