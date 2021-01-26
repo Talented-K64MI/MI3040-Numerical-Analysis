@@ -154,9 +154,6 @@ class rungekutta_multivariate_oop:
 #{
     def __init__(self, expr, X_0, Y_0, h, n):
     #{
-        # func       = sympify(expr)
-
-
         self.nVars = len(Y_0)      # Số biến của hệ PT
         self.X_0   = X_0           # Giá trị ban đầu của X - kiểu FLOAT
         self.Y_0   = Y_0           # Giá trị ban đầu của Y - kiểu ndarray
