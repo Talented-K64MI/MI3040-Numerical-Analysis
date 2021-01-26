@@ -111,7 +111,7 @@ xn = 2
 y0 = 0.1
 
 
-#############################   INPUT GOES HERE
+#############################   \INPUT GOES HERE
 
 xspan = np.array([x0, xn])
 yinit = np.array([y0])
@@ -121,6 +121,13 @@ yinit = np.array([y0])
 
 dt = int((xspan[-1]-xspan[0])/h)
 t = [xspan[0]+i*h for i in range(dt+1)]
+
+#############################   PRINT RESULT
+
+for i in range(len(ts)):
+    print("x = ", ts[i], ";             y = ", ys[i])
+
+#############################   \PRINT RESULT
 
 
 plt.plot(ts, ys, 'r')

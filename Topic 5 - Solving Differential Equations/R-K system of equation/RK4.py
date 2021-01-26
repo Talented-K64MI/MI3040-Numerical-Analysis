@@ -47,6 +47,7 @@ def RK4thOrder(func, yinit, x_range, h):
 
     return [xsol, ysol]
 
+#########################       INPUT GOES HERE
 
 def myFunc(x, y):
     dy = np.zeros((len(y)))
@@ -62,7 +63,6 @@ def myFunc(x, y):
     dy[1] = -muy * p + a * n * p
     return dy
 
-#########################       INPUT GOES HERE
 
 h = 0.01
 t0 = 0.0
@@ -72,10 +72,8 @@ y01 = 70.0
 y02 = 20.0
 
 
-
 ##########################       \INPUT GOES HERE
 
-##########################       Plot y1, y2 with respect to t
 
 x = np.array([t0, tn])
 yinit = np.array([y01, y02])
@@ -85,6 +83,17 @@ yinit = np.array([y01, y02])
 node = len(yinit)
 ys1 = ys[0::node]
 ys2 = ys[1::node]
+
+##########################       PRINT RESULT
+
+for i in range(len(ts)):
+    print("t = ", ts[i])
+    print("y1 = ", ys1[i], ";   y2 = ", ys2[i])
+
+##########################       \PRINT RESULT
+
+
+##########################       Plot y1, y2 with respect to t
 
 plt.plot(ts, ys1, 'r')
 plt.plot(ts, ys2, 'b')
