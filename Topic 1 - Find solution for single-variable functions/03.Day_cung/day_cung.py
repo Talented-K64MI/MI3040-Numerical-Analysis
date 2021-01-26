@@ -114,10 +114,17 @@ class daycung_oop:
 #===================================================================================
 # Chương trình chính
 
+<<<<<<< HEAD
 expr = "x^3-1"
 L = -1
 R = 2
 eps = 1e-2
+=======
+expr = "sqrt(log(x)) - 1"
+L = 2.7
+R = 3
+eps = 1e-1
+>>>>>>> 84cd015e26f45a64c149a54968af0c8aee686e9f
 
-uu = daycung_oop(L, R, eps, expr);
-print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}");
+uu = daycung_oop(L, R, eps, expr)
+print(f"Nghiệm của phương trình {expr} trên khoảng [{L}, {R}] là: {uu.Solve()}")
