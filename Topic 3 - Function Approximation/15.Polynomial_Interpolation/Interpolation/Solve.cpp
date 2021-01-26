@@ -2,10 +2,10 @@
 #define NN 5000
 
 using namespace std;
-double ma[NN][NN],kq1[NN];
-double f[NN],a[NN],kq[NN];
+float ma[NN][NN],kq1[NN];
+float f[NN],a[NN],kq[NN];
 int n;
-double F[NN],A[NN];
+float F[NN],A[NN];
 int N,dem;
 
 void printmatrix()
@@ -96,20 +96,18 @@ main()
 {
     freopen("Solve.inp","r",stdin);
     freopen("Solve.out","w",stdout);
-    /*scanf("%d",&N);
+    scanf("%d",&N);
     for(int i=1;i<=N;i++)
     {
         scanf("%f%f",&A[i],&F[i]);
     }
     checkdata();
-    creatematrix();*/
-    cin>>m>>n;
-    for(int i=1;i<=m;i++) for(int j=1;j<=n;j++) cin>>a[i][j];
+    creatematrix();
     Solve();
-    //printf("So moc noi suy bo di la: %d\n",dem);
+    printf("So moc noi suy bo di la: %d\n",dem);
     printresult();
-    /*printf("Kiem tra ket qua:\n");
+    printf("Kiem tra ket qua:\n");
     for(int i=1;i<=n;i++)
         printf("x=%.4f    f[x]=%.4f\n",a[i],Hoocne(a[i]));
-        */
+        
 }
