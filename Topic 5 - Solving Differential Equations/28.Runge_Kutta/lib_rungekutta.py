@@ -159,7 +159,7 @@ class rungekutta_multivariate_oop:
 
         self.nVars = len(Y_0)      # Số biến của hệ PT
         self.X_0   = X_0           # Giá trị ban đầu của X - kiểu FLOAT
-        self.Y_0   = Y_0           # Giá trị ban đầu của Y - kiểu LIST
+        self.Y_0   = Y_0           # Giá trị ban đầu của Y - kiểu ndarray
         self.h     = h             # Giá trị h - khoảng cách giữa 2 điểm t
         self.n     = n             # Số mốc cần đưa ra
         self.f     = expr;         # Hàm F(X, Y)
