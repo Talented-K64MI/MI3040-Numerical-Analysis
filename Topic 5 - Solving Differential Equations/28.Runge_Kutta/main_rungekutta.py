@@ -18,11 +18,11 @@ y_0       = float(input(f"Nhập giá trị ban đầu y({x_0}) = "));
 h         = float(input("Nhập khoảng cách giữa 2 điểm liên tiếp h = "));
 n         = int(input("Nhập số mốc của lưới điểm n = "));
 s         = input("Nhập số nấc Runge-Kutta (1, 2, 3, 4 hoặc Heun):");
-s         = s if(s == "heun" or s == "Heun") else int(s); 
 
 # Giải PTVP
+s  = s if(s == "heun" or s == "Heun") else int(s); 
 uu = rungekutta_oop(expr, x_0, y_0, h, n, s);
-g = (uu.Solve());
+g  = (uu.Solve());
 
 
 
