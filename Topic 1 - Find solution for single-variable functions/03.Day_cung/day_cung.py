@@ -114,9 +114,9 @@ class daycung_oop:
 #===================================================================================
 # Chương trình chính
 
-expr = "x^2-3*x+2"
+expr = "x^3-1"
 L = -1
-R = 1.4
+R = 2
 eps = 1e-2
 
 uu = daycung_oop(L, R, eps, expr);
