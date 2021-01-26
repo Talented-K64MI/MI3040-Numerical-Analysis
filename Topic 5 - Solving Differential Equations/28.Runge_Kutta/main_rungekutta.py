@@ -37,6 +37,8 @@ else:
 #}
 for x in g: print(round(x[0], precision_x), round(x[1], precision_y));
 
+# Đồ thị
+uu.getPlot();
 
 
 # Nghiệm kiểm chứng
