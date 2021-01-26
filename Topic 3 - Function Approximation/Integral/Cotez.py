@@ -43,32 +43,17 @@ def Integral(f, M, rangeX, epsilon, n = 2):
     
     return integral*dx*n
 
-x = symbols('x')
+
+# test 
+#
+
+def test1():
+    x = symbols('x')
+    f = sympify("x**3 -3*x + 7*x**2 - 5 + 10*sin(100*x) + 2**x")
+    print(f)
+    integral = Integral(f, 1000, (-3,3), 0.001, 2)
+    return integral.evalf()
 
 
 
-############ WRITE YOUR FRICKING INPUT HERE ######################
-
-f = 1/(x**2 + 1)
-epsilon = 10**-12
-M = 1000        # sup f^(n)
-
-# khoảng tích phân
-a = 0
-b = 1
-
-n = 4
-
-############ WRITE YOUR FRICKING INPUT HERE ######################
-
-############ PRINT IT OUT ...               ######################
-
-integral = Integral(f, M, (a,b), epsilon, n)  # YOUR RESULT HERE
-
-pi = 4*integral.evalf(30)                       # 30 CHỮ SỐ
-
-print("pi = ", pi)
-
-print("tích phân = ", integral.evalf(30))      # PRINT YOUR RESULT
-
-############ PRINT IT OUT ...               ######################
+print(test1())

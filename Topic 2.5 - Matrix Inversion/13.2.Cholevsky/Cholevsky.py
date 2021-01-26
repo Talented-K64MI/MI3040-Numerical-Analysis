@@ -28,18 +28,6 @@ k=0
 print('The input matrix is:')
 print(A)
 n = len(A)
-if n == 2:  # Trường hợp chặn đệ quy
-    inv = np.zeros([2, 2],dtype='complex')  # Khởi tạo ma trận nghịch đảo alpha^-1
-    if (A[0, 0] * A[1, 1] - A[1, 0] * A[0, 1]) == 0:
-        print("Ma tran ko kha nghich")
-        quit()
-    else:
-        inv[0, 0] = A[1, 1] / (A[0, 0] * A[1, 1] - A[1, 0] * A[0, 1])
-        inv[0, 1] = -A[0, 1] / (A[0, 0] * A[1, 1] - A[1, 0] * A[0, 1])
-        inv[1, 0] = -A[1, 0] / (A[0, 0] * A[1, 1] - A[1, 0] * A[0, 1])
-        inv[1, 1] = A[0, 0] / (A[0, 0] * A[1, 1] - A[1, 0] * A[0, 1])
-        print(inv)
-        quit()
 B = np.zeros([n,n])
 for i in range(n):
     B[i,i] = 1.0

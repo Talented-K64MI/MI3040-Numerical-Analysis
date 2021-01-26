@@ -8,9 +8,6 @@ a = np.loadtxt("test1.txt",dtype='float', delimiter=' ')
 n = len(a)
 b = np.transpose(a)
 t = b.dot(a)
-check = True
-print(t)
-print(np.linalg.det(t))
 print("Ma trận vừa nhập là:")
 print(a)
 print("========================================================================")
@@ -41,8 +38,8 @@ def bordering(a, n):# Nhap ma tran a va kich thuoc cua ma tran
         a_111 = bordering(a_11, n-1)
         X = a_111.dot(a_12)
         Y = a_21.dot(a_111)
-        theta = a_22 - (Y.dot(a_12))
-        if abs(theta)<  1e-14:
+        theta = a_22 - Y.dot(a_12)
+        if theta == 0:
             print('Ma Tran Khong Kha Nghich')
             quit()
         x = X.dot(Y)
@@ -58,12 +55,9 @@ s = bordering(t, n)
 et = time.time()
 
 print("========================================================================")
-if(check == True):
-    print("Ma trận nghịch đảo là:")
-    print(s.dot(b))
-    np.savetxt("output.txt",s.dot(b),fmt= '%-.8f' ,delimiter=' ' )
-else:
-    print('Ma Tran Khong Kha Nghich')
+print("Ma trận nghịch đảo là:")
+print(s.dot(b))
+np.savetxt("output.txt",s.dot(b),fmt= '%-.8f' ,delimiter=' ' )
 print("========================================================================")
 print((et-st)*1000,'ms')
 print("========================================================================")
