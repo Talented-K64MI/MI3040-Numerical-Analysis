@@ -5,8 +5,8 @@
 #define  pi   3.14159265
 #define e   2.718281828459
 using namespace std;
-double  a=-5,
-         b=5;
+double  a=-6,
+         b=6;
 int     sign, dem=0;
 map    <double, double> save;
 map    <double, double>::iterator k, kmax, kmin;

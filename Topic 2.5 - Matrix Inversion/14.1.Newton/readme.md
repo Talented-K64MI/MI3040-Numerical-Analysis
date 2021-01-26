@@ -9,8 +9,9 @@
 
 ### Cách sử dụng
 _Note:_ Để tránh xung đột code, nhóm đã xóa cách nhập trực tiếp từ code
-- **Bước 1:** Chỉnh sửa dòng 11, 12, 13 theo comment trong file `newton_terminal.py`
-- **Bước 2:** Chạy file `newton_terminal.py` và làm theo hướng dẫn
+- **Bước 1:** Tạo file `input.txt` và nhập ma trận
+**Chú ý:** Không cần nhập kích thước ma trận vì chương trình tự dò kích cỡ ma trận nhập vào và bắt nhập lại nếu ma trận bị sai kích cỡ`
+- **Bước 2:** Chạy file `newton_fromfile.py` và làm theo hướng dẫn của chương trình
 
 ## Ưu, nhược điểm của thuật toán
 - **Ưu điểm:** 
