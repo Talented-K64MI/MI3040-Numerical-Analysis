@@ -9,11 +9,13 @@ $$ y' = f(x, y), \; y(x_0) = y_0 $$
 * Input: Hàm $f$, giá trị ban đầu $(x_0, y_0)$, khoảng cách giữa 2 điểm liên tiếp $h$, số mốc của lưới điểm $n$ và số nấc của Runge-Kutta, bao gồm 1, 2, 3, 4 và kiểu hệ số của Heun
 * Output: Gồm $n$ dòng gồm 2 giá trị $x_n$ và $y_n$ của hàm $y(x)$ tìm được
 
-## Hướng dẫn sử dụng
-Thuật toán này cần thư viện `sympy ` để chạy được chương trình. Có 2 cách chạy như sau:
+## Hướng dẫn sử dụng - Với PT 1 ẩn
+Thuật toán này cần thư viện `sympy`, `numpy` và `matplotlib` để chạy được chương trình. Có 2 cách chạy như sau:
 * **Cách 1:** Chạy file `main_rungekutta.py` và làm theo hướng dẫn.
 * **Cách 1:** Chạy file `main_rungekutta.ipynb` và làm theo hướng dẫn.
 
+## Hướng dẫn sử dụng - Với hệ PTVP
+Thuật toán này cần thư viện `sympy`, `numpy` và `matplotlib` để chạy được chương trình. Chạy file `main_rungekutta_multivar.ipynb` và làm theo hướng dẫn.
 
 ## Phân tích ưu nhược điểm thuật toán
 * Ưu điểm: 
