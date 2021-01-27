@@ -127,7 +127,7 @@ def bieudien():
             pass
 
 def kiemtranghiem():
-    A = np.loadtxt("VD1.txt", delimiter=' ')[:,:-1]
+    A = np.loadtxt("GJ_input.txt", delimiter=' ')[:,:-1]
     print()
     print("- - - - - Kiểm tra nghiệm - - - - -")
     print(np.matmul(A,result))  # In ra ma trận A * x(result)
